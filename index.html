@@ -77,6 +77,9 @@
             text-decoration: none;
             transition: color var(--transition-speed);
             position: relative;
+            display: block;
+            padding: 0.5rem 1rem;
+            /* Enhanced for touch targets */
         }
 
         .nav-links a:hover,
@@ -243,6 +246,10 @@
         .weapons-section {
             padding: calc(var(--spacing-unit) * 3);
             text-align: center;
+            /* Optional: Adding grid for potential multi-item layout */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-unit);
         }
 
         .arsenal-section h1,
@@ -252,6 +259,8 @@
             color: var(--blood-red);
             text-shadow: 0 0 15px var(--shadow-color);
             margin-bottom: calc(var(--spacing-unit) * 2);
+            grid-column: 1 / -1;
+            /* Ensure heading spans all columns */
         }
 
         .btn {
@@ -282,8 +291,8 @@
         }
 
         .founder img {
-            width: 200px;
-            height: 200px;
+            width: clamp(100px, 30vw, 200px);
+            height: clamp(100px, 30vw, 200px);
             border-radius: 50%;
             border: 3px solid var(--blood-red);
             object-fit: cover;
@@ -313,13 +322,49 @@
             }
         }
 
+        /* Tablet and below */
         @media (max-width: 768px) {
+            .section {
+                padding: calc(var(--spacing-unit) * 2);
+                margin: var(--spacing-unit);
+            }
+
+            .hero {
+                padding: var(--spacing-unit);
+            }
+
             .hero-title {
                 font-size: clamp(2rem, 6vw, 4rem);
             }
 
-            .section {
+            .hamburger {
+                display: flex;
+                gap: 6px;
+            }
+
+            .hamburger div {
+                width: 30px;
+                height: 4px;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 10px;
+            }
+
+            .nav-links.show {
+                display: flex;
+                background: var(--secondary-bg);
                 padding: var(--spacing-unit);
+                border-radius: 5px;
+                box-shadow: 0 4px 10px var(--shadow-color);
+            }
+
+            .nav-links a {
+                padding: 0.5rem 0;
             }
 
             .article-section {
@@ -334,24 +379,45 @@
             .weapons-section h1 {
                 font-size: 3rem;
             }
+        }
 
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                background: var(--secondary-bg);
-                position: absolute;
-                top: 60px;
-                right: 10px;
+        /* Mobile portrait and smaller */
+        @media (max-width: 480px) {
+            .section {
                 padding: var(--spacing-unit);
-                border-radius: 5px;
             }
 
-            .nav-links.show {
-                display: flex;
+            .hero {
+                padding: calc(var(--spacing-unit) / 2);
             }
 
-            .hamburger {
-                display: flex;
+            .hero-title {
+                font-size: clamp(1.5rem, 8vw, 3rem);
+            }
+
+            .hero-subtitle {
+                font-size: clamp(1rem, 4vw, 1.5rem);
+            }
+
+            .btn {
+                padding: 0.5rem 1rem;
+            }
+
+            .article-section {
+                padding: var(--spacing-unit);
+            }
+
+            #article {
+                padding: calc(var(--spacing-unit) * 2);
+            }
+
+            .arsenal-section h1,
+            .weapons-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .section h2 {
+                font-size: 2rem;
             }
         }
 
