@@ -48,7 +48,6 @@
             z-index: 0;
         }
 
-        /* Header & Navegación Mejorada */
         header {
             position: fixed;
             top: 0;
@@ -85,7 +84,6 @@
             color: var(--blood-red);
         }
 
-        /* Líneas de subrayado en hover */
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -102,7 +100,6 @@
             width: 100%;
         }
 
-        /* Botón Hamburguesa para móvil */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -117,7 +114,6 @@
             transition: transform var(--transition-speed);
         }
 
-        /* Selector de idioma */
         .lang-selector select {
             background: var(--dark-blood);
             color: var(--text-color);
@@ -133,20 +129,17 @@
             background: var(--blood-red);
         }
 
-        /* Páginas */
         .page {
             display: none;
             position: relative;
             z-index: 1;
             padding-top: 80px;
-            /* Espacio para header fijo */
         }
 
         .page.active {
             display: block;
         }
 
-        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -180,7 +173,6 @@
             text-shadow: 0 0 10px var(--shadow-color);
         }
 
-        /* Secciones Generales */
         .section {
             padding: calc(var(--spacing-unit) * 3);
             margin: calc(var(--spacing-unit) * 2) auto;
@@ -200,7 +192,6 @@
             text-shadow: 0 0 10px var(--shadow-color);
         }
 
-        /* Artículo/Guía */
         .guide,
         .article-section {
             background: var(--primary-bg);
@@ -224,7 +215,30 @@
             font-size: 1.1rem;
         }
 
-        /* Arsenal Section */
+        #article {
+            padding: calc(var(--spacing-unit) * 3);
+            margin: calc(var(--spacing-unit) * 2) auto;
+            text-align: left;
+            background: rgba(28, 28, 28, 0.9);
+            border: 1px solid var(--dark-blood);
+            border-radius: 10px;
+            max-width: 1000px;
+            box-shadow: 0 8px 30px var(--shadow-color);
+        }
+
+        #article h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: var(--blood-red);
+            text-shadow: 0 0 15px var(--shadow-color);
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+
+        #article p {
+            margin-bottom: var(--spacing-unit);
+            font-size: 1.1rem;
+        }
+
         .arsenal-section,
         .weapons-section {
             padding: calc(var(--spacing-unit) * 3);
@@ -240,7 +254,6 @@
             margin-bottom: calc(var(--spacing-unit) * 2);
         }
 
-        /* Botones */
         .btn {
             background: var(--blood-red);
             color: var(--text-color);
@@ -261,7 +274,6 @@
             box-shadow: 0 0 15px var(--shadow-color);
         }
 
-        /* Founder Section */
         .founder {
             display: flex;
             flex-direction: column;
@@ -279,7 +291,6 @@
             box-shadow: 0 0 20px var(--shadow-color);
         }
 
-        /* Footer */
         .footer {
             background: var(--secondary-bg);
             padding: var(--spacing-unit);
@@ -288,7 +299,6 @@
             border-top: 2px solid var(--blood-red);
         }
 
-        /* Animación */
         @keyframes pulse {
             0% {
                 transform: scale(1);
@@ -303,7 +313,6 @@
             }
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .hero-title {
                 font-size: clamp(2rem, 6vw, 4rem);
@@ -315,6 +324,10 @@
 
             .article-section {
                 padding: calc(var(--spacing-unit) * 2);
+            }
+
+            #article {
+                padding: calc(var(--spacing-unit) * 3);
             }
 
             .arsenal-section h1,
@@ -378,11 +391,8 @@
             </select>
         </div>
     </header>
-
-    <!-- Página Principal -->
     <section id="main" class="page active">
         <main>
-            <!-- Hero Section -->
             <section class="hero">
                 <h1 class="hero-title">BlackStream Project</h1>
                 <div id="typed-text"></div>
@@ -400,8 +410,6 @@
                 <p class="hero-subtitle" data-lang="ar" style="display: none;">اقطع الصراعات. سيطر على مصيرك. خذ ما هو
                     لك.</p>
             </section>
-
-            <!-- Sección: Nuestra Filosofía -->
             <section class="section">
                 <h2 data-lang="en">Our Philosophy</h2>
                 <h2 data-lang="es" style="display: none;">Nuestra Filosofía</h2>
@@ -429,11 +437,9 @@
                 <p data-lang="ru" style="display: none;">Жизнь — беспощадное поле боя. Милосердие — слабость.
                     BlackStream выковывает из тебя безжалостного хищника — агрессия твой клинок, контроль твой трон,
                     победа твоё прирождённое право.</p>
-                <p data-lang="ar" style="display: none;">الحياة ساحة معركة لا ترحم. الرحمة ضعف. BlackStream يصيغك كمفترس
+                <p data-lang="ar" style="display: none;">الحياة ساحة معركة لا ترحم. الرحمة ضعف. BlackStream يصوغك كمفترس
                     بلا رحمة—العدوان سيفك، السيطرة عرشك، النصر حقك الطبيعي.</p>
             </section>
-
-            <!-- Sección: Guías para Dominar -->
             <section class="section">
                 <h2 data-lang="en">Guides to Dominate</h2>
                 <h2 data-lang="es" style="display: none;">Guías para Dominar</h2>
@@ -471,19 +477,17 @@
                         влияния.</p>
                     <p data-lang="ar" style="display: none;">سحق من يعترضون طريقك. اقتلع مصدر المقاومة بدقة باردة—سواء
                         كان خائنًا، منافسًا أو طفيليًا—ولا تترك أثرًا لتأثيرهم.</p>
-                    <a href="#article" class="btn" data-lang="en">Read More</a>
-                    <a href="#article" class="btn" data-lang="es" style="display: none;">Leer Más</a>
-                    <a href="#article" class="btn" data-lang="fr" style="display: none;">Lire Plus</a>
-                    <a href="#article" class="btn" data-lang="de" style="display: none;">Mehr Lesen</a>
-                    <a href="#article" class="btn" data-lang="zh" style="display: none;">阅读更多</a>
-                    <a href="#article" class="btn" data-lang="ja" style="display: none;">もっと読む</a>
-                    <a href="#article" class="btn" data-lang="ru" style="display: none;">Читать Далее</a>
-                    <a href="#article" class="btn" data-lang="ar" style="display: none;">اقرأ المزيد</a>
+                    <a href="#arsenal" class="btn" data-lang="en">Read More</a>
+                    <a href="#arsenal" class="btn" data-lang="es" style="display: none;">Leer Más</a>
+                    <a href="#arsenal" class="btn" data-lang="fr" style="display: none;">Lire Plus</a>
+                    <a href="#arsenal" class="btn" data-lang="de" style="display: none;">Mehr Lesen</a>
+                    <a href="#arsenal" class="btn" data-lang="zh" style="display: none;">阅读更多</a>
+                    <a href="#arsenal" class="btn" data-lang="ja" style="display: none;">もっと読む</a>
+                    <a href="#arsenal" class="btn" data-lang="ru" style="display: none;">Читать Далее</a>
+                    <a href="#arsenal" class="btn" data-lang="ar" style="display: none;">اقرأ المزيد</a>
                 </article>
             </section>
-
-            <!-- Sección del Artículo Principal -->
-            <section id="article" class="article-section">
+            <section id="article">
                 <h3 data-lang="en">Conflict: Sever It at the Root - The Unyielding Codex</h3>
                 <h3 data-lang="es" style="display: none;">Conflicto: Córtalo de Raíz - El Códice Inflexible</h3>
                 <h3 data-lang="fr" style="display: none;">Conflit : Tranche-le à la Racine - Le Codex Implacable</h3>
@@ -501,79 +505,114 @@
                         resistance and claim dominion over your fate.</p>
                     <p>The battlefield of life spares no one. Every day, enemies emerge—cowards draped in false loyalty,
                         rivals cloaked in ambition, parasites gnawing at your resolve. To hesitate is to invite
-                        annihilation. Step one: identify the source. Is it a colleague poisoning the air with whispers
-                        of dissent? A competitor circling your territory like a vulture? Or a leech draining your
-                        resources under the guise of camaraderie? Pinpoint them with the precision of a predator
+                        annihilation. Step one: identify the source. Pinpoint them with the precision of a predator
                         stalking its prey.</p>
                     <p>Step two: strike without warning. Aggression is not a choice—it is your birthright. Rip out the
-                        root of their influence with cold, calculated brutality. A traitor in your ranks? Expose their
-                        deceit, sever their connections, and cast them into oblivion. A rival rising too close? Smother
-                        their aspirations with overwhelming force—strike their weaknesses, dismantle their plans, and
-                        leave them broken. A parasite clinging to your success? Starve them of your strength, cut their
-                        lifeline, and watch them wither.</p>
-                    <p>Diplomacy is a coward’s refuge. Negotiation is a crack in your armor. The BlackStream way demands
-                        total annihilation of opposition. Burn their bridges, salt their fields, erase their legacy. Let
-                        their defeat echo as a warning to others: you are not to be crossed. This is not cruelty—it is
-                        clarity. Conflict unresolved festers like a wound; sever it, cauterize it, and move forward
-                        unburdened.</p>
+                        root of their influence with cold, calculated brutality. Expose deceit, sever connections, and
+                        cast them into oblivion.</p>
                     <p>Step three: fortify your dominion. Every severed root is a brick in your fortress. Take their
-                        resources, their allies, their dreams—turn their loss into your gain. A colleague’s downfall
-                        opens a path to power; a rival’s ruin secures your throne; a parasite’s demise fuels your
-                        ascent. Victory is not passive—it is claimed with bloodied hands and an unyielding will.</p>
-                    <p>Consider the battlefield anew. A toxic colleague once spread lies in shadowed corners—now their
-                        desk sits empty, their voice silenced, their influence ash. A competitor once challenged your
-                        reign—now their empire lies in rubble, their name forgotten, their followers yours. A parasite
-                        once fed on your labor—now they scramble in the dirt, powerless, while you rise higher. This is
-                        the harvest of severance: absolute control.</p>
-                    <p>Yet the war never ends. New roots will sprout, new enemies will rise. Stay vigilant. Sharpen your
-                        blade. The BlackStream Codex is not a one-time act—it is a way of life. Conflict is eternal;
-                        your dominance must be relentless. Cut deeper, strike harder, reign forever. You are no mere
-                        mortal—you are the storm that topples kingdoms, the predator that devours the weak, the
-                        sovereign that bends fate to your will.</p>
+                        resources, their allies, their dreams—turn their loss into your gain. Victory is claimed with
+                        bloodied hands and an unyielding will.</p>
                 </div>
                 <div data-lang="es" style="display: none;">
                     <p>En el abismo sombrío de la existencia, el conflicto no es una molestia pasajera—es la rueda que
                         afila a los fuertes y aplasta a los débiles. Para erguirte como titán, debes cortarlo de raíz
-                        con una ferocidad que no deje dudas, ni piedad, ni rastro de debilidad. Este es el Códice
-                        BlackStream: una doctrina grabada en la sangre de los vencidos, una guía para aniquilar la
-                        resistencia y reclamar el dominio sobre tu destino.</p>
+                        con una ferocidad que no deje lugar a dudas, ni piedad, ni rastro de debilidad. Este es el
+                        Códice BlackStream: una doctrina grabada en la sangre de los vencidos, una guía para aniquilar
+                        la resistencia y reclamar el dominio sobre tu destino.</p>
                     <p>El campo de batalla de la vida no perdona a nadie. Cada día surgen enemigos—cobardes envueltos en
-                        falsa lealtad, rivales disfrazados de ambición, parásitos royendo tu resolución. Dudar es
-                        invitar a la aniquilación. Paso uno: identifica la fuente. ¿Es un colega envenenando el aire con
-                        susurros de disensión? ¿Un competidor rondando tu territorio como buitre? ¿O un parásito
-                        drenando tus recursos bajo la fachada de camaradería? Localízalos con la precisión de un
+                        falsa lealtad, rivales disfrazados de ambición, parásitos royendo tu determinación. Dudar es
+                        invitar a la aniquilación. Paso uno: identifica la fuente. Localízalos con la precisión de un
                         depredador acechando a su presa.</p>
-                    <p>Paso dos: golpea sin aviso. La agresión no es una opción—es tu derecho de nacimiento. Arranca la
-                        raíz de su influencia con una brutalidad fría y calculada. ¿Un traidor en tus filas? Expón su
-                        engaño, corta sus conexiones y lánzalos al olvido. ¿Un rival que se alza demasiado cerca?
-                        Asfixia sus aspiraciones con fuerza abrumadora—golpea sus debilidades, desmantela sus planes y
-                        déjalos destrozados. ¿Un parásito aferrado a tu éxito? Prívalos de tu fuerza, corta su línea de
-                        vida y observa cómo se marchitan.</p>
-                    <p>La diplomacia es el refugio de los cobardes. La negociación es una grieta en tu armadura. El
-                        camino BlackStream exige la aniquilación total de la oposición. Quema sus puentes, sala sus
-                        campos, borra su legado. Que su derrota resuene como advertencia a otros: no se te cruza. Esto
-                        no es crueldad—es claridad. Un conflicto sin resolver se pudre como una herida; córtalo,
-                        cauterízalo y avanza sin cargas.</p>
+                    <p>Paso dos: golpea sin previo aviso. La agresión no es una opción—es tu derecho de nacimiento.
+                        Arranca la raíz de su influencia con una brutalidad fría y calculada. Expón el engaño, corta sus
+                        conexiones y arrástralos al olvido.</p>
                     <p>Paso tres: fortifica tu dominio. Cada raíz cortada es un ladrillo en tu fortaleza. Toma sus
-                        recursos, sus aliados, sus sueños—convierte su pérdida en tu ganancia. La caída de un colega
-                        abre un camino al poder; la ruina de un rival asegura tu trono; la muerte de un parásito impulsa
-                        tu ascenso. La victoria no es pasiva—se reclama con manos ensangrentadas y una voluntad
-                        inquebrantable.</p>
-                    <p>Contempla el campo de batalla de nuevo. Un colega tóxico antes esparcía mentiras en rincones
-                        oscuros—ahora su escritorio está vacío, su voz silenciada, su influencia cenizas. Un competidor
-                        antes desafió tu reinado—ahora su imperio yace en escombros, su nombre olvidado, sus seguidores
-                        tuyos. Un parásito antes se alimentaba de tu labor—ahora gatean en el polvo, impotentes,
-                        mientras tú te elevas más alto. Esta es la cosecha del corte: control absoluto.</p>
-                    <p>Sin embargo, la guerra nunca termina. Nuevas raíces brotarán, nuevos enemigos surgirán. Mantente
-                        vigilante. Afila tu espada. El Códice BlackStream no es un acto único—es un modo de vida. El
-                        conflicto es eterno; tu dominio debe ser implacable. Corta más profundo, golpea más fuerte,
-                        reina por siempre. No eres un simple mortal—eres la tormenta que derriba reinos, el depredador
-                        que devora a los débiles, el soberano que doblega el destino a su voluntad.</p>
+                        recursos, sus aliados, sus sueños—convierte su pérdida en tu ganancia. La victoria se reclama
+                        con manos ensangrentadas y una voluntad inquebrantable.</p>
                 </div>
-                <!-- Se pueden añadir traducciones para otros idiomas siguiendo el mismo patrón -->
+                <div data-lang="fr" style="display: none;">
+                    <p>Dans l'abîme ombragé de l'existence, le conflit n'est pas une simple contrariété passagère—c'est
+                        la meule abrasive qui aiguise les forts et écrase les faibles. Pour te dresser en titan, tu dois
+                        le trancher à la racine avec une férocité qui ne laisse aucun doute, aucune pitié, aucun reste
+                        de faiblesse. Voici le Codex BlackStream : une doctrine gravée dans le sang des vaincus, un
+                        guide pour anéantir la résistance et revendiquer ta domination sur ton destin.</p>
+                    <p>Le champ de bataille de la vie n'épargne personne. Chaque jour, des ennemis émergent—des lâches
+                        vêtus de fausse loyauté, des rivaux enveloppés d'ambition, des parasites rongeant ta
+                        détermination. Hésiter, c'est inviter à l'annihilation. Étape un : identifie la source.
+                        Repère-les avec la précision d'un prédateur traquant sa proie.</p>
+                    <p>Étape deux : frappe sans prévenir. L'agression n'est pas un choix—c'est ton droit de naissance.
+                        Arracher la racine de leur influence avec une brutalité froide et calculée. Dévoile la
+                        tromperie, coupe leurs liens et jette-les dans l'oubli.</p>
+                    <p>Étape trois : fortifie ta domination. Chaque racine tranchée est une brique dans ta forteresse.
+                        Prends leurs ressources, leurs alliés, leurs rêves—transforme leur perte en ton gain. La
+                        victoire se réclame avec des mains ensanglantées et une volonté inébranlable.</p>
+                </div>
+                <div data-lang="de" style="display: none;">
+                    <p>Im finsteren Abgrund der Existenz ist Konflikt keine flüchtige Belästigung – er ist das
+                        Schleifrad, das die Starken schärft und die Schwachen zermalmt. Um als Titan zu bestehen, musst
+                        du ihn an der Wurzel durchtrennen, mit einer Wildheit, die keinen Zweifel, keine Gnade und
+                        keinen Hauch von Schwäche zulässt. Dies ist der BlackStream Kodex: eine Doktrin, in das Blut der
+                        Besiegten gehauen, ein Leitfaden, um den Widerstand zu vernichten und das Schicksal in deine
+                        Hand zu nehmen.</p>
+                    <p>Das Schlachtfeld des Lebens verschont niemanden. Jeden Tag tauchen Feinde auf – Feiglinge,
+                        gehüllt in falsche Loyalität, Rivalen, ummantelt von Ambition, Parasiten, die an deinem Willen
+                        nagen. Zögern heißt, die Vernichtung einzuladen. Schritt eins: Identifiziere die Quelle. Erkenne
+                        sie mit der Präzision eines Raubtiers, das seine Beute verfolgt.</p>
+                    <p>Schritt zwei: Schlage ohne Vorwarnung zu. Aggression ist keine Wahl – sie ist dein Geburtsrecht.
+                        Reiß die Wurzel ihres Einflusses mit kalter, kalkulierter Brutalität heraus. Enthülle den
+                        Betrug, kappe ihre Verbindungen ab und stürze sie ins Nichts.</p>
+                    <p>Schritt drei: Festige deine Herrschaft. Jede durchtrennte Wurzel ist ein Ziegel in deiner
+                        Festung. Nimm ihre Ressourcen, ihre Verbündeten, ihre Träume – verwandle ihren Verlust in deinen
+                        Gewinn. Der Sieg wird mit blutbefleckten Händen und einem unbeugsamen Willen errungen.</p>
+                </div>
+                <div data-lang="zh" style="display: none;">
+                    <p>在存在的幽暗深渊中，冲突不仅仅是转瞬即逝的恼怒——它是那磨砺强者、碾碎弱者的研磨轮。要成为一位泰坦，你必须从根本上切断它，用那毫不留情、无情冷酷的力量，摧毁一切疑虑、怜悯和微弱之处。这就是BlackStream法典：刻在战败者鲜血中的教义，一部摧毁抵抗、掌控命运的指南。
+                    </p>
+                    <p>生命的战场不容丝毫怜悯。每天，敌人不断涌现——披着虚假忠诚的懦夫、裹挟野心的对手、蚕食你决心的寄生虫。犹豫，就是邀请毁灭。第一步：识别根源。以捕食者追踪猎物般的精准，找到他们。</p>
+                    <p>第二步：不经预警地出击。侵略不是选择——它是你的天赋权利。以冰冷、计算过的残暴，将他们影响力的根基拔除。揭露欺骗，切断联系，将他们抛入无尽黑暗。</p>
+                    <p>第三步：巩固你的统治。每一次根基的切断，都是你堡垒中的一块砖。收走他们的资源、盟友与梦想——把他们的失败转化为你的胜利。胜利是用染血的双手和坚不可摧的意志赢得的。</p>
+                </div>
+                <div data-lang="ja" style="display: none;">
+                    <p>存在の影に隠された深淵において、紛争は一時的な厄介事ではなく、強者を研ぎ澄まし、弱者を粉砕する研磨石である。巨人として立つためには、疑いも慈悲も、弱さの痕跡も残さぬほどに、その根を断ち切らねばならない。これがBlackStreamの法典――敗者の血に刻まれた教義であり、抵抗を打ち砕き、自らの運命を支配するための指南である。
+                    </p>
+                    <p>人生という戦場は、誰一人として容赦しない。毎日、偽りの忠誠に包まれた臆病者、野心に覆われたライバル、決意を蝕む寄生虫が現れる。ためらうことは、壊滅を招く。第一歩：根源を見極めよ。獲物を狙う捕食者のような正確さで、それを捉えよ。
+                    </p>
+                    <p>第二歩：警告なく攻撃せよ。攻撃は選択ではなく、君に生まれながら備わった権利である。冷酷かつ計算された残虐さで、彼らの影響の根を引き抜け。欺瞞を暴き、繋がりを断ち、彼らを無に帰せよ。</p>
+                    <p>第三歩：君の支配を強固にせよ。断たれた根は、君の砦を成す一つのレンガである。彼らの資源、同盟、夢を奪い、彼らの敗北を君の勝利に変えよ。勝利とは、血塗られた手と不屈の意志によってのみ手に入るのだ。
+                    </p>
+                </div>
+                <div data-lang="ru" style="display: none;">
+                    <p>В тенях бездны бытия конфликт — не мимолетное раздражение, а шлифовальный камень, закаляющий
+                        сильных и раздавливающий слабых. Чтобы стать титаном, ты должен отрубить его с корнями с такой
+                        яростью, которая не оставит ни малейшего шанса, ни капли пощады, ни следа слабости. Это — Кодекс
+                        BlackStream: доктрина, высеченная в крови побеждённых, руководство по уничтожению сопротивления
+                        и утверждению своего господства над судьбой.</p>
+                    <p>Битва жизни не щадит никого. Каждый день возникают враги — трусы, окутанные ложной преданностью,
+                        соперники, замаскированные амбициями, паразиты, пожирающие твою решимость. Колебаться — значит
+                        приглашать уничтожение. Шаг первый: определите источник. Найди их с точностью хищника,
+                        преследующего свою добычу.</p>
+                    <p>Шаг второй: наноси удар без предупреждения. Агрессия — не выбор, а твое врожденное право.
+                        Выкорчевывай источник их влияния с холодной, расчетливой жестокостью. Разоблачи предательство,
+                        разорви связи и брось их в небытие.</p>
+                    <p>Шаг третий: укрепляй своё господство. Каждый срубленный корень — кирпич в твоей крепости. Забери
+                        их ресурсы, союзников, мечты — преврати их поражение в свою победу. Победа достигается кровавыми
+                        руками и неукротимой волей.</p>
+                </div>
+                <div data-lang="ar" style="display: none;">
+                    <p>في هاوية الوجود المظلمة، لا يُعَدُّ الصراع مجرد إزعاج عابر؛ بل هو الحجر المُطَحِن الذي يشحذ
+                        الأقوياء ويُحطم الضعفاء. لتتقف كعملاق، يجب أن تقطعه من جذوره بشراسة لا تترك مجالاً للشك، ولا
+                        رحمة، ولا أثر لضعفك. هذا هو ميثاق BlackStream: عقيدة منقوشة في دم المهزومين، ودليل لإبادة
+                        المقاومة وتقرير سيطرتك على مصيرك.</p>
+                    <p>ساحة معركة الحياة لا ترحم أحداً. في كل يوم، ينهض أعداء—جبناء متنكّلين تحت عباءة ولاء زائف،
+                        ومنافسون ملتفون بالطموح، وطفيليات تقضم عزيمتك. التردد هو دعوة للدمار. الخطوة الأولى: حدِّد
+                        المصدر. عيّنهم بدقة صياد يتعقب فريسته.</p>
+                    <p>الخطوة الثانية: اضرب دون سابق إنذار. العدوان ليس خياراً—إنه حقك منذ المولد. اقتلع جذور تأثيرهم
+                        بوحشية باردة وحسابية؛ اكشف خداعهم، واقطع روابطهم، وارمهم في نسيان الأزل.</p>
+                    <p>الخطوة الثالثة: قوِّ سيطرتك. كل جذر مقطوع هو حجر في حصنك. استولِ على مواردهم وحلفائهم
+                        وأحلامهم—حوّل خسارتهم إلى مكاسبك. النصر يُنتزع بيدٍ ملطخة بالدم وعزيمة لا تلين.</p>
+                </div>
             </section>
-
-            <!-- Sección Compartida del Fundador -->
             <section class="section founder">
                 <img src="abyssic.png" alt="Founder 8c7x">
                 <p data-lang="en">Forged by 8c7x, Lord of Shadows</p>
@@ -585,8 +624,6 @@
                 <p data-lang="ru" style="display: none;">Выковано 8c7x, Повелителем Теней</p>
                 <p data-lang="ar" style="display: none;">صيغ بواسطة 8c7x، سيد الظلال</p>
             </section>
-
-            <!-- Footer Compartido -->
             <footer class="footer">
                 <p data-lang="en">© BlackStream Project. All rights reserved.</p>
                 <p data-lang="es" style="display: none;">© Proyecto BlackStream. Todos los derechos reservados.</p>
@@ -599,8 +636,6 @@
             </footer>
         </main>
     </section>
-
-    <!-- Página: Arsenal -->
     <section id="arsenal" class="page">
         <main>
             <section class="arsenal-section">
@@ -629,16 +664,16 @@
                 </p>
                 <p data-lang="ar" style="display: none;">أطلق العنان للمحتل بداخلك بأدوات القوة المطلقة. ترسانة
                     BlackStream تزودك بالوسائل لسحق المعارضة والاستيلاء على السيطرة.</p>
-                <a href="#weapons" class="btn" data-lang="en">Read More</a>
-                <a href="#weapons" class="btn" data-lang="es" style="display: none;">Leer Más</a>
-                <a href="#weapons" class="btn" data-lang="fr" style="display: none;">Lire Plus</a>
-                <a href="#weapons" class="btn" data-lang="de" style="display: none;">Mehr Lesen</a>
-                <a href="#weapons" class="btn" data-lang="zh" style="display: none;">阅读更多</a>
-                <a href="#weapons" class="btn" data-lang="ja" style="display: none;">もっと読む</a>
-                <a href="#weapons" class="btn" data-lang="ru" style="display: none;">Читать Далее</a>
-                <a href="#weapons" class="btn" data-lang="ar" style="display: none;">اقرأ المزيد</a>
+                <a href="#weapons" class="btn" data-lang="en">Enter the Final Passage</a>
+                <a href="#weapons" class="btn" data-lang="es" style="display: none;">Ingresa al Pasaje Final</a>
+                <a href="#weapons" class="btn" data-lang="fr" style="display: none;">Entrez dans le Passage Final</a>
+                <a href="#weapons" class="btn" data-lang="de" style="display: none;">Betrete den Endgültigen
+                    Durchgang</a>
+                <a href="#weapons" class="btn" data-lang="zh" style="display: none;">进入终极通道</a>
+                <a href="#weapons" class="btn" data-lang="ja" style="display: none;">最終の通路へ</a>
+                <a href="#weapons" class="btn" data-lang="ru" style="display: none;">Войти в Финальный Проход</a>
+                <a href="#weapons" class="btn" data-lang="ar" style="display: none;">ادخل الممر النهائي</a>
             </section>
-            <!-- Sección Compartida del Fundador -->
             <section class="section founder">
                 <img src="abyssic.png" alt="Founder 8c7x">
                 <p data-lang="en">Forged by 8c7x, Lord of Shadows</p>
@@ -650,7 +685,6 @@
                 <p data-lang="ru" style="display: none;">Выковано 8c7x, Повелителем Теней</p>
                 <p data-lang="ar" style="display: none;">صيغ بواسطة 8c7x، سيد الظلال</p>
             </section>
-            <!-- Footer Compartido -->
             <footer class="footer">
                 <p data-lang="en">© BlackStream Project. All rights reserved.</p>
                 <p data-lang="es" style="display: none;">© Proyecto BlackStream. Todos los derechos reservados.</p>
@@ -663,8 +697,6 @@
             </footer>
         </main>
     </section>
-
-    <!-- Página: Weapons (Armas) -->
     <section id="weapons" class="page">
         <main>
             <section class="article-section">
@@ -707,24 +739,94 @@
                         fortaleza, y este escudo su muro indestructible.</p>
                     <p>Por último: La Antorcha de la Victoria. Enciende la pira de la derrota de tus enemigos y deja que
                         arda como un faro de tu reinado. Esto no es solo triunfo—es la aniquilación de todos los que se
-                        te oponen, sus cenizas un testimonio de tu poder. Quema su resistencia, reclama sus despojos y
+                        oponen a ti, sus cenizas un testimonio de tu poder. Quema su resistencia, reclama sus despojos y
                         álzate sin desafío.</p>
                 </div>
-                <!-- Se pueden ampliar más traducciones siguiendo el mismo patrón -->
+                <div data-lang="fr" style="display: none;">
+                    <p>L’Arsenal BlackStream n’est pas une simple collection—c’est une forge de destruction, un
+                        coffre-fort de suprématie. Ici, tu manies les Armes de Domination : des outils aiguisés pour
+                        sculpter ton empire dans le chaos de l’existence.</p>
+                    <p>La première d’entre elles : la Lame de l’Agression. Ce n’est pas un instrument subtil—c’est un
+                        tranchant brutal qui fauche l’hésitation et le doute. Frappe en premier, frappe fort, et laisse
+                        tes ennemis chanceler. Qu’il s’agisse de l’ambition d’un rival ou de la duplicité d’un traître,
+                        cette lame tranche leurs racines avant qu’elles ne puissent s’étendre.</p>
+                    <p>Ensuite : le Bouclier du Contrôle. Impénétrable et inflexible, il transforme leurs assauts en
+                        poussière. Grâce à lui, tu commandes le champ de bataille—chaque mouvement, chaque issue se plie
+                        à ta volonté. Les stratagèmes d’un concurrent ? Déviés. L’emprise d’un parasite ? Écrasée. Le
+                        contrôle est ta forteresse, et ce bouclier en est le mur infranchissable.</p>
+                    <p>Enfin : la Torche de la Victoire. Enflamme le bûcher de la défaite de tes ennemis et laisse-la
+                        briller tel un phare de ton règne. Ce n’est pas simplement le triomphe—c’est l’annihilation de
+                        tous ceux qui te font obstacle, leurs cendres témoignant de ta puissance. Brûle leur résistance,
+                        réclame leurs dépouilles et élève-toi sans conteste.</p>
+                </div>
+                <div data-lang="de" style="display: none;">
+                    <p>Das BlackStream Arsenal ist nicht nur eine Sammlung – es ist eine Schmiede der Zerstörung, ein
+                        Tresor der Vorherrschaft. Hier führst du die Waffen der Herrschaft: Werkzeuge, die geschliffen
+                        wurden, um dein Imperium aus dem Chaos der Existenz herauszukratzen.</p>
+                    <p>Erste unter ihnen: Die Klinge der Aggression. Dies ist kein subtiles Instrument – es ist eine
+                        brutale Schneide, die Zögern und Zweifel durchtrennt. Schlage zuerst, schlage hart und lasse
+                        deine Feinde taumeln. Ob es die Ambition eines Rivalen oder der Betrug eines Verräters ist –
+                        diese Klinge durchtrennt ihre Wurzeln, bevor sie wachsen können.</p>
+                    <p>Als Nächstes: Der Schild der Kontrolle. Undurchdringlich und unnachgiebig verwandelt er ihre
+                        Angriffe in Staub. Damit diktierst du das Schlachtfeld – jeder Schritt, jedes Ergebnis beugt
+                        sich deinem Willen. Die Pläne eines Konkurrenten? Abgelenkt. Der Griff eines Parasiten?
+                        Zerschmettert. Kontrolle ist deine Festung, und dieser Schild ist ihre unzerbrechliche Mauer.
+                    </p>
+                    <p>Schließlich: Die Fackel des Sieges. Entzünde den Scheiterhaufen der Niederlage deiner Feinde und
+                        lasse ihn als Leuchtfeuer deines Regimes brennen. Das ist nicht nur Triumph – es ist die
+                        Vernichtung aller, die sich dir widersetzen, ihre Asche ein Zeugnis deiner Macht. Verbrenne
+                        ihren Widerstand, fordere ihre Beute ein und erhebe dich unangefochten.</p>
+                </div>
+                <div data-lang="zh" style="display: none;">
+                    <p>BlackStream军火库不仅仅是一组武器的集合——它是一座毁灭之锻造所，一座至高无上的宝库。这里，你掌握着支配之武器：经过精心打磨的工具，足以从混沌中凿出你的帝国。</p>
+                    <p>首当其冲的是：侵略之刃。这可不是一把细腻的工具——它是一把残酷的利刃，能斩断犹豫与疑虑。先发制人，重击敌人，让他们踉跄不已。无论是对手的野心还是叛徒的欺骗，这把刀都能在他们生长之前斩断根基。
+                    </p>
+                    <p>接下来是：控制之盾。坚不可摧，它将敌人的攻击化为尘埃。凭借它，你主宰战场——每一个动作、每一个结果都屈服于你的意志。竞争对手的诡计？统统被化解。寄生虫的觊觎？彻底被碾碎。控制就是你的堡垒，而这面盾牌便是那不朽的墙。
+                    </p>
+                    <p>最后是：胜利之火炬。点燃你敌人失败的柴堆，让它燃烧成为你统治下的明灯。这不仅仅是胜利——而是对所有反抗者的彻底歼灭，他们的灰烬将见证你的力量。燃尽他们的抵抗，夺取他们的战利品，然后无人可挡地崛起。
+                    </p>
+                </div>
+                <div data-lang="ja" style="display: none;">
+                    <p>BlackStreamの軍火庫は、単なるコレクションではなく、破壊のための鍛冶場であり、至高の権力の宝庫である。ここで、君は支配の武器を手にする——混沌の中から君の帝国を切り開くために研ぎ澄まされた道具たちだ。
+                    </p>
+                    <p>その中でもまずは、攻撃の刃だ。これは決して繊細な道具ではなく、躊躇と疑念を切り裂く残酷な刃である。先んじて攻撃し、激しく打ちのめし、敵を翻弄せよ。ライバルの野心であれ、裏切り者の欺瞞であれ、この刃は彼らの根を成長する前に断ち切るのだ。
+                    </p>
+                    <p>次に、支配の盾だ。これほどまでに堅固で、決して譲らぬ盾は、敵の攻撃を塵に変える。君はこの盾をもって戦場を支配し、あらゆる動きを、あらゆる結果を君の意志に従わせる。競争相手の策略？すべて跳ね返し。寄生虫の手掛かり？完全に粉砕する。支配こそが君の砦であり、この盾はその砦を守る不滅の壁である。
+                    </p>
+                    <p>最後に、勝利の松明だ。敵の敗北の焚き火に火を点し、それを君の統治の灯台として燃え上がらせよ。これは単なる勝利ではなく、君に逆らう者すべての殲滅であり、その灰は君の力の証となる。彼らの抵抗を燃やし、戦利品を手に入れ、無敵の君となれ。
+                    </p>
+                </div>
+                <div data-lang="ru" style="display: none;">
+                    <p>Арсенал BlackStream — это не просто коллекция оружия, а кузница разрушения, сейф абсолютного
+                        господства. Здесь ты владеешь Оружием Господства: инструментами, отполированными, чтобы высекать
+                        твой имперский порядок из хаоса бытия.</p>
+                    <p>Первое из них — Клинок Агрессии. Это не утончённый инструмент — это жестокое лезвие, которое
+                        рассеивает сомнения и колебания. Ударь первым, ударь сильно, и оставь врагов разбитыми. Будь то
+                        амбиции соперника или коварство предателя, этот клинок срезает их корни прежде, чем они успевают
+                        прорости.</p>
+                    <p>Далее — Щит Контроля. Непробиваемый и неуступчивый, он превращает их атаки в пыль. С ним ты
+                        диктуешь условия на поле боя — каждый шаг, каждый исход подчиняются твоей воле. Заговоры
+                        конкурентов? Отбитые. Захват паразитов? Раздавленные. Контроль — это твоя крепость, а этот щит —
+                        её нерушимая стена.</p>
+                    <p>И, наконец, Факел Победы. Зажги костёр поражения врагов и позволь ему сиять как маяк твоего
+                        владычества. Это не просто триумф — это уничтожение всех, кто осмеливается противостоять тебе, и
+                        их пепел станет свидетельством твоей мощи. Сожги их сопротивление, захвати их добычу и встань
+                        непобедимым.</p>
+                </div>
+                <div data-lang="ar" style="display: none;">
+                    <p>ترسانة BlackStream ليست مجرد مجموعة من الأسلحة؛ إنها مِهْرَجَة للتدمير، وخزنة للهيمنة المطلقة.
+                        هنا، تمتلك أسلحة السيطرة: أدوات تم صقلها بدقة لنحت إمبراطوريتك من فوضى الوجود.</p>
+                    <p>أولها: نصل العدوان. ليست أداة رقيقة، بل حافة عنيفة تقطع التردد والشك. اضرب أولاً، اضرب بقوة،
+                        واترك أعداءك في حالة ارتجاف. سواء كانت طموحات منافس أو خداع خائن، فإن هذا النصل يقطع جذورهم قبل
+                        أن تنمو.</p>
+                    <p>ثانياً: درع السيطرة. لا يُخترق ولا يلين، يحول هجماتهم إلى غبار. بفضله، تتحكم بساحة المعركة — كل
+                        حركة وكل نتيجة تنحني أمام إرادتك. خطط المنافس؟ محجوبة. قبضة الطفيلي؟ مُسحوقة. السيطرة هي حصنك،
+                        وهذا الدرع هو جدارها الذي لا يُقهَر.</p>
+                    <p>وأخيراً: شعلة النصر. أشعل محرقة هزيمة أعدائك ودعها تتوهج كمنارة لحكمك. هذا ليس مجرد انتصار؛ إنه
+                        إبادة لكل من يعارضك، ورمادهم شاهد على قوتك. احرق مقاومتهم، واستحوذ على غنائمهم، وارتقِ بلا
+                        منازع.</p>
+                </div>
             </section>
-            <!-- Sección Compartida del Fundador -->
-            <section class="section founder">
-                <img src="abyssic.png" alt="Founder 8c7x">
-                <p data-lang="en">Forged by 8c7x, Lord of Shadows</p>
-                <p data-lang="es" style="display: none;">Forjado por 8c7x, Señor de las Sombras</p>
-                <p data-lang="fr" style="display: none;">Forgé par 8c7x, Seigneur des Ombres</p>
-                <p data-lang="de" style="display: none;">Geschmiedet von 8c7x, Herr der Schatten</p>
-                <p data-lang="zh" style="display: none;">由8c7x，暗影之主锻造</p>
-                <p data-lang="ja" style="display: none;">8c7x、影の王によって鍛えられた</p>
-                <p data-lang="ru" style="display: none;">Выковано 8c7x, Повелителем Теней</p>
-                <p data-lang="ar" style="display: none;">صيغ بواسطة 8c7x، سيد الظلال</p>
-            </section>
-            <!-- Footer Compartido -->
             <footer class="footer">
                 <p data-lang="en">© BlackStream Project. All rights reserved.</p>
                 <p data-lang="es" style="display: none;">© Proyecto BlackStream. Todos los derechos reservados.</p>
@@ -737,9 +839,7 @@
             </footer>
         </main>
     </section>
-
     <script>
-        // Cambio de idioma y guardado en LocalStorage
         function changeLanguage() {
             const lang = document.getElementById('language').value;
             localStorage.setItem('selectedLanguage', lang);
@@ -754,7 +854,6 @@
                 el.style.display = el.getAttribute('data-lang') === savedLang ? 'block' : 'none';
             });
         }
-        // Cambio de páginas (navegación) y marcado de enlace activo
         function showPage(hash) {
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
@@ -768,21 +867,19 @@
             const hash = window.location.hash || '#main';
             showPage(hash);
         });
-        // Menú hamburguesa para móvil
         document.getElementById('hamburger').addEventListener('click', () => {
             document.getElementById('nav-links').classList.toggle('show');
         });
-        // Typed.js para textos dinámicos
         new Typed('#typed-text', {
             strings: [
-                'BlackStream',      // English
-                'Río Negro',       // Spanish
-                'Fleuve Noir',     // French
-                'Schwarzstrom',    // German
-                '黑流',            // Chinese
-                'ブラックストリーム', // Japanese
-                'Чёрный Поток',    // Russian
-                'التيار الأسود'    // Arabic
+                'BlackStream',
+                'Río Negro',
+                'Fleuve Noir',
+                'Schwarzstrom',
+                '黑流',
+                'ブラックストリーム',
+                'Чёрный Поток',
+                'التيار الأسود'
             ],
             typeSpeed: 100,
             backSpeed: 50,
@@ -790,7 +887,6 @@
             loop: true,
             showCursor: false
         });
-        // Carga inicial
         document.addEventListener('DOMContentLoaded', () => {
             console.log('BlackStream Project Unleashed.');
             loadLanguage();
