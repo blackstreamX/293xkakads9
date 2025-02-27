@@ -4,21 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="BlackStream Project: Dominate your life, cut conflicts at the root.">
+    <meta name="description" content="BlackStream Project: Dominate your life, sever conflicts, seize your destiny.">
     <title>BlackStream Project</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Cinzel:wght@700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <style>
-        /* CSS Variables for Consistency */
         :root {
-            --primary-bg: #1a1a1a;
-            --secondary-bg: #333;
-            --accent-color: #8b0000;
-            --text-color: #fff;
-            --spacing-unit: 1rem;
-            --transition-speed: 0.3s;
+            --primary-bg: #0d0d0d;
+            --secondary-bg: #1c1c1c;
+            --blood-red: #b30000;
+            --dark-blood: #4b0000;
+            --text-color: #f2f2f2;
+            --shadow-color: rgba(179, 0, 0, 0.5);
+            --spacing-unit: 1.5rem;
+            --transition-speed: 0.5s;
         }
 
-        /* Base Reset and Styling */
         * {
             margin: 0;
             padding: 0;
@@ -26,14 +28,57 @@
         }
 
         body {
-            background-color: var(--primary-bg);
+            background: linear-gradient(to bottom, #000, var(--primary-bg)), url('https://i.imgur.com/5zKX8vD.jpg') no-repeat center/cover;
             color: var(--text-color);
             font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
+            line-height: 1.8;
             overflow-x: hidden;
+            position: relative;
         }
 
-        /* Hero Section: Bold Introduction */
+        /* Blood Drip Effect */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(75, 0, 0, 0.6), transparent);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Header with Language Selector */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--secondary-bg);
+            padding: var(--spacing-unit);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px var(--shadow-color);
+            z-index: 1000;
+        }
+
+        .lang-selector select {
+            background: var(--dark-blood);
+            color: var(--text-color);
+            border: 1px solid var(--blood-red);
+            padding: 0.5rem;
+            font-family: 'Cinzel', serif;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background var(--transition-speed);
+        }
+
+        .lang-selector select:hover {
+            background: var(--blood-red);
+        }
+
+        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -41,62 +86,88 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), var(--primary-bg));
             padding: var(--spacing-unit);
+            position: relative;
+            z-index: 1;
         }
 
         .hero-title {
-            font-size: clamp(2rem, 5vw, 4rem);
+            font-family: 'Cinzel', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
             font-weight: 700;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-            animation: fadeIn 2s ease-out;
+            color: var(--blood-red);
+            text-shadow: 0 0 15px var(--shadow-color), 2px 2px 10px #000;
+            animation: pulse 2s infinite;
         }
 
         .hero-subtitle {
-            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            font-size: clamp(1.2rem, 3vw, 2rem);
             margin-top: var(--spacing-unit);
-            opacity: 0.9;
+            color: #d9d9d9;
+            text-shadow: 1px 1px 5px #000;
         }
 
-        /* General Section Styling */
+        /* Typed.js Container */
+        #typed-text {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--blood-red);
+            text-shadow: 0 0 10px var(--shadow-color);
+        }
+
+        /* Sections */
         .section {
-            padding: calc(var(--spacing-unit) * 2);
+            padding: calc(var(--spacing-unit) * 3);
             margin: calc(var(--spacing-unit) * 2) 0;
             text-align: center;
+            background: rgba(28, 28, 28, 0.9);
+            border: 1px solid var(--dark-blood);
+            border-radius: 10px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 8px 30px var(--shadow-color);
         }
 
         .section h2 {
-            font-size: 2rem;
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--blood-red);
             margin-bottom: var(--spacing-unit);
-            color: var(--accent-color);
+            text-shadow: 0 0 10px var(--shadow-color);
         }
 
-        /* Guide Section: Practical Application */
+        /* Guide Section */
         .guide {
-            background-color: var(--secondary-bg);
-            padding: var(--spacing-unit);
+            background: var(--dark-blood);
+            padding: calc(var(--spacing-unit) * 2);
             border-radius: 8px;
             margin-top: var(--spacing-unit);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
         }
 
-        .btn {
-            background-color: var(--accent-color);
+        .guide h3 {
             color: var(--text-color);
-            padding: calc(var(--spacing-unit) / 2) var(--spacing-unit);
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+            font-size: 1.8rem;
+            margin-bottom: calc(var(--spacing-unit) / 2);
         }
 
-        .btn:hover,
-        .btn:focus {
-            background-color: #a90000;
-            transform: translateY(-2px);
+        /* Buttons */
+        .btn {
+            background: var(--blood-red);
+            color: var(--text-color);
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Cinzel', serif;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+        }
+
+        .btn:hover {
+            background: #ff1a1a;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px var(--shadow-color);
         }
 
         /* Founder Section */
@@ -108,48 +179,49 @@
         }
 
         .founder img {
-            width: 150px;
-            height: 150px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
+            border: 3px solid var(--blood-red);
             object-fit: cover;
             margin-bottom: var(--spacing-unit);
-        }
-
-        .founder p {
-            font-size: 1.2rem;
-            font-weight: 700;
+            box-shadow: 0 0 20px var(--shadow-color);
         }
 
         /* Footer */
         .footer {
-            background-color: var(--secondary-bg);
+            background: var(--secondary-bg);
             padding: var(--spacing-unit);
             text-align: center;
-            font-size: 0.9rem;
-            border-top: 1px solid var(--accent-color);
+            font-size: 1rem;
+            border-top: 2px solid var(--blood-red);
         }
 
-        /* Fade-In Animation */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
+        /* Animations */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
             }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
             }
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
+            .hero-title {
+                font-size: clamp(2rem, 6vw, 4rem);
+            }
+
             .section {
                 padding: var(--spacing-unit);
             }
         }
 
-        /* Accessibility: Respect Reduced Motion */
         @media (prefers-reduced-motion: reduce) {
             * {
                 animation: none !important;
@@ -160,48 +232,181 @@
 </head>
 
 <body>
+    <header>
+        <div class="lang-selector">
+            <select id="language" onchange="changeLanguage()">
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="fr">Français</option>
+                <option value="de">Deutsch</option>
+                <option value="zh">中文</option>
+                <option value="ja">日本語</option>
+                <option value="ru">Русский</option>
+                <option value="ar">العربية</option>
+            </select>
+        </div>
+    </header>
+
     <main>
         <!-- Hero Section -->
         <section class="hero">
             <h1 class="hero-title">BlackStream Project</h1>
-            <p class="hero-subtitle">Cut conflicts. Dominate your destiny. Take what’s yours.</p>
+            <div id="typed-text"></div>
+            <p class="hero-subtitle" data-lang="en">Cut conflicts. Dominate your destiny. Take what’s yours.</p>
+            <p class="hero-subtitle" data-lang="es" style="display: none;">Corta los conflictos. Domina tu destino. Toma
+                lo que es tuyo.</p>
+            <p class="hero-subtitle" data-lang="fr" style="display: none;">Tranche les conflits. Domine ton destin.
+                Prends ce qui t’appartient.</p>
+            <p class="hero-subtitle" data-lang="de" style="display: none;">Schneide Konflikte ab. Beherrsche dein
+                Schicksal. Nimm, was dir gehört.</p>
+            <p class="hero-subtitle" data-lang="zh" style="display: none;">切断冲突。主宰你的命运。夺取属于你的东西。</p>
+            <p class="hero-subtitle" data-lang="ja" style="display: none;">紛争を断ち切れ。運命を支配しろ。自分のものを奪え。</p>
+            <p class="hero-subtitle" data-lang="ru" style="display: none;">Руби конфликты. Господствуй над судьбой.
+                Возьми своё.</p>
+            <p class="hero-subtitle" data-lang="ar" style="display: none;">اقطع الصراعات. سيطر على مصيرك. خذ ما هو لك.
+            </p>
         </section>
 
         <!-- Philosophy Section -->
         <section class="section">
-            <h2>Our Philosophy</h2>
-            <p>Life is a battlefield. There’s no room for doubt or weakness. At BlackStream, we teach you to be the
-                predator, not the prey. Aggression is your strategy, control is your power, and success is your right.
+            <h2 data-lang="en">Our Philosophy</h2>
+            <h2 data-lang="es" style="display: none;">Nuestra Filosofía</h2>
+            <h2 data-lang="fr" style="display: none;">Notre Philosophie</h2>
+            <h2 data-lang="de" style="display: none;">Unsere Philosophie</h2>
+            <h2 data-lang="zh" style="display: none;">我们的哲学</h2>
+            <h2 data-lang="ja" style="display: none;">我々の哲学</h2>
+            <h2 data-lang="ru" style="display: none;">Наша философия</h2>
+            <h2 data-lang="ar" style="display: none;">فلسفتنا</h2>
+            <p data-lang="en">Life is a relentless warzone. Mercy is weakness. BlackStream forges you into a merciless
+                predator—aggression your blade, control your throne, victory your birthright.</p>
+            <p data-lang="es" style="display: none;">La vida es una zona de guerra implacable. La piedad es debilidad.
+                BlackStream te forja en un depredador sin piedad—la agresión tu espada, el control tu trono, la victoria
+                tu derecho de nacimiento.</p>
+            <p data-lang="fr" style="display: none;">La vie est un champ de bataille impitoyable. La pitié est une
+                faiblesse. BlackStream fait de vous un prédateur sans merci—l’agression votre lame, le contrôle votre
+                trône, la victoire votre droit de naissance.</p>
+            <p data-lang="de" style="display: none;">Das Leben ist ein unerbittliches Schlachtfeld. Gnade ist Schwäche.
+                BlackStream schmiedet dich zu einem erbarmungslosen Räuber—Aggression deine Klinge, Kontrolle dein
+                Thron, Sieg dein Geburtsrecht.</p>
+            <p data-lang="zh" style="display: none;">生活是一场无情的战场。怜悯是弱点。BlackStream将你锻造成无情的掠食者——侵略是你的利刃，控制是你的王座，胜利是你的天赋权利。
             </p>
+            <p data-lang="ja" style="display: none;">
+                人生は容赦ない戦場だ。慈悲は弱さだ。BlackStreamは君を無慈悲な捕食者に鍛え上げる——攻撃が君の刃、支配が君の玉座、勝利が君の生まれながらの権利だ。</p>
+            <p data-lang="ru" style="display: none;">Жизнь — беспощадное поле боя. Милосердие — слабость. BlackStream
+                выковывает из тебя безжалостного хищника — агрессия твой клинок, контроль твой трон, победа твоё
+                прирождённое право.</p>
+            <p data-lang="ar" style="display: none;">الحياة ساحة معركة لا ترحم. الرحمة ضعف. BlackStream يصيغك كمفترس بلا
+                رحمة—العدوان سيفك، السيطرة عرشك، النصر حقك الطبيعي.</p>
         </section>
 
         <!-- Guide Section -->
         <section class="section">
-            <h2>Guides to Dominate</h2>
+            <h2 data-lang="en">Guides to Dominate</h2>
+            <h2 data-lang="es" style="display: none;">Guías para Dominar</h2>
+            <h2 data-lang="fr" style="display: none;">Guides pour Dominer</h2>
+            <h2 data-lang="de" style="display: none;">Anleitungen zum Beherrschen</h2>
+            <h2 data-lang="zh" style="display: none;">主宰指南</h2>
+            <h2 data-lang="ja" style="display: none;">支配のためのガイド</h2>
+            <h2 data-lang="ru" style="display: none;">Руководства по господству</h2>
+            <h2 data-lang="ar" style="display: none;">أدلة للسيطرة</h2>
             <article class="guide">
-                <h3>Conflict: Cut It at the Root</h3>
-                <p>Don’t negotiate with those who hold you back. Identify the problem’s source and eliminate it without
-                    mercy. Example: a toxic colleague—cut their influence and move forward.</p>
+                <h3 data-lang="en">Conflict: Sever It at the Root</h3>
+                <h3 data-lang="es" style="display: none;">Conflicto: Córtalo de Raíz</h3>
+                <h3 data-lang="fr" style="display: none;">Conflit : Tranche-le à la Racine</h3>
+                <h3 data-lang="de" style="display: none;">Konflikt: Schneide ihn an der Wurzel ab</h3>
+                <h3 data-lang="zh" style="display: none;">冲突：从根源切断</h3>
+                <h3 data-lang="ja" style="display: none;">紛争：根から断ち切れ</h3>
+                <h3 data-lang="ru" style="display: none;">Конфликт: Руби его с корнем</h3>
+                <h3 data-lang="ar" style="display: none;">الصراع: اقطعه من الجذور</h3>
+                <p data-lang="en">Crush those who obstruct you. Rip out the source of resistance with cold precision—be
+                    it a traitor, a rival, or a parasite—and leave no trace of their influence.</p>
+                <p data-lang="es" style="display: none;">Aplasta a quienes te obstruyan. Arranca la fuente de
+                    resistencia con precisión fría—sea un traidor, un rival o un parásito—y no dejes rastro de su
+                    influencia.</p>
+                <p data-lang="fr" style="display: none;">Écrase ceux qui te barrent la route. Arrache la source de la
+                    résistance avec une précision glaciale—qu’il s’agisse d’un traître, d’un rival ou d’un parasite—et
+                    ne laisse aucune trace de leur influence.</p>
+                <p data-lang="de" style="display: none;">Zermalme die, die dich hindern. Reiße die Quelle des
+                    Widerstands mit kalter Präzision heraus—sei es ein Verräter, ein Rivale oder ein Parasit—und
+                    hinterlasse keine Spur ihrer Einflussnahme.</p>
+                <p data-lang="zh" style="display: none;">粉碎阻碍你的人。以冰冷的精准拔除抵抗的根源——无论是叛徒、对手还是寄生虫——不留一丝他们的影响。</p>
+                <p data-lang="ja" style="display: none;">
+                    君を妨げる者を粉砕しろ。冷酷な精度で抵抗の根源を引き抜け——裏切り者、ライバル、寄生虫であろうと——その影響の痕跡を一切残すな。</p>
+                <p data-lang="ru" style="display: none;">Сокруши тех, кто стоит на твоём пути. Вырви источник
+                    сопротивления с холодной точностью—будь то предатель, соперник или паразит—и не оставь следа их
+                    влияния.</p>
+                <p data-lang="ar" style="display: none;">سحق من يعترضون طريقك. اقتلع مصدر المقاومة بدقة باردة—سواء كان
+                    خائنًا، منافسًا أو طفيليًا—ولا تترك أثرًا لتأثيرهم.</p>
+                <button class="btn" data-lang="en">Read More</button>
+                <button class="btn" data-lang="es" style="display: none;">Leer Más</button>
+                <button class="btn" data-lang="fr" style="display: none;">Lire Plus</button>
+                <button class="btn" data-lang="de" style="display: none;">Mehr Lesen</button>
+                <button class="btn" data-lang="zh" style="display: none;">阅读更多</button>
+                <button class="btn" data-lang="ja" style="display: none;">もっと読む</button>
+                <button class="btn" data-lang="ru" style="display: none;">Читать Далее</button>
+                <button class="btn" data-lang="ar" style="display: none;">اقرأ المزيد</button>
             </article>
         </section>
 
         <!-- Founder Section -->
         <section class="section founder">
             <img src="abyssic.png" alt="Founder 8c7x">
-            <p>Founded by 8c7x</p>
+            <p data-lang="en">Forged by 8c7x, Lord of Shadows</p>
+            <p data-lang="es" style="display: none;">Forjado por 8c7x, Señor de las Sombras</p>
+            <p data-lang="fr" style="display: none;">Forgé par 8c7x, Seigneur des Ombres</p>
+            <p data-lang="de" style="display: none;">Geschmiedet von 8c7x, Herr der Schatten</p>
+            <p data-lang="zh" style="display: none;">由8c7x，暗影之主锻造</p>
+            <p data-lang="ja" style="display: none;">8c7x、影の王によって鍛えられた</p>
+            <p data-lang="ru" style="display: none;">Выковано 8c7x, Повелителем Теней</p>
+            <p data-lang="ar" style="display: none;">صيغ بواسطة 8c7x، سيد الظلال</p>
         </section>
 
         <!-- Footer -->
         <footer class="footer">
-            <p>© BlackStream Project. All rights reserved.</p>
+            <p data-lang="en">© BlackStream Project. All rights reserved.</p>
+            <p data-lang="es" style="display: none;">© Proyecto BlackStream. Todos los derechos reservados.</p>
+            <p data-lang="fr" style="display: none;">© Projet BlackStream. Tous droits réservés.</p>
+            <p data-lang="de" style="display: none;">© BlackStream Projekt. Alle Rechte vorbehalten.</p>
+            <p data-lang="zh" style="display: none;">© BlackStream项目。版权所有。</p>
+            <p data-lang="ja" style="display: none;">© BlackStreamプロジェクト。全著作権所有。</p>
+            <p data-lang="ru" style="display: none;">© Проект BlackStream. Все права защищены.</p>
+            <p data-lang="ar" style="display: none;">© مشروع BlackStream. جميع الحقوق محفوظة.</p>
         </footer>
+    </main>
 
-        <script>
-            // Confirmación mínima de carga
-            document.addEventListener('DOMContentLoaded', () => {
-                console.log('BlackStream Project loaded.');
+    <script>
+        // Language Switcher
+        function changeLanguage() {
+            const lang = document.getElementById('language').value;
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                el.style.display = el.getAttribute('data-lang') === lang ? 'block' : 'none';
             });
-        </script>
+        }
+
+        // Typed.js for Multilingual BlackStream
+        new Typed('#typed-text', {
+            strings: [
+                'BlackStream',      // English
+                'Río Negro',       // Spanish
+                'Fleuve Noir',     // French
+                'Schwarzstrom',    // German
+                '黑流',            // Chinese
+                'ブラックストリーム', // Japanese
+                'Чёрный Поток',    // Russian
+                'التيار الأسود'    // Arabic
+            ],
+            typeSpeed: 100,
+            backSpeed: 50,
+            backDelay: 1000,
+            loop: true
+        });
+
+        // Initial Load
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('BlackStream Project Unleashed.');
+            changeLanguage(); // Set default language
+        });
+    </script>
 </body>
 
 </html>
