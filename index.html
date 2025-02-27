@@ -152,24 +152,28 @@
             margin-bottom: calc(var(--spacing-unit) / 2);
         }
 
-        /* Detailed Guide Section */
-        .detailed-guide {
-            background: var(--secondary-bg);
-            padding: calc(var(--spacing-unit) * 3);
-            border: 2px solid var(--blood-red);
-            border-radius: 10px;
-            margin: calc(var(--spacing-unit) * 2) auto;
-            max-width: 1200px;
+        /* Article Section */
+        .article-section {
+            background: var(--primary-bg);
+            padding: calc(var(--spacing-unit) * 4) calc(var(--spacing-unit) * 2);
+            min-height: 100vh;
+            text-align: left;
+            max-width: 900px;
+            margin: 0 auto;
+            color: var(--text-color);
         }
 
-        .detailed-guide h3 {
-            font-size: 2rem;
+        .article-section h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
             color: var(--blood-red);
-            margin-bottom: var(--spacing-unit);
+            text-shadow: 0 0 15px var(--shadow-color);
+            margin-bottom: calc(var(--spacing-unit) * 2);
         }
 
-        .detailed-guide p {
-            margin-bottom: calc(var(--spacing-unit) / 2);
+        .article-section p {
+            margin-bottom: var(--spacing-unit);
+            font-size: 1.1rem;
         }
 
         /* Buttons */
@@ -241,6 +245,10 @@
 
             .section {
                 padding: var(--spacing-unit);
+            }
+
+            .article-section {
+                padding: calc(var(--spacing-unit) * 2);
             }
         }
 
@@ -359,128 +367,273 @@
                     влияния.</p>
                 <p data-lang="ar" style="display: none;">سحق من يعترضون طريقك. اقتلع مصدر المقاومة بدقة باردة—سواء كان
                     خائنًا، منافسًا أو طفيليًا—ولا تترك أثرًا لتأثيرهم.</p>
-                <a href="#detailed-guide" class="btn" data-lang="en">Read More</a>
-                <a href="#detailed-guide" class="btn" data-lang="es" style="display: none;">Leer Más</a>
-                <a href="#detailed-guide" class="btn" data-lang="fr" style="display: none;">Lire Plus</a>
-                <a href="#detailed-guide" class="btn" data-lang="de" style="display: none;">Mehr Lesen</a>
-                <a href="#detailed-guide" class="btn" data-lang="zh" style="display: none;">阅读更多</a>
-                <a href="#detailed-guide" class="btn" data-lang="ja" style="display: none;">もっと読む</a>
-                <a href="#detailed-guide" class="btn" data-lang="ru" style="display: none;">Читать Далее</a>
-                <a href="#detailed-guide" class="btn" data-lang="ar" style="display: none;">اقرأ المزيد</a>
+                <a href="#article" class="btn" data-lang="en">Read More</a>
+                <a href="#article" class="btn" data-lang="es" style="display: none;">Leer Más</a>
+                <a href="#article" class="btn" data-lang="fr" style="display: none;">Lire Plus</a>
+                <a href="#article" class="btn" data-lang="de" style="display: none;">Mehr Lesen</a>
+                <a href="#article" class="btn" data-lang="zh" style="display: none;">阅读更多</a>
+                <a href="#article" class="btn" data-lang="ja" style="display: none;">もっと読む</a>
+                <a href="#article" class="btn" data-lang="ru" style="display: none;">Читать Далее</a>
+                <a href="#article" class="btn" data-lang="ar" style="display: none;">اقرأ المزيد</a>
             </article>
         </section>
 
-        <!-- Detailed Guide Section -->
-        <section id="detailed-guide" class="section detailed-guide">
-            <h3 data-lang="en">Conflict: Sever It at the Root - The Complete Doctrine</h3>
-            <h3 data-lang="es" style="display: none;">Conflicto: Córtalo de Raíz - La Doctrina Completa</h3>
-            <h3 data-lang="fr" style="display: none;">Conflit : Tranche-le à la Racine - La Doctrine Complète</h3>
-            <h3 data-lang="de" style="display: none;">Konflikt: Schneide ihn an der Wurzel ab - Die vollständige Doktrin
+        <!-- Article Section -->
+        <section id="article" class="article-section">
+            <h3 data-lang="en">Conflict: Sever It at the Root - The Unyielding Codex</h3>
+            <h3 data-lang="es" style="display: none;">Conflicto: Córtalo de Raíz - El Códice Inflexible</h3>
+            <h3 data-lang="fr" style="display: none;">Conflit : Tranche-le à la Racine - Le Codex Implacable</h3>
+            <h3 data-lang="de" style="display: none;">Konflikt: Schneide ihn an der Wurzel ab - Der Unnachgiebige Kodex
             </h3>
-            <h3 data-lang="zh" style="display: none;">冲突：从根源切断 - 完整教义</h3>
-            <h3 data-lang="ja" style="display: none;">紛争：根から断ち切れ - 完全な教義</h3>
-            <h3 data-lang="ru" style="display: none;">Конфликт: Руби его с корнем - Полная доктрина</h3>
-            <h3 data-lang="ar" style="display: none;">الصراع: اقطعه من الجذور - العقيدة الكاملة</h3>
+            <h3 data-lang="zh" style="display: none;">冲突：从根源切断 - 不屈法典</h3>
+            <h3 data-lang="ja" style="display: none;">紛争：根から断ち切れ - 不屈の法典</h3>
+            <h3 data-lang="ru" style="display: none;">Конфликт: Руби его с корнем - Непреклонный Кодекс</h3>
+            <h3 data-lang="ar" style="display: none;">الصراع: اقطعه من الجذور - الدستور اللا هوادة فيه</h3>
             <div data-lang="en">
-                <p>In the shadowed crucible of existence, conflict is inevitable—an unrelenting tide that seeks to drown
-                    the weak. To dominate, you must sever it at the root with ruthless precision. This is not a mere
-                    suggestion; it is a mandate carved in blood and steel.</p>
-                <p>First, identify the enemy: the traitor who whispers poison, the rival who covets your throne, the
-                    parasite that leeches your strength. Hesitation is death—strike fast, strike hard. A colleague
-                    spreading dissent? Cut their voice from the chorus. A competitor eyeing your domain? Crush their
-                    ambition beneath your heel.</p>
-                <p>Second, wield aggression as your weapon. Control is not won through diplomacy but through
-                    force—unyielding, unapologetic force. Leave no room for negotiation; let their defeat be absolute.
-                    Burn their influence to ash and scatter it to the winds.</p>
-                <p>Finally, claim your victory. Every severed root strengthens your empire. You are not a bystander in
-                    this warzone—you are the predator, the sovereign, the unrelenting storm. This is the BlackStream
-                    way.</p>
+                <p>In the shadowed abyss of existence, conflict is not a fleeting annoyance—it is the grinding wheel
+                    that sharpens the strong and crushes the feeble. To stand as a titan, you must sever it at the root
+                    with a ferocity that leaves no doubt, no mercy, no remnant of weakness. This is the BlackStream
+                    Codex: a doctrine etched in the blood of the vanquished, a guide to obliterate resistance and claim
+                    dominion over your fate.</p>
+                <p>The battlefield of life spares no one. Every day, enemies emerge—cowards draped in false loyalty,
+                    rivals cloaked in ambition, parasites gnawing at your resolve. To hesitate is to invite
+                    annihilation. Step one: identify the source. Is it a colleague poisoning the air with whispers of
+                    dissent? A competitor circling your territory like a vulture? Or a leech draining your resources
+                    under the guise of camaraderie? Pinpoint them with the precision of a predator stalking its prey.
+                </p>
+                <p>Step two: strike without warning. Aggression is not a choice—it is your birthright. Rip out the root
+                    of their influence with cold, calculated brutality. A traitor in your ranks? Expose their deceit,
+                    sever their connections, and cast them into oblivion. A rival rising too close? Smother their
+                    aspirations with overwhelming force—strike their weaknesses, dismantle their plans, and leave them
+                    broken. A parasite clinging to your success? Starve them of your strength, cut their lifeline, and
+                    watch them wither.</p>
+                <p>Diplomacy is a coward’s refuge. Negotiation is a crack in your armor. The BlackStream way demands
+                    total annihilation of opposition. Burn their bridges, salt their fields, erase their legacy. Let
+                    their defeat echo as a warning to others: you are not to be crossed. This is not cruelty—it is
+                    clarity. Conflict unresolved festers like a wound; sever it, cauterize it, and move forward
+                    unburdened.</p>
+                <p>Step three: fortify your dominion. Every severed root is a brick in your fortress. Take their
+                    resources, their allies, their dreams—turn their loss into your gain. A colleague’s downfall opens a
+                    path to power; a rival’s ruin secures your throne; a parasite’s demise fuels your ascent. Victory is
+                    not passive—it is claimed with bloodied hands and an unyielding will.</p>
+                <p>Consider the battlefield anew. A toxic colleague once spread lies in shadowed corners—now their desk
+                    sits empty, their voice silenced, their influence ash. A competitor once challenged your reign—now
+                    their empire lies in rubble, their name forgotten, their followers yours. A parasite once fed on
+                    your labor—now they scramble in the dirt, powerless, while you rise higher. This is the harvest of
+                    severance: absolute control.</p>
+                <p>Yet the war never ends. New roots will sprout, new enemies will rise. Stay vigilant. Sharpen your
+                    blade. The BlackStream Codex is not a one-time act—it is a way of life. Conflict is eternal; your
+                    dominance must be relentless. Cut deeper, strike harder, reign forever. You are no mere mortal—you
+                    are the storm that topples kingdoms, the predator that devours the weak, the sovereign that bends
+                    fate to your will.</p>
             </div>
             <div data-lang="es" style="display: none;">
-                <p>En el crisol sombrío de la existencia, el conflicto es inevitable—una marea implacable que busca
-                    ahogar a los débiles. Para dominar, debes cortarlo de raíz con una precisión despiadada. Esto no es
-                    una mera sugerencia; es un mandato tallado en sangre y acero.</p>
-                <p>Primero, identifica al enemigo: el traidor que susurra veneno, el rival que codicia tu trono, el
-                    parásito que drena tu fuerza. La vacilación es muerte—golpea rápido, golpea fuerte. ¿Un colega que
-                    siembra discordia? Corta su voz del coro. ¿Un competidor que mira tu dominio? Aplasta su ambición
-                    bajo tu talón.</p>
-                <p>Segundo, empuña la agresión como tu arma. El control no se gana con diplomacia, sino con
-                    fuerza—fuerza implacable y sin disculpas. No dejes espacio para la negociación; que su derrota sea
-                    absoluta. Quema su influencia hasta convertirla en cenizas y esparce éstas al viento.</p>
-                <p>Finalmente, reclama tu victoria. Cada raíz cortada fortalece tu imperio. No eres un espectador en
-                    esta zona de guerra—eres el depredador, el soberano, la tormenta implacable. Este es el camino de
-                    BlackStream.</p>
+                <p>En el abismo sombrío de la existencia, el conflicto no es una molestia pasajera—es la rueda que afila
+                    a los fuertes y aplasta a los débiles. Para erguirte como titán, debes cortarlo de raíz con una
+                    ferocidad que no deje dudas, ni piedad, ni rastro de debilidad. Este es el Códice BlackStream: una
+                    doctrina grabada en la sangre de los vencidos, una guía para aniquilar la resistencia y reclamar el
+                    dominio sobre tu destino.</p>
+                <p>El campo de batalla de la vida no perdona a nadie. Cada día surgen enemigos—cobardes envueltos en
+                    falsa lealtad, rivales disfrazados de ambición, parásitos royendo tu resolución. Dudar es invitar a
+                    la aniquilación. Paso uno: identifica la fuente. ¿Es un colega envenenando el aire con susurros de
+                    disensión? ¿Un competidor rondando tu territorio como buitre? ¿O un parásito drenando tus recursos
+                    bajo la fachada de camaradería? Localízalos con la precisión de un depredador acechando a su presa.
+                </p>
+                <p>Paso dos: golpea sin aviso. La agresión no es una opción—es tu derecho de nacimiento. Arranca la raíz
+                    de su influencia con una brutalidad fría y calculada. ¿Un traidor en tus filas? Expón su engaño,
+                    corta sus conexiones y lánzalos al olvido. ¿Un rival que se alza demasiado cerca? Asfixia sus
+                    aspiraciones con fuerza abrumadora—golpea sus debilidades, desmantela sus planes y déjalos
+                    destrozados. ¿Un parásito aferrado a tu éxito? Prívalos de tu fuerza, corta su línea de vida y
+                    observa cómo se marchitan.</p>
+                <p>La diplomacia es el refugio de los cobardes. La negociación es una grieta en tu armadura. El camino
+                    BlackStream exige la aniquilación total de la oposición. Quema sus puentes, sala sus campos, borra
+                    su legado. Que su derrota resuene como advertencia a otros: no se te cruza. Esto no es crueldad—es
+                    claridad. Un conflicto sin resolver se pudre como una herida; córtalo, cauterízalo y avanza sin
+                    cargas.</p>
+                <p>Paso tres: fortifica tu dominio. Cada raíz cortada es un ladrillo en tu fortaleza. Toma sus recursos,
+                    sus aliados, sus sueños—convierte su pérdida en tu ganancia. La caída de un colega abre un camino al
+                    poder; la ruina de un rival asegura tu trono; la muerte de un parásito impulsa tu ascenso. La
+                    victoria no es pasiva—se reclama con manos ensangrentadas y una voluntad inquebrantable.</p>
+                <p>Contempla el campo de batalla de nuevo. Un colega tóxico antes esparcía mentiras en rincones
+                    oscuros—ahora su escritorio está vacío, su voz silenciada, su influencia cenizas. Un competidor
+                    antes desafió tu reinado—ahora su imperio yace en escombros, su nombre olvidado, sus seguidores
+                    tuyos. Un parásito antes se alimentaba de tu labor—ahora gatean en el polvo, impotentes, mientras tú
+                    te elevas más alto. Esta es la cosecha del corte: control absoluto.</p>
+                <p>Sin embargo, la guerra nunca termina. Nuevas raíces brotarán, nuevos enemigos surgirán. Mantente
+                    vigilante. Afila tu espada. El Códice BlackStream no es un acto único—es un modo de vida. El
+                    conflicto es eterno; tu dominio debe ser implacable. Corta más profundo, golpea más fuerte, reina
+                    por siempre. No eres un simple mortal—eres la tormenta que derriba reinos, el depredador que devora
+                    a los débiles, el soberano que doblega el destino a su voluntad.</p>
             </div>
             <div data-lang="fr" style="display: none;">
-                <p>Dans le creuset obscur de l’existence, le conflit est inévitable—une marée implacable qui cherche à
-                    noyer les faibles. Pour dominer, tu dois le trancher à la racine avec une précision impitoyable. Ce
-                    n’est pas une simple suggestion ; c’est un mandat gravé dans le sang et l’acier.</p>
-                <p>D’abord, identifie l’ennemi : le traître qui murmure du poison, le rival qui convoite ton trône, le
-                    parasite qui siphonne ta force. L’hésitation, c’est la mort—frappe vite, frappe fort. Un collègue
-                    qui sème la discorde ? Coupe sa voix du chœur. Un concurrent qui lorgne ton domaine ? Écrase son
-                    ambition sous ton talon.</p>
-                <p>Ensuite, brandis l’agression comme ton arme. Le contrôle ne se gagne pas par la diplomatie, mais par
-                    la force—une force inflexible, sans excuses. Ne laisse aucune place à la négociation ; que leur
-                    défaite soit totale. Réduis leur influence en cendres et disperse-les au vent.</p>
-                <p>Enfin, revendique ta victoire. Chaque racine tranchée renforce ton empire. Tu n’es pas un spectateur
-                    dans cette zone de guerre—tu es le prédateur, le souverain, la tempête inexorable. C’est la voie de
-                    BlackStream.</p>
+                <p>Dans l’abîme obscur de l’existence, le conflit n’est pas une gêne passagère—c’est la meule qui
+                    aiguise les forts et écrase les faibles. Pour te dresser en titan, tu dois le trancher à la racine
+                    avec une férocité qui ne laisse ni doute, ni pitié, ni trace de faiblesse. Voici le Codex
+                    BlackStream : une doctrine gravée dans le sang des vaincus, un guide pour anéantir la résistance et
+                    revendiquer la domination sur ton destin.</p>
+                <p>Le champ de bataille de la vie n’épargne personne. Chaque jour, des ennemis émergent—des lâches
+                    drapés de fausse loyauté, des rivaux masqués d’ambition, des parasites rongeant ta détermination.
+                    Hésiter, c’est inviter l’anéantissement. Étape un : identifie la source. Est-ce un collègue qui
+                    empoisonne l’air de murmures dissidents ? Un concurrent qui tourne autour de ton territoire comme un
+                    vautour ? Ou un parasite qui draine tes ressources sous couvert de camaraderie ? Repère-les avec la
+                    précision d’un prédateur traquant sa proie.</p>
+                <p>Étape deux : frappe sans prévenir. L’agression n’est pas un choix—c’est ton droit inné. Arrache la
+                    racine de leur influence avec une brutalité froide et calculée. Un traître dans tes rangs ? Dévoile
+                    leur tromperie, coupe leurs liens et jette-les dans l’oubli. Un rival qui s’élève trop près ?
+                    Étouffe leurs aspirations avec une force écrasante—frappe leurs faiblesses, démantèle leurs plans et
+                    laisse-les brisés. Un parasite accroché à ton succès ? Prive-les de ta force, tranche leur lifeline
+                    et regarde-les dépérir.</p>
+                <p>La diplomatie est le refuge des faibles. La négociation est une faille dans ton armure. La voie
+                    BlackStream exige l’anéantissement total de l’opposition. Brûle leurs ponts, sale leurs champs,
+                    efface leur héritage. Que leur défaite résonne comme un avertissement : on ne te défie pas. Ce n’est
+                    pas de la cruauté—c’est de la clarté. Un conflit non résolu pourrit comme une plaie ; tranche-le,
+                    cautérise-le et avance sans fardeau.</p>
+                <p>Étape trois : fortifie ton domaine. Chaque racine tranchée est une brique dans ta forteresse. Prends
+                    leurs ressources, leurs alliés, leurs rêves—transforme leur perte en ton gain. La chute d’un
+                    collègue ouvre une voie vers le pouvoir ; la ruine d’un rival sécurise ton trône ; la fin d’un
+                    parasite alimente ton ascension. La victoire n’est pas passive—elle se revendique avec des mains
+                    ensanglantées et une volonté inflexible.</p>
+                <p>Observe le champ de bataille à nouveau. Un collègue toxique répandait autrefois des mensonges dans
+                    l’ombre—désormais, son bureau est vide, sa voix réduite au silence, son influence réduite en
+                    cendres. Un concurrent défiait ton règne—désormais, son empire gît en ruines, son nom oublié, ses
+                    partisans à toi. Un parasite se nourrissait de ton labeur—désormais, ils rampent dans la poussière,
+                    impuissants, tandis que tu t’élèves plus haut. Voici la moisson de la coupe : un contrôle absolu.
+                </p>
+                <p>Pourtant, la guerre ne s’arrête jamais. De nouvelles racines germeront, de nouveaux ennemis
+                    surgiront. Reste vigilant. Aiguise ta lame. Le Codex BlackStream n’est pas un acte unique—c’est un
+                    mode de vie. Le conflit est éternel ; ta domination doit être implacable. Tranche plus profondément,
+                    frappe plus fort, règne à jamais. Tu n’es pas un simple mortel—tu es la tempête qui renverse les
+                    royaumes, le prédateur qui dévore les faibles, le souverain qui plie le destin à sa volonté.</p>
             </div>
             <div data-lang="de" style="display: none;">
-                <p>Im schattenhaften Schmelztiegel des Daseins ist Konflikt unvermeidlich—eine unerbittliche Flut, die
-                    die Schwachen ertränken will. Um zu beherrschen, musst du ihn an der Wurzel abschneiden, mit
-                    erbarmungsloser Präzision. Dies ist kein bloßer Vorschlag; es ist ein Mandat, in Blut und Stahl
-                    gemeißelt.</p>
-                <p>Erstens, erkenne den Feind: den Verräter, der Gift flüstert, den Rivalen, der deinen Thron begehrt,
-                    den Parasiten, der deine Kraft aussaugt. Zögern bedeutet Tod—schlage schnell, schlage hart. Ein
-                    Kollege, der Zwietracht sät? Schneide seine Stimme aus dem Chor. Ein Konkurrent, der dein Reich
-                    beäugt? Zermalme seine Ambition unter deinem Absatz.</p>
-                <p>Zweitens, nutze Aggression als deine Waffe. Kontrolle wird nicht durch Diplomatie errang, sondern
-                    durch Kraft—unnachgiebige, unentschuldigende Kraft. Lass keinen Raum für Verhandlungen; ihre
-                    Niederlage muss absolut sein. Verbrenne ihren Einfluss zu Asche und streue sie in den Wind.</p>
-                <p>Schließlich, beanspruche deinen Sieg. Jede abgeschnittene Wurzel stärkt dein Imperium. Du bist kein
-                    Zuschauer in diesem Kriegsgebiet—du bist der Räuber, der Souverän, der unaufhaltsame Sturm. Dies ist
-                    der Weg von BlackStream.</p>
+                <p>Im schattenhaften Abgrund des Daseins ist Konflikt kein flüchtiges Ärgernis—er ist das Schleifrad,
+                    das die Starken schärft und die Schwachen zermalmt. Um als Titan zu bestehen, musst du ihn an der
+                    Wurzel abschneiden, mit einer Wildheit, die keinen Zweifel, kein Erbarmen, keine Spur von Schwäche
+                    hinterlässt. Dies ist der BlackStream-Kodex: eine Doktrin, eingemeißelt in das Blut der Besiegten,
+                    ein Leitfaden, um Widerstand zu vernichten und die Herrschaft über dein Schicksal zu erlangen.</p>
+                <p>Das Schlachtfeld des Lebens verschont niemanden. Jeden Tag tauchen Feinde auf—Feiglinge in falscher
+                    Loyalität, Rivalen in Ambition gehüllt, Parasiten, die an deiner Entschlossenheit nagen. Zögern
+                    heißt Vernichtung einladen. Schritt eins: Finde die Quelle. Ist es ein Kollege, der die Luft mit
+                    Zwietracht vergiftet? Ein Konkurrent, der dein Gebiet wie ein Geier umkreist? Oder ein Schmarotzer,
+                    der deine Ressourcen unter dem Deckmantel der Kameradschaft aussaugt? Spüre sie auf mit der
+                    Präzision eines Jägers, der seine Beute verfolgt.</p>
+                <p>Schritt zwei: Schlage ohne Vorwarnung zu. Aggression ist keine Wahl—sie ist dein Geburtsrecht. Reiß
+                    die Wurzel ihres Einflusses mit kalter, berechnender Brutalität heraus. Ein Verräter in deinen
+                    Reihen? Entlarve ihren Verrat, trenne ihre Verbindungen und stoße sie ins Vergessen. Ein Rivale, der
+                    zu nahe kommt? Ersticke ihre Ambitionen mit überwältigender Kraft—treffe ihre Schwächen, zerlege
+                    ihre Pläne und lass sie gebrochen zurück. Ein Parasit, der an deinem Erfolg hängt? Entziehe ihnen
+                    deine Stärke, schneide ihre Lebensader durch und sieh zu, wie sie verdorren.</p>
+                <p>Diplomatie ist die Zuflucht der Feiglinge. Verhandlungen sind ein Riss in deiner Rüstung. Der
+                    BlackStream-Weg fordert die totale Vernichtung des Widerstands. Verbrenne ihre Brücken, salze ihre
+                    Felder, lösche ihr Vermächtnis aus. Lass ihre Niederlage als Warnung hallen: Man legt sich nicht mit
+                    dir an. Das ist keine Grausamkeit—es ist Klarheit. Ungelöster Konflikt fault wie eine Wunde;
+                    schneide ihn ab, versenge ihn und gehe unbelastet weiter.</p>
+                <p>Schritt drei: Befestige deine Herrschaft. Jede abgetrennte Wurzel ist ein Stein in deiner Festung.
+                    Nimm ihre Ressourcen, ihre Verbündeten, ihre Träume—wandle ihren Verlust in deinen Gewinn. Der Fall
+                    eines Kollegen öffnet den Weg zur Macht; die Zerstörung eines Rivalen sichert deinen Thron; das Ende
+                    eines Parasiten treibt deinen Aufstieg an. Sieg wird nicht erhofft—er wird mit blutigen Händen und
+                    unerschütterlichem Willen errungen.</p>
+                <p>Betrachte das Schlachtfeld neu. Ein giftiger Kollege verbreitete einst Lügen in dunklen Ecken—nun
+                    steht sein Platz leer, seine Stimme verstummt, sein Einfluss Asche. Ein Konkurrent forderte einst
+                    deinen Thron—nun liegt sein Reich in Trümmern, sein Name vergessen, seine Anhänger dir treu. Ein
+                    Parasit nährte sich einst von deiner Arbeit—nun kriechen sie im Staub, machtlos, während du höher
+                    steigst. Dies ist die Ernte des Abschneidens: absolute Kontrolle.</p>
+                <p>Doch der Krieg endet nie. Neue Wurzeln keimen, neue Feinde erheben sich. Bleib wachsam. Schärfe deine
+                    Klinge. Der BlackStream-Kodex ist kein einmaliger Akt—er ist eine Lebensweise. Konflikt ist ewig;
+                    deine Herrschaft muss unerbittlich sein. Schneide tiefer, schlage härter, regiere für immer. Du bist
+                    kein bloßer Sterblicher—du bist der Sturm, der Königreiche fällt, der Räuber, der die Schwachen
+                    verschlingt, der Souverän, der das Schicksal seinem Willen beugt.</p>
             </div>
             <div data-lang="zh" style="display: none;">
-                <p>在存在的黑暗熔炉中，冲突不可避免——一股无情的洪流，试图淹没弱者。要主宰，你必须以无情的精准从根源切断它。这不仅仅是建议；这是用血与钢刻下的命令。</p>
-                <p>首先，辨识敌人：窃窃私语毒液的叛徒，觊觎你王座的对手，吸食你力量的寄生虫。犹豫即是死亡——快速打击，狠狠打击。一个散布不和的同事？将其声音从合唱中切除。一个窥视你领域的竞争者？将其野心碾碎在你的脚下。
+                <p>在存在的幽暗深渊中，冲突并非短暂的烦恼——它是一块磨石，磨砺强者，碾碎弱者。要以巨人之姿屹立，你必须以无情的凶猛将其从根源切断，不留疑问、不留怜悯、不留一丝软弱。这是BlackStream法典：用被征服者的鲜血镌刻的教义，一部消灭反抗、掌控命运的指南。
                 </p>
-                <p>其次，将侵略作为你的武器。控制不是通过外交赢得，而是通过力量——坚定、无悔的力量。不留谈判余地；让他们的失败彻底。将他们的影响烧成灰烬，散于风中。</p>
-                <p>最后，夺取你的胜利。每一根被切断的根源都强化你的帝国。你不是这场战区的旁观者——你是掠食者，君王，无可阻挡的风暴。这就是BlackStream之道。</p>
+                <p>生命的战场无人能免。每一天，敌人都浮现——披着虚假忠诚的懦夫，裹着野心的对手，啃噬你决心的寄生虫。犹豫即是自取灭亡。第一步：锁定源头。是同事用不和谐的低语毒害空气？是像秃鹫一样环伺你领地的竞争者？还是以友情的幌子吸干你资源的蛀虫？以猎手追踪猎物的精准找到他们。
+                </p>
+                <p>第二步：毫无预警地出击。侵略不是选择——它是你的天赋权利。以冰冷而精密的残酷拔除他们影响的根源。你队伍中的叛徒？揭露他们的欺骗，切断他们的联系，将他们抛入遗忘。靠近的对手？以压倒性的力量扼杀他们的志向——击中他们的弱点，瓦解他们的计划，让他们支离破碎。依附你成功的寄生虫？断绝他们的养分，剪断他们的命脉，看着他们枯萎。
+                </p>
+                <p>外交是懦夫的避风港。谈判是你盔甲上的裂缝。BlackStream之道要求彻底摧毁反对者。烧毁他们的桥梁，盐渍他们的土地，抹去他们的传承。让他们的失败成为警告的回音：不可与你为敌。这不是残忍——这是明晰。未解决的冲突如伤口般腐烂；切断它，烧灼它，无负担地前行。
+                </p>
+                <p>第三步：巩固你的统治。每根被切断的根都是你堡垒的一块砖石。夺取他们的资源，他们的盟友，他们的梦想——将他们的损失化为你的收获。同事的垮台为你开启权力之路；对手的毁灭确保你的王座；寄生虫的消亡推动你的攀升。胜利不是被动的——它是用血手和坚定意志夺来的。
+                </p>
+                <p>重新审视战场。曾经，恶毒的同事在暗处散布谎言——如今他们的位置空空如也，他们的声音沉寂，他们的影响化为灰烬。曾经，竞争者挑战你的统治——如今他们的帝国成废墟，他们的名字被遗忘，他们的追随者归你所有。曾经，寄生虫靠你的劳动为生——如今他们在尘土中挣扎，无力，而你节节高升。这是切断的果实：绝对的掌控。
+                </p>
+                <p>然而，战争永无止境。新根会萌发，新敌会出现。保持警觉。磨砺你的刀锋。BlackStream法典不是一次性行为——它是一种生活方式。冲突永恒，你的统治必须无情。切得更深，击得更狠，永远称霸。你不是凡人——你是掀翻王国的风暴，吞噬弱者的掠食者，屈命运于你意志的至尊。
+                </p>
             </div>
             <div data-lang="ja" style="display: none;">
-                <p>存在の暗い坩堝において、紛争は避けられない——弱者を溺れさせようとする容赦ない潮流だ。支配するためには、冷酷な精度でその根から断ち切らねばならない。これは単なる提案ではない；血と鋼に刻まれた命令だ。
+                <p>存在の暗い深淵において、紛争は一過性の苛立ちではない——それは強者を磨き、弱者を砕く砥石だ。巨人として立つためには、疑いも慈悲も弱さの痕跡も残さぬ猛烈さで、その根から断ち切らねばならない。これがBlackStreamの法典だ：敗者の血で刻まれた教義、抵抗を殲滅し運命を支配する指針である。
                 </p>
-                <p>まず、敵を見極めろ：毒を囁く裏切り者、君の玉座を欲するライバル、君の力を吸い取る寄生虫だ。躊躇は死を意味する——素早く、強く叩け。不和を撒く同僚か？その声を合唱から切り離せ。君の領域を狙う競争者か？その野心を君のかかとで粉砕しろ。
+                <p>人生の戦場は誰をも容赦しない。毎日、敵が現れる——偽りの忠誠に身を包んだ臆病者、野心に覆われたライバル、君の決意を蝕む寄生虫だ。躊躇は滅亡を招く。第一歩：源を見極めろ。仲間の中で不和の囁きを撒く者か？ハゲタカの如く君の領域を狙う競争者か？それとも友情を装い君の資源を吸い尽くす寄生虫か？獲物を追う捕食者の精度で彼らを見つけ出せ。
                 </p>
-                <p>次に、攻撃を武器とせよ。支配は外交で勝ち取るものではなく、力——揺るぎない、謝罪なき力——で得られる。交渉の余地を残すな；彼らの敗北は完全でなければならない。彼らの影響を灰に焼き、風に撒き散らせ。
+                <p>第二歩：警告なく襲え。攻撃は選択ではない——それは君の生まれ持った権利だ。冷徹かつ計算された残忍さで彼らの影響の根を引っこ抜け。裏切り者が君の陣営に潜むなら？その欺瞞を暴き、縁を切り、彼らを忘却の彼方へ追放せよ。あまりに近づくライバルがいるなら？圧倒的な力でその志を押し潰せ——弱点を突き、計画を崩し、彼らを壊せ。君の成功にしがみつく寄生虫がいるなら？その養分を断ち、命綱を切って、彼らが枯れるのを見届けろ。
                 </p>
-                <p>最後に、勝利を奪え。断ち切られたすべての根は君の帝国を強化する。君はこの戦場で傍観者ではない——君は捕食者、王、無慈悲な嵐だ。これがBlackStreamの道だ。</p>
+                <p>外交は臆病者の隠れ家だ。交渉は君の鎧の亀裂だ。BlackStreamの道は反対者の完全な殲滅を求める。彼らの橋を焼き、畑に塩を撒き、遺産を消し去れ。彼らの敗北が他者への警告として響き渡らせ：君に逆らうべからず。これは残酷さではない——明快さだ。解決されない紛争は傷口の如く腐る；それを断ち切り、焼き尽くし、荷物を背負わず進め。
+                </p>
+                <p>第三歩：君の支配を固めろ。断ち切られた根は全て君の要塞の煉瓦だ。彼らの資源、味方、夢を奪え——彼らの敗北を君の利得に変えろ。同僚の没落は権力への道を開き、ライバルの破滅は君の玉座を確固とし、寄生虫の終焉は君の飛翔を加速する。勝利は受動的ではない——血塗られた手と不屈の意志で掴み取るものだ。
+                </p>
+                <p>戦場を再び見よ。かつて毒を振り撒いた同僚が暗がりで嘘をついていた——今、その席は空っぽで、声は消え、影響は灰と化した。かつて君の支配に挑んだ競争者がいた——今、その帝国は瓦礫となり、名は忘れられ、従者は君のものだ。かつて君の労苦に寄生していた者がいた——今、彼らは土中で這い、無力なまま、君は更に高みへ昇る。これが断ち切りの収穫だ：絶対の支配。
+                </p>
+                <p>だが、戦いは終わることなく続く。新たな根が生え、新たな敵が立ち上がる。警戒を怠るな。刃を研げ。BlackStreamの法典は一度の行為ではない——それは生き方だ。紛争は永遠；君の支配は容赦なきものでなければならない。更に深く切り、更に強く打ち、永遠に君臨せよ。君は凡人ではない——王国を倒す嵐、弱者を喰らう捕食者、運命を己の意志に屈させる王だ。
+                </p>
             </div>
             <div data-lang="ru" style="display: none;">
-                <p>В мрачном горниле бытия конфликт неизбежен—беспощадный поток, стремящийся утопить слабых. Чтобы
-                    господствовать, ты должен рубить его с корнем с холодной точностью. Это не просто совет; это приказ,
-                    высеченный в крови и стали.</p>
-                <p>Во-первых, определи врага: предателя, шепчущего яд, соперника, жаждущего твоего трона, паразита,
-                    высасывающего твою силу. Колебание—смерть; бей быстро, бей сильно. Коллега сеет раздор? Вырви его
-                    голос из хора. Конкурент присматривается к твоим владениям? Раздави его амбиции под своей пятой.</p>
-                <p>Во-вторых, используй агрессию как оружие. Контроль не завоёвывается дипломатией, а
-                    силой—непреклонной, бескомпромиссной силой. Не оставляй места для переговоров; их поражение должно
-                    быть полным. Сожги их влияние в пепел и развей по ветру.</p>
-                <p>Наконец, забери свою победу. Каждый отрубленный корень укрепляет твою империю. Ты не зритель в этой
-                    зоне боевых действий—ты хищник, властелин, неумолимая буря. Это путь BlackStream.</p>
+                <p>В мрачной бездне бытия конфликт — не мимолётная помеха, а точильный камень, оттачивающий сильных и
+                    дробящий слабых. Чтобы возвыситься титаном, ты должен рубить его с корнем с такой яростью, что не
+                    останется ни сомнений, ни пощады, ни следа слабости. Это Кодекс BlackStream: учение, высеченное
+                    кровью побеждённых, руководство к уничтожению сопротивления и захвату власти над своей судьбой.</p>
+                <p>Поле битвы жизни никого не щадит. Каждый день возникают враги—трусы в масках ложной преданности,
+                    соперники, укутанные амбициями, паразиты, грызущие твою решимость. Колебаться—значит звать погибель.
+                    Шаг первый: определи источник. Это коллега, отравляющий воздух шепотом раздора? Конкурент, кружящий
+                    над твоими владениями, как стервятник? Или пиявка, высасывающая твои ресурсы под личиной
+                    товарищества? Выследи их с точностью хищника, идущего по следу добычи.</p>
+                <p>Шаг второй: бей без предупреждения. Агрессия—не выбор, а твоё прирождённое право. Вырви корень их
+                    влияния с холодной, выверенной жестокостью. Предатель в твоих рядах? Разоблачи их обман, оборви их
+                    связи и низвергни в забвение. Соперник подбирается слишком близко? Задави их устремления
+                    сокрушительной силой—бей по слабостям, разрушай их замыслы, оставь их сломленными. Паразит цепляется
+                    за твой успех? Лиши их твоей силы, перережь их артерию и смотри, как они чахнут.</p>
+                <p>Дипломатия—убежище трусов. Переговоры—трещина в твоих доспехах. Путь BlackStream требует полного
+                    истребления противников. Сожги их мосты, посыпь солью их поля, сотри их наследие. Пусть их поражение
+                    гремит как предостережение: с тобой не шутят. Это не жестокость—это чистота. Нерешённый конфликт
+                    гниёт, как рана; руби его, прижигай и иди дальше без груза.</p>
+                <p>Шаг третий: укрепи своё владычество. Каждый отрубленный корень—кирпич в твоей крепости. Забери их
+                    ресурсы, их союзников, их мечты—обрати их утрату в свою выгоду. Падение коллеги открывает путь к
+                    власти; крах соперника укрепляет твой трон; гибель паразита питает твоё восхождение. Победа не
+                    приходит сама—её берут окровавленными руками и непреклонной волей.</p>
+                <p>Взгляни на поле битвы заново. Токсичный коллега некогда сеял ложь в тёмных углах—теперь его место
+                    пусто, голос умолк, влияние—пепел. Конкурент бросал вызов твоему правлению—теперь его империя в
+                    руинах, имя забыто, последователи твои. Паразит питался твоим трудом—теперь они ползают в грязи,
+                    бессильные, а ты возносишься выше. Это жатва отсечения: абсолютное господство.</p>
+                <p>Но война не кончается. Новые корни прорастут, новые враги поднимутся. Будь начеку. Точи свой клинок.
+                    Кодекс BlackStream—не единичный поступок, а образ жизни. Конфликт вечен; твоё владычество должно
+                    быть беспощадным. Руби глубже, бей сильнее, царствуй вечно. Ты не простой смертный—ты буря, что
+                    сокрушает царства, хищник, пожирающий слабых, владыка, что гнёт судьбу под свою волю.</p>
             </div>
             <div data-lang="ar" style="display: none;">
-                <p>في بوتقة الوجود المظلمة، الصراع حتمي—تيار لا يرحم يسعى لإغراق الضعفاء. للسيطرة، يجب أن تقطعه من
-                    الجذور بدقة قاسية. هذا ليس مجرد اقتراح؛ إنه أمر محفور بالدم والفولاذ.</p>
-                <p>أولاً، حدد العدو: الخائن الذي يهمس بالسم، المنافس الذي يطمع في عرشك، الطفيلي الذي يستنزف قوتك. التردد
-                    هو الموت—اضرب بسرعة، اضرب بقوة. زميل ينشر الفتنة؟ اقطع صوته من الجوقة. منافس يتطلع إلى مملكتك؟ اسحق
-                    طموحه تحت قدميك.</p>
-                <p>ثانيًا، استخدم العدوان كسلاحك. السيطرة لا تُكتسب بالدبلوماسية، بل بالقوة—قوة لا تتزعزع ولا تعتذر. لا
-                    تترك مجالًا للتفاوض؛ يجب أن تكون هزيمتهم مطلقة. احرق تأثيرهم إلى رماد وانثره في الريح.</p>
-                <p>أخيرًا، استول على نصرك. كل جذر مقطوع يقوي إمبراطوريتك. أنت لست متفرجًا في منطقة الحرب هذه—أنت
-                    المفترس، السيّد، العاصفة التي لا تُرد. هذا هو طريق BlackStream.</p>
+                <p>في هاوية الوجود المظلمة، الصراع ليس مجرد إزعاج عابر—بل هو حجر الرحى الذي يشحذ الأقوياء ويسحق الضعفاء.
+                    لتقف كعملاق، يجب أن تقطعه من جذوره بضراوة لا تترك مجالًا للشك أو الرحمة أو أثر للضعف. هذا هو دستور
+                    BlackStream: عقيدة محفورة بدماء المهزومين، دليل لتدمير المقاومة والاستيلاء على السيطرة على مصيرك.
+                </p>
+                <p>ساحة معركة الحياة لا ترحم أحدًا. كل يوم، يظهر أعداء—جبناء متلفعون بالولاء الزائف، منافسون مغطون
+                    بالطموح، طفيليات تتآكل عزيمتك. التردد دعوة للفناء. الخطوة الأولى: حدد المصدر. هل هو زميل يسمم الهواء
+                    بهمسات الفتنة؟ منافس يحوم حول منطقتك كنسر جائع؟ أم طفيلي يستنزف مواردك تحت ستار الرفقة؟ تعقبهم بدقة
+                    صياد يتربص بفريسته.</p>
+                <p>الخطوة الثانية: اضرب دون سابق إنذار. العدوان ليس خيارًا—إنه حقك الطبيعي. اقتلع جذر تأثيرهم بوحشية
+                    باردة ومحسوبة. خائن في صفوفك؟ كشف خداعهم، اقطع صلاتهم، وألقهم في النسيان. منافس يقترب أكثر من
+                    اللازم؟ اخنق طموحاتهم بقوة ساحقة—اضرب نقاط ضعفهم، فكك خططهم، واتركهم محطمين. طفيلي متشبث بنجاحك؟
+                    احرمهم من قوتك، اقطع شريان حياتهم، وشاهدهم يذبلون.</p>
+                <p>الدبلوماسية ملجأ الجبناء. التفاوض صدع في درعك. طريق BlackStream يطالب بالقضاء التام على المعارضة.
+                    احرق جسورهم، رش الملح على حقولهم، امحُ إرثهم. اجعل هزيمتهم صدى تحذيري: لا تعبث معك. هذا ليس قسوة—إنه
+                    وضوح. الصراع غير المحسوم يتعفن كالجرح؛ اقطعه، كوِه، وتقدم دون أعباء.</p>
+                <p>الخطوة الثالثة: عزز سيطرتك. كل جذر مقطوع هو لبنة في حصنك. خذ مواردهم، حلفاءهم، أحلامهم—حول خسارتهم
+                    إلى مكسبك. سقوط زميل يفتح طريقًا للسلطة؛ دمار منافس يؤمن عرشك؛ نهاية طفيلي تدفع صعودك. النصر ليس
+                    سلبيًا—يُنتزع بأيدٍ ملطخة بالدماء وإرادة لا تلين.</p>
+                <p>تأمل ساحة المعركة مجددًا. زميل سام كان ينشر الأكاذيب في الزوايا المظلمة—الآن مكانه خالٍ، صوته صامت،
+                    تأثيره رماد. منافس تحداك على حكمك—الآن إمبراطوريته أنقاض، اسمه منسي، أتباعه لك. طفيلي تغذى على
+                    عملك—الآن يزحفون في التراب، عاجزين، بينما ترتفع أنت أعلى. هذا حصاد القطع: سيطرة مطلقة.</p>
+                <p>لكن الحرب لا تنتهي. جذور جديدة ستنبت، أعداء جدد سينهضون. كن متيقظًا. اشحذ سيفك. دستور BlackStream ليس
+                    فعلًا واحدًا—إنه أسلوب حياة. الصراع أبدي؛ سيطرتك يجب أن تكون لا ترحم. اقطع أعمق، اضرب أقوى، احكم إلى
+                    الأبد. أنت لست بشرًا عاديًا—أنت العاصفة التي تُسقط الممالك، المفترس الذي يلتهم الضعفاء، السيّد الذي
+                    يثني القدر لإرادته.</p>
             </div>
         </section>
 
@@ -511,11 +664,21 @@
     </main>
 
     <script>
-        // Language Switcher
+        // Language Switcher with LocalStorage
         function changeLanguage() {
             const lang = document.getElementById('language').value;
+            localStorage.setItem('selectedLanguage', lang); // Save to localStorage
             document.querySelectorAll('[data-lang]').forEach(el => {
                 el.style.display = el.getAttribute('data-lang') === lang ? 'block' : 'none';
+            });
+        }
+
+        // Load Language from LocalStorage on Page Load
+        function loadLanguage() {
+            const savedLang = localStorage.getItem('selectedLanguage') || 'en'; // Default to English
+            document.getElementById('language').value = savedLang;
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                el.style.display = el.getAttribute('data-lang') === savedLang ? 'block' : 'none';
             });
         }
 
@@ -541,7 +704,7 @@
         // Initial Load
         document.addEventListener('DOMContentLoaded', () => {
             console.log('BlackStream Project Unleashed.');
-            changeLanguage(); // Set default language
+            loadLanguage(); // Load saved language
         });
     </script>
 </body>
