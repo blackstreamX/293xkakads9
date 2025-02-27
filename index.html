@@ -77,9 +77,6 @@
             text-decoration: none;
             transition: color var(--transition-speed);
             position: relative;
-            display: block;
-            padding: 0.5rem 1rem;
-            /* Enhanced for touch targets */
         }
 
         .nav-links a:hover,
@@ -246,10 +243,6 @@
         .weapons-section {
             padding: calc(var(--spacing-unit) * 3);
             text-align: center;
-            /* Optional: Adding grid for potential multi-item layout */
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: var(--spacing-unit);
         }
 
         .arsenal-section h1,
@@ -259,8 +252,6 @@
             color: var(--blood-red);
             text-shadow: 0 0 15px var(--shadow-color);
             margin-bottom: calc(var(--spacing-unit) * 2);
-            grid-column: 1 / -1;
-            /* Ensure heading spans all columns */
         }
 
         .btn {
@@ -291,8 +282,8 @@
         }
 
         .founder img {
-            width: clamp(100px, 30vw, 200px);
-            height: clamp(100px, 30vw, 200px);
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             border: 3px solid var(--blood-red);
             object-fit: cover;
@@ -322,49 +313,13 @@
             }
         }
 
-        /* Tablet and below */
         @media (max-width: 768px) {
-            .section {
-                padding: calc(var(--spacing-unit) * 2);
-                margin: var(--spacing-unit);
-            }
-
-            .hero {
-                padding: var(--spacing-unit);
-            }
-
             .hero-title {
                 font-size: clamp(2rem, 6vw, 4rem);
             }
 
-            .hamburger {
-                display: flex;
-                gap: 6px;
-            }
-
-            .hamburger div {
-                width: 30px;
-                height: 4px;
-            }
-
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 60px;
-                right: 10px;
-            }
-
-            .nav-links.show {
-                display: flex;
-                background: var(--secondary-bg);
+            .section {
                 padding: var(--spacing-unit);
-                border-radius: 5px;
-                box-shadow: 0 4px 10px var(--shadow-color);
-            }
-
-            .nav-links a {
-                padding: 0.5rem 0;
             }
 
             .article-section {
@@ -379,45 +334,24 @@
             .weapons-section h1 {
                 font-size: 3rem;
             }
-        }
 
-        /* Mobile portrait and smaller */
-        @media (max-width: 480px) {
-            .section {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: var(--secondary-bg);
+                position: absolute;
+                top: 60px;
+                right: 10px;
                 padding: var(--spacing-unit);
+                border-radius: 5px;
             }
 
-            .hero {
-                padding: calc(var(--spacing-unit) / 2);
+            .nav-links.show {
+                display: flex;
             }
 
-            .hero-title {
-                font-size: clamp(1.5rem, 8vw, 3rem);
-            }
-
-            .hero-subtitle {
-                font-size: clamp(1rem, 4vw, 1.5rem);
-            }
-
-            .btn {
-                padding: 0.5rem 1rem;
-            }
-
-            .article-section {
-                padding: var(--spacing-unit);
-            }
-
-            #article {
-                padding: calc(var(--spacing-unit) * 2);
-            }
-
-            .arsenal-section h1,
-            .weapons-section h1 {
-                font-size: 2.5rem;
-            }
-
-            .section h2 {
-                font-size: 2rem;
+            .hamburger {
+                display: flex;
             }
         }
 
@@ -553,7 +487,7 @@
                     <a href="#arsenal" class="btn" data-lang="ar" style="display: none;">اقرأ المزيد</a>
                 </article>
             </section>
-            <section id="article">
+            <section id="article" class="section">
                 <h3 data-lang="en">Conflict: Sever It at the Root - The Unyielding Codex</h3>
                 <h3 data-lang="es" style="display: none;">Conflicto: Córtalo de Raíz - El Códice Inflexible</h3>
                 <h3 data-lang="fr" style="display: none;">Conflit : Tranche-le à la Racine - Le Codex Implacable</h3>
@@ -579,6 +513,10 @@
                     <p>Step three: fortify your dominion. Every severed root is a brick in your fortress. Take their
                         resources, their allies, their dreams—turn their loss into your gain. Victory is claimed with
                         bloodied hands and an unyielding will.</p>
+                    <p>Let the weak tremble, for the BlackStream Project is not for the faint of heart. It is for those
+                        who dare to wield power without apology, to crush their enemies without remorse, and to rise
+                        above the ashes of their foes. Embrace the Codex, and let the world know that you are not to be
+                        trifled with.</p>
                 </div>
                 <div data-lang="es" style="display: none;">
                     <p>En el abismo sombrío de la existencia, el conflicto no es una molestia pasajera—es la rueda que
@@ -596,6 +534,10 @@
                     <p>Paso tres: fortifica tu dominio. Cada raíz cortada es un ladrillo en tu fortaleza. Toma sus
                         recursos, sus aliados, sus sueños—convierte su pérdida en tu ganancia. La victoria se reclama
                         con manos ensangrentadas y una voluntad inquebrantable.</p>
+                    <p>Que los débiles tiemblen, porque el Proyecto BlackStream no es para los cobardes. Es para
+                        aquellos que se atreven a empuñar el poder sin disculpas, a aplastar a sus enemigos sin
+                        remordimientos y a elevarse sobre las cenizas de sus adversarios. Abraza el Códice y haz que el
+                        mundo sepa que no se debe jugar contigo.</p>
                 </div>
                 <div data-lang="fr" style="display: none;">
                     <p>Dans l'abîme ombragé de l'existence, le conflit n'est pas une simple contrariété passagère—c'est
@@ -613,6 +555,10 @@
                     <p>Étape trois : fortifie ta domination. Chaque racine tranchée est une brique dans ta forteresse.
                         Prends leurs ressources, leurs alliés, leurs rêves—transforme leur perte en ton gain. La
                         victoire se réclame avec des mains ensanglantées et une volonté inébranlable.</p>
+                    <p>Que les faibles tremblent, car le Projet BlackStream n'est pas pour les âmes sensibles. Il est
+                        destiné à ceux qui osent brandir le pouvoir sans excuses, écraser leurs ennemis sans remords et
+                        s'élever au-dessus des cendres de leurs adversaires. Embrasse le Codex et fais savoir au monde
+                        que tu n'es pas à prendre à la légère.</p>
                 </div>
                 <div data-lang="de" style="display: none;">
                     <p>Im finsteren Abgrund der Existenz ist Konflikt keine flüchtige Belästigung – er ist das
@@ -631,6 +577,10 @@
                     <p>Schritt drei: Festige deine Herrschaft. Jede durchtrennte Wurzel ist ein Ziegel in deiner
                         Festung. Nimm ihre Ressourcen, ihre Verbündeten, ihre Träume – verwandle ihren Verlust in deinen
                         Gewinn. Der Sieg wird mit blutbefleckten Händen und einem unbeugsamen Willen errungen.</p>
+                    <p>Die Schwachen mögen erzittern, denn das BlackStream-Projekt ist nicht für die Zaghafen. Es ist
+                        für jene, die es wagen, die Macht kompromisslos zu ergreifen, ihre Feinde ohne Reue zu zermalmen
+                        und sich über die Asche ihrer Gegner zu erheben. Umfasse den Kodex und lass die Welt wissen,
+                        dass mit dir nicht zu spaßen ist.</p>
                 </div>
                 <div data-lang="zh" style="display: none;">
                     <p>在存在的幽暗深渊中，冲突不仅仅是转瞬即逝的恼怒——它是那磨砺强者、碾碎弱者的研磨轮。要成为一位泰坦，你必须从根本上切断它，用那毫不留情、无情冷酷的力量，摧毁一切疑虑、怜悯和微弱之处。这就是BlackStream法典：刻在战败者鲜血中的教义，一部摧毁抵抗、掌控命运的指南。
@@ -638,6 +588,7 @@
                     <p>生命的战场不容丝毫怜悯。每天，敌人不断涌现——披着虚假忠诚的懦夫、裹挟野心的对手、蚕食你决心的寄生虫。犹豫，就是邀请毁灭。第一步：识别根源。以捕食者追踪猎物般的精准，找到他们。</p>
                     <p>第二步：不经预警地出击。侵略不是选择——它是你的天赋权利。以冰冷、计算过的残暴，将他们影响力的根基拔除。揭露欺骗，切断联系，将他们抛入无尽黑暗。</p>
                     <p>第三步：巩固你的统治。每一次根基的切断，都是你堡垒中的一块砖。收走他们的资源、盟友与梦想——把他们的失败转化为你的胜利。胜利是用染血的双手和坚不可摧的意志赢得的。</p>
+                    <p>让弱者颤抖吧，因为BlackStream计划不是为胆小者准备的。它是为那些敢于毫无保留地掌握权力、毫不留情地粉碎敌人、从对手的灰烬中崛起的勇者。拥抱法典，让世界知道你不容小觑。</p>
                 </div>
                 <div data-lang="ja" style="display: none;">
                     <p>存在の影に隠された深淵において、紛争は一時的な厄介事ではなく、強者を研ぎ澄まし、弱者を粉砕する研磨石である。巨人として立つためには、疑いも慈悲も、弱さの痕跡も残さぬほどに、その根を断ち切らねばならない。これがBlackStreamの法典――敗者の血に刻まれた教義であり、抵抗を打ち砕き、自らの運命を支配するための指南である。
@@ -646,6 +597,8 @@
                     </p>
                     <p>第二歩：警告なく攻撃せよ。攻撃は選択ではなく、君に生まれながら備わった権利である。冷酷かつ計算された残虐さで、彼らの影響の根を引き抜け。欺瞞を暴き、繋がりを断ち、彼らを無に帰せよ。</p>
                     <p>第三歩：君の支配を強固にせよ。断たれた根は、君の砦を成す一つのレンガである。彼らの資源、同盟、夢を奪い、彼らの敗北を君の勝利に変えよ。勝利とは、血塗られた手と不屈の意志によってのみ手に入るのだ。
+                    </p>
+                    <p>弱者は震えよ、BlackStreamプロジェクトは弱気な者のためではない。それは、謝罪せず権力を握り、後悔なく敵を打ち砕き、敵の灰の上に立つことを敢えてする者たちのためだ。法典を受け入れ、君が軽んじられる存在でないことを世界に知らしめよ。
                     </p>
                 </div>
                 <div data-lang="ru" style="display: none;">
@@ -664,6 +617,9 @@
                     <p>Шаг третий: укрепляй своё господство. Каждый срубленный корень — кирпич в твоей крепости. Забери
                         их ресурсы, союзников, мечты — преврати их поражение в свою победу. Победа достигается кровавыми
                         руками и неукротимой волей.</p>
+                    <p>Пусть слабые трепещут, ибо Проект BlackStream — не для слабонервных. Он для тех, кто осмеливается
+                        владеть властью без извинений, уничтожать врагов без сожаления и возвышаться над пеплом своих
+                        противников. Прими Кодекс и дай миру понять, что с тобой не стоит шутить.</p>
                 </div>
                 <div data-lang="ar" style="display: none;">
                     <p>في هاوية الوجود المظلمة، لا يُعَدُّ الصراع مجرد إزعاج عابر؛ بل هو الحجر المُطَحِن الذي يشحذ
@@ -677,6 +633,9 @@
                         بوحشية باردة وحسابية؛ اكشف خداعهم، واقطع روابطهم، وارمهم في نسيان الأزل.</p>
                     <p>الخطوة الثالثة: قوِّ سيطرتك. كل جذر مقطوع هو حجر في حصنك. استولِ على مواردهم وحلفائهم
                         وأحلامهم—حوّل خسارتهم إلى مكاسبك. النصر يُنتزع بيدٍ ملطخة بالدم وعزيمة لا تلين.</p>
+                    <p>فليرتجف الضعفاء، لأن مشروع BlackStream ليس لأصحاب القلوب الضعيفة. إنه لأولئك الذين يجرؤون على
+                        استخدام القوة دون اعتذار، وسحق أعدائهم دون ندم، والارتقاء فوق رماد أعدائهم. احتضن الميثاق، ودع
+                        العالم يعرف أنك لست للتهاون.</p>
                 </div>
             </section>
             <section class="section founder">
@@ -704,7 +663,7 @@
     </section>
     <section id="arsenal" class="page">
         <main>
-            <section class="arsenal-section">
+            <section class="arsenal-section section">
                 <h1 data-lang="en">The BlackStream Arsenal</h1>
                 <h1 data-lang="es" style="display: none;">El Arsenal BlackStream</h1>
                 <h1 data-lang="fr" style="display: none;">L’Arsenal BlackStream</h1>
@@ -765,7 +724,7 @@
     </section>
     <section id="weapons" class="page">
         <main>
-            <section class="article-section">
+            <section class="article-section section">
                 <h3 data-lang="en">Weapons of Dominance</h3>
                 <h3 data-lang="es" style="display: none;">Armas de Dominación</h3>
                 <h3 data-lang="fr" style="display: none;">Armes de Domination</h3>
@@ -790,6 +749,10 @@
                         of your reign. This is not just triumph—it is the annihilation of all who oppose you, their
                         ashes a testament to your power. Burn their resistance, claim their spoils, and rise
                         unchallenged.</p>
+                    <p>These weapons are not for the faint-hearted. They demand a wielder who is relentless, who sees
+                        mercy as a weakness and hesitation as an invitation to failure. Embrace them, and you will
+                        become the architect of your own destiny, the master of your domain, and the scourge of your
+                        enemies.</p>
                 </div>
                 <div data-lang="es" style="display: none;">
                     <p>El Arsenal BlackStream no es solo una colección—es una forja de destrucción, una bóveda de
@@ -807,6 +770,10 @@
                         arda como un faro de tu reinado. Esto no es solo triunfo—es la aniquilación de todos los que se
                         oponen a ti, sus cenizas un testimonio de tu poder. Quema su resistencia, reclama sus despojos y
                         álzate sin desafío.</p>
+                    <p>Estas armas no son para los débiles de corazón. Exigen un portador que sea implacable, que vea la
+                        piedad como una debilidad y la vacilación como una invitación al fracaso. Abrázalas, y te
+                        convertirás en el arquitecto de tu propio destino, el amo de tu dominio y el azote de tus
+                        enemigos.</p>
                 </div>
                 <div data-lang="fr" style="display: none;">
                     <p>L’Arsenal BlackStream n’est pas une simple collection—c’est une forge de destruction, un
@@ -824,6 +791,10 @@
                         briller tel un phare de ton règne. Ce n’est pas simplement le triomphe—c’est l’annihilation de
                         tous ceux qui te font obstacle, leurs cendres témoignant de ta puissance. Brûle leur résistance,
                         réclame leurs dépouilles et élève-toi sans conteste.</p>
+                    <p>Ces armes ne sont pas pour les âmes sensibles. Elles exigent un porteur implacable, qui considère
+                        la pitié comme une faiblesse et l’hésitation comme une invitation à l’échec. Embrasse-les, et tu
+                        deviendras l’architecte de ton propre destin, le maître de ton domaine et le fléau de tes
+                        ennemis.</p>
                 </div>
                 <div data-lang="de" style="display: none;">
                     <p>Das BlackStream Arsenal ist nicht nur eine Sammlung – es ist eine Schmiede der Zerstörung, ein
@@ -842,6 +813,10 @@
                         lasse ihn als Leuchtfeuer deines Regimes brennen. Das ist nicht nur Triumph – es ist die
                         Vernichtung aller, die sich dir widersetzen, ihre Asche ein Zeugnis deiner Macht. Verbrenne
                         ihren Widerstand, fordere ihre Beute ein und erhebe dich unangefochten.</p>
+                    <p>Diese Waffen sind nicht für die Schwachen. Sie erfordern einen Träger, der unerbittlich ist, der
+                        Gnade als Schwäche und Zögern als Einladung zum Scheitern betrachtet. Umfasse sie, und du wirst
+                        zum Architekten deines Schicksals, zum Herrscher deines Reiches und zur Geißel deiner Feinde.
+                    </p>
                 </div>
                 <div data-lang="zh" style="display: none;">
                     <p>BlackStream军火库不仅仅是一组武器的集合——它是一座毁灭之锻造所，一座至高无上的宝库。这里，你掌握着支配之武器：经过精心打磨的工具，足以从混沌中凿出你的帝国。</p>
@@ -851,6 +826,7 @@
                     </p>
                     <p>最后是：胜利之火炬。点燃你敌人失败的柴堆，让它燃烧成为你统治下的明灯。这不仅仅是胜利——而是对所有反抗者的彻底歼灭，他们的灰烬将见证你的力量。燃尽他们的抵抗，夺取他们的战利品，然后无人可挡地崛起。
                     </p>
+                    <p>这些武器不是为胆小者准备的。它们需要一个无情的持有者，一个将怜悯视为弱点、将犹豫视为失败邀请的人。拥抱它们，你将成为自己命运的建筑师、自己领域的统治者，以及敌人的天敌。</p>
                 </div>
                 <div data-lang="ja" style="display: none;">
                     <p>BlackStreamの軍火庫は、単なるコレクションではなく、破壊のための鍛冶場であり、至高の権力の宝庫である。ここで、君は支配の武器を手にする——混沌の中から君の帝国を切り開くために研ぎ澄まされた道具たちだ。
@@ -860,6 +836,8 @@
                     <p>次に、支配の盾だ。これほどまでに堅固で、決して譲らぬ盾は、敵の攻撃を塵に変える。君はこの盾をもって戦場を支配し、あらゆる動きを、あらゆる結果を君の意志に従わせる。競争相手の策略？すべて跳ね返し。寄生虫の手掛かり？完全に粉砕する。支配こそが君の砦であり、この盾はその砦を守る不滅の壁である。
                     </p>
                     <p>最後に、勝利の松明だ。敵の敗北の焚き火に火を点し、それを君の統治の灯台として燃え上がらせよ。これは単なる勝利ではなく、君に逆らう者すべての殲滅であり、その灰は君の力の証となる。彼らの抵抗を燃やし、戦利品を手に入れ、無敵の君となれ。
+                    </p>
+                    <p>これらの武器は、気弱な者には相応しくない。執拗な持ち主を求め、慈悲を弱さと見なし、躊躇を失敗への誘いとみなす者だけが、これらを振るうにふさわしい。君がこれらを受け入れたなら、自らの運命の設計者となり、君の領域の支配者、そして敵の天敵となるだろう。
                     </p>
                 </div>
                 <div data-lang="ru" style="display: none;">
@@ -878,6 +856,9 @@
                         владычества. Это не просто триумф — это уничтожение всех, кто осмеливается противостоять тебе, и
                         их пепел станет свидетельством твоей мощи. Сожги их сопротивление, захвати их добычу и встань
                         непобедимым.</p>
+                    <p>Эти оружия не для слабых духом. Они требуют обладателя, который неумолим, кто считает милосердие
+                        слабостью, а колебания — приглашением к поражению. Прими их, и ты станешь творцом своей судьбы,
+                        властелином своего царства и бичом своих врагов.</p>
                 </div>
                 <div data-lang="ar" style="display: none;">
                     <p>ترسانة BlackStream ليست مجرد مجموعة من الأسلحة؛ إنها مِهْرَجَة للتدمير، وخزنة للهيمنة المطلقة.
@@ -891,6 +872,8 @@
                     <p>وأخيراً: شعلة النصر. أشعل محرقة هزيمة أعدائك ودعها تتوهج كمنارة لحكمك. هذا ليس مجرد انتصار؛ إنه
                         إبادة لكل من يعارضك، ورمادهم شاهد على قوتك. احرق مقاومتهم، واستحوذ على غنائمهم، وارتقِ بلا
                         منازع.</p>
+                    <p>هذه الأسلحة ليست لأصحاب القلوب الضعيفة. إنها تتطلب حاملاً لا هوادة فيه، يرى الرحمة على أنها ضعف
+                        والتردد على أنه دعوة للفشل. احتضنها، وسوف تصبح مهندس مصيرك، وسيد مجالك، وآفة أعدائك.</p>
                 </div>
             </section>
             <footer class="footer">
