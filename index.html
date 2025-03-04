@@ -10,6 +10,13 @@
         rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <style>
+        /* Reset y Variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         :root {
             --primary-bg: #0d0d0d;
             --secondary-bg: #1c1c1c;
@@ -21,12 +28,7 @@
             --transition-speed: 0.5s;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* Estilos Globales */
         body {
             background: linear-gradient(to bottom, #000, var(--primary-bg)), url('https://i.imgur.com/5zKX8vD.jpg') no-repeat center/cover;
             color: var(--text-color);
@@ -34,6 +36,7 @@
             line-height: 1.8;
             overflow-x: hidden;
             position: relative;
+            transition: background-color var(--transition-speed);
         }
 
         body::before {
@@ -48,6 +51,7 @@
             z-index: 0;
         }
 
+        /* Header y Navegación */
         header {
             position: fixed;
             top: 0;
@@ -59,6 +63,12 @@
             align-items: center;
             box-shadow: 0 4px 20px var(--shadow-color);
             z-index: 1000;
+            transition: background var(--transition-speed), padding var(--transition-speed);
+        }
+
+        header.scrolled {
+            background: rgba(28, 28, 28, 0.9);
+            padding: calc(var(--spacing-unit) * 0.75);
         }
 
         .nav-container {
@@ -129,6 +139,7 @@
             background: var(--blood-red);
         }
 
+        /* Páginas y Secciones */
         .page {
             display: none;
             position: relative;
@@ -159,6 +170,20 @@
             animation: pulse 2s infinite;
         }
 
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
         .hero-subtitle {
             font-size: clamp(1.2rem, 3vw, 2rem);
             margin-top: var(--spacing-unit);
@@ -182,14 +207,26 @@
             border-radius: 10px;
             max-width: 1000px;
             box-shadow: 0 8px 30px var(--shadow-color);
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
-        .section h2 {
+        .section:hover {
+            transform: translateY(-5px);
+            opacity: 0.98;
+        }
+
+        .section h2,
+        .section h1,
+        .section h3 {
             font-family: 'Cinzel', serif;
-            font-size: 2.5rem;
             color: var(--blood-red);
-            margin-bottom: var(--spacing-unit);
             text-shadow: 0 0 10px var(--shadow-color);
+            margin-bottom: var(--spacing-unit);
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-unit);
         }
 
         .guide,
@@ -203,58 +240,11 @@
         }
 
         .article-section h3 {
-            font-family: 'Cinzel', serif;
             font-size: 3rem;
-            color: var(--blood-red);
-            text-shadow: 0 0 15px var(--shadow-color);
-            margin-bottom: calc(var(--spacing-unit) * 2);
         }
 
-        .article-section p {
-            margin-bottom: var(--spacing-unit);
-            font-size: 1.1rem;
-        }
-
-        #article {
-            padding: calc(var(--spacing-unit) * 3);
-            margin: calc(var(--spacing-unit) * 2) auto;
-            text-align: left;
-            background: rgba(28, 28, 28, 0.9);
-            border: 1px solid var(--dark-blood);
-            border-radius: 10px;
-            max-width: 1000px;
-            box-shadow: 0 8px 30px var(--shadow-color);
-        }
-
-        #article h3 {
-            font-family: 'Cinzel', serif;
-            font-size: 3rem;
-            color: var(--blood-red);
-            text-shadow: 0 0 15px var(--shadow-color);
-            margin-bottom: calc(var(--spacing-unit) * 2);
-        }
-
-        #article p {
-            margin-bottom: var(--spacing-unit);
-            font-size: 1.1rem;
-        }
-
-        .arsenal-section,
-        .weapons-section {
-            padding: calc(var(--spacing-unit) * 3);
-            text-align: center;
-        }
-
-        .arsenal-section h1,
-        .weapons-section h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 4rem;
-            color: var(--blood-red);
-            text-shadow: 0 0 15px var(--shadow-color);
-            margin-bottom: calc(var(--spacing-unit) * 2);
-        }
-
-        .btn {
+        .btn,
+        .btn-analysis {
             background: var(--blood-red);
             color: var(--text-color);
             padding: 0.8rem 1.5rem;
@@ -268,7 +258,8 @@
             margin-top: var(--spacing-unit);
         }
 
-        .btn:hover {
+        .btn:hover,
+        .btn-analysis:hover {
             background: #ff1a1a;
             transform: scale(1.05);
             box-shadow: 0 0 15px var(--shadow-color);
@@ -299,20 +290,7 @@
             border-top: 2px solid var(--blood-red);
         }
 
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.05);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
+        /* Responsive */
         @media (max-width: 768px) {
             .hero-title {
                 font-size: clamp(2rem, 6vw, 4rem);
@@ -324,15 +302,6 @@
 
             .article-section {
                 padding: calc(var(--spacing-unit) * 2);
-            }
-
-            #article {
-                padding: calc(var(--spacing-unit) * 3);
-            }
-
-            .arsenal-section h1,
-            .weapons-section h1 {
-                font-size: 3rem;
             }
 
             .nav-links {
@@ -355,17 +324,31 @@
             }
         }
 
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation: none !important;
-                transition: none !important;
-            }
+        /* Botón "Volver Arriba" */
+        #back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--blood-red);
+            color: var(--text-color);
+            padding: 0.7rem 1rem;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: none;
+            box-shadow: 0 4px 10px var(--shadow-color);
+            transition: transform 0.3s ease;
+            z-index: 1001;
+        }
+
+        #back-to-top:hover {
+            transform: scale(1.1);
         }
     </style>
 </head>
 
 <body>
-    <header>
+    <header id="header">
         <div class="nav-container">
             <div class="hamburger" id="hamburger">
                 <div></div>
@@ -373,15 +356,44 @@
                 <div></div>
             </div>
             <nav class="nav-links" id="nav-links">
-                <a href="#main" data-page="main">Home</a>
-                <a href="#arsenal" data-page="arsenal">Arsenal</a>
-                <a href="#weapons" data-page="weapons">Weapons</a>
+                <a href="#main" data-page="main" data-lang="en">Home</a>
+                <a href="#main" data-page="main" data-lang="es">Inicio</a>
+                <a href="#main" data-page="main" data-lang="fr">Accueil</a>
+                <a href="#main" data-page="main" data-lang="de">Startseite</a>
+                <a href="#main" data-page="main" data-lang="zh">首页</a>
+                <a href="#main" data-page="main" data-lang="ja">ホーム</a>
+                <a href="#main" data-page="main" data-lang="ru">Главная</a>
+                <a href="#main" data-page="main" data-lang="ar">الرئيسية</a>
+                <a href="#arsenal" data-page="arsenal" data-lang="en">Arsenal</a>
+                <a href="#arsenal" data-page="arsenal" data-lang="es">Arsenal</a>
+                <a href="#arsenal" data-page="arsenal" data-lang="fr">Arsenal</a>
+                <a href="#arsenal" data-page="arsenal" data-lang="de">Arsenal</a>
+                <a href="#arsenal" data-page="arsenal" data-lang="zh">军火库</a>
+                <a href="#arsenal" data-page="arsenal" data-lang="ja">武器庫</a>
+                <a href="#arsenal" data-page="arsenal" data-lang="ru">Арсенал</a>
+                <a href="#arsenal" data-page="arsenal" data-lang="ar">ترسانة</a>
+                <a href="#weapons" data-page="weapons" data-lang="en">Weapons</a>
+                <a href="#weapons" data-page="weapons" data-lang="es">Armas</a>
+                <a href="#weapons" data-page="weapons" data-lang="fr">Armes</a>
+                <a href="#weapons" data-page="weapons" data-lang="de">Waffen</a>
+                <a href="#weapons" data-page="weapons" data-lang="zh">武器</a>
+                <a href="#weapons" data-page="weapons" data-lang="ja">武器</a>
+                <a href="#weapons" data-page="weapons" data-lang="ru">Оружие</a>
+                <a href="#weapons" data-page="weapons" data-lang="ar">أسلحة</a>
+                <a href="#analisis" data-page="analisis" data-lang="en">Analysis</a>
+                <a href="#analisis" data-page="analisis" data-lang="es">Análisis</a>
+                <a href="#analisis" data-page="analisis" data-lang="fr">Analyse</a>
+                <a href="#analisis" data-page="analisis" data-lang="de">Analyse</a>
+                <a href="#analisis" data-page="analisis" data-lang="zh">分析</a>
+                <a href="#analisis" data-page="analisis" data-lang="ja">分析</a>
+                <a href="#analisis" data-page="analisis" data-lang="ru">Анализ</a>
+                <a href="#analisis" data-page="analisis" data-lang="ar">تحليل</a>
             </nav>
         </div>
         <div class="lang-selector">
             <select id="language" onchange="changeLanguage()">
                 <option value="en">English</option>
-                <option value="es">Español</option>
+                <option value="es" selected>Español</option>
                 <option value="fr">Français</option>
                 <option value="de">Deutsch</option>
                 <option value="zh">中文</option>
@@ -391,112 +403,116 @@
             </select>
         </div>
     </header>
+
+    <!-- Página Principal -->
     <section id="main" class="page active">
         <main>
             <section class="hero">
-                <h1 class="hero-title">BlackStream Project</h1>
+                <h1 class="hero-title" data-lang="en">BlackStream Project</h1>
+                <h1 class="hero-title" data-lang="es">Proyecto BlackStream</h1>
+                <h1 class="hero-title" data-lang="fr">Projet BlackStream</h1>
+                <h1 class="hero-title" data-lang="de">BlackStream Projekt</h1>
+                <h1 class="hero-title" data-lang="zh">黑流项目</h1>
+                <h1 class="hero-title" data-lang="ja">ブラックストリーム・プロジェクト</h1>
+                <h1 class="hero-title" data-lang="ru">Проект BlackStream</h1>
+                <h1 class="hero-title" data-lang="ar">مشروع BlackStream</h1>
                 <div id="typed-text"></div>
                 <p class="hero-subtitle" data-lang="en">Cut conflicts. Dominate your destiny. Take what’s yours.</p>
-                <p class="hero-subtitle" data-lang="es" style="display: none;">Corta los conflictos. Domina tu destino.
-                    Toma lo que es tuyo.</p>
-                <p class="hero-subtitle" data-lang="fr" style="display: none;">Tranche les conflits. Domine ton destin.
-                    Prends ce qui t’appartient.</p>
-                <p class="hero-subtitle" data-lang="de" style="display: none;">Schneide Konflikte ab. Beherrsche dein
-                    Schicksal. Nimm, was dir gehört.</p>
-                <p class="hero-subtitle" data-lang="zh" style="display: none;">切断冲突。主宰你的命运。夺取属于你的东西。</p>
-                <p class="hero-subtitle" data-lang="ja" style="display: none;">紛争を断ち切れ。運命を支配しろ。自分のものを奪え。</p>
-                <p class="hero-subtitle" data-lang="ru" style="display: none;">Руби конфликты. Господствуй над судьбой.
-                    Возьми своё.</p>
-                <p class="hero-subtitle" data-lang="ar" style="display: none;">اقطع الصراعات. سيطر على مصيرك. خذ ما هو
-                    لك.</p>
+                <p class="hero-subtitle" data-lang="es">Corta los conflictos. Domina tu destino. Toma lo que es tuyo.
+                </p>
+                <p class="hero-subtitle" data-lang="fr">Tranche les conflits. Domine ton destin. Prends ce qui
+                    t’appartient.</p>
+                <p class="hero-subtitle" data-lang="de">Schneide Konflikte ab. Beherrsche dein Schicksal. Nimm, was dir
+                    gehört.</p>
+                <p class="hero-subtitle" data-lang="zh">切断冲突。主宰你的命运。夺取属于你的东西。</p>
+                <p class="hero-subtitle" data-lang="ja">紛争を断ち切れ。運命を支配しろ。自分のものを奪え。</p>
+                <p class="hero-subtitle" data-lang="ru">Руби конфликты. Господствуй над судьбой. Возьми своё.</p>
+                <p class="hero-subtitle" data-lang="ar">اقطع الصراعات. سيطر على مصيرك. خذ ما هو لك.</p>
             </section>
+
             <section class="section">
                 <h2 data-lang="en">Our Philosophy</h2>
-                <h2 data-lang="es" style="display: none;">Nuestra Filosofía</h2>
-                <h2 data-lang="fr" style="display: none;">Notre Philosophie</h2>
-                <h2 data-lang="de" style="display: none;">Unsere Philosophie</h2>
-                <h2 data-lang="zh" style="display: none;">我们的哲学</h2>
-                <h2 data-lang="ja" style="display: none;">我々の哲学</h2>
-                <h2 data-lang="ru" style="display: none;">Наша философия</h2>
-                <h2 data-lang="ar" style="display: none;">فلسفتنا</h2>
+                <h2 data-lang="es">Nuestra Filosofía</h2>
+                <h2 data-lang="fr">Notre Philosophie</h2>
+                <h2 data-lang="de">Unsere Philosophie</h2>
+                <h2 data-lang="zh">我们的哲学</h2>
+                <h2 data-lang="ja">我々の哲学</h2>
+                <h2 data-lang="ru">Наша философия</h2>
+                <h2 data-lang="ar">فلسفتنا</h2>
                 <p data-lang="en">Life is a relentless warzone. Mercy is weakness. BlackStream forges you into a
                     merciless predator—aggression your blade, control your throne, victory your birthright.</p>
-                <p data-lang="es" style="display: none;">La vida es una zona de guerra implacable. La piedad es
-                    debilidad. BlackStream te forja en un depredador sin piedad—la agresión tu espada, el control tu
-                    trono, la victoria tu derecho de nacimiento.</p>
-                <p data-lang="fr" style="display: none;">La vie est un champ de bataille impitoyable. La pitié est une
-                    faiblesse. BlackStream fait de vous un prédateur sans merci—l’agression votre lame, le contrôle
-                    votre trône, la victoire votre droit de naissance.</p>
-                <p data-lang="de" style="display: none;">Das Leben ist ein unerbittliches Schlachtfeld. Gnade ist
-                    Schwäche. BlackStream schmiedet dich zu einem erbarmungslosen Räuber—Aggression deine Klinge,
-                    Kontrolle dein Thron, Sieg dein Geburtsrecht.</p>
-                <p data-lang="zh" style="display: none;">
-                    生活是一场无情的战场。怜悯是弱点。BlackStream将你锻造成无情的掠食者——侵略是你的利刃，控制是你的王座，胜利是你的天赋权利。</p>
-                <p data-lang="ja" style="display: none;">
-                    人生は容赦ない戦場だ。慈悲は弱さだ。BlackStreamは君を無慈悲な捕食者に鍛え上げる——攻撃が君の刃、支配が君の玉座、勝利が君の生まれながらの権利だ。</p>
-                <p data-lang="ru" style="display: none;">Жизнь — беспощадное поле боя. Милосердие — слабость.
-                    BlackStream выковывает из тебя безжалостного хищника — агрессия твой клинок, контроль твой трон,
-                    победа твоё прирождённое право.</p>
-                <p data-lang="ar" style="display: none;">الحياة ساحة معركة لا ترحم. الرحمة ضعف. BlackStream يصوغك كمفترس
-                    بلا رحمة—العدوان سيفك، السيطرة عرشك، النصر حقك الطبيعي.</p>
+                <p data-lang="es">La vida es una zona de guerra implacable. La piedad es debilidad. BlackStream te forja
+                    en un depredador sin piedad—la agresión tu espada, el control tu trono, la victoria tu derecho de
+                    nacimiento.</p>
+                <p data-lang="fr">La vie est un champ de bataille impitoyable. La pitié est une faiblesse. BlackStream
+                    fait de vous un prédateur sans merci—l’agression votre lame, le contrôle votre trône, la victoire
+                    votre droit de naissance.</p>
+                <p data-lang="de">Das Leben ist ein unerbittliches Schlachtfeld. Gnade ist Schwäche. BlackStream
+                    schmiedet dich zu einem erbarmungslosen Räuber—Aggression deine Klinge, Kontrolle dein Thron, Sieg
+                    dein Geburtsrecht.</p>
+                <p data-lang="zh">生活是一场无情的战场。怜悯是弱点。BlackStream将你锻造成无情的掠食者——侵略是你的利刃，控制是你的王座，胜利是你的天赋权利。</p>
+                <p data-lang="ja">人生は容赦ない戦場だ。慈悲は弱さだ。BlackStreamは君を無慈悲な捕食者に鍛え上げる——攻撃が君の刃、支配が君の玉座、勝利が君の生まれながらの権利だ。</p>
+                <p data-lang="ru">Жизнь — беспощадное поле боя. Милосердие — слабость. BlackStream выковывает из тебя
+                    безжалостного хищника — агрессия твой клинок, контроль твой трон, победа твоё прирождённое право.
+                </p>
+                <p data-lang="ar">الحياة ساحة معركة لا ترحم. الرحمة ضعف. BlackStream يصوغك كمفترس بلا رحمة—العدوان سيفك،
+                    السيطرة عرشك، النصر حقك الطبيعي.</p>
             </section>
+
             <section class="section">
                 <h2 data-lang="en">Guides to Dominate</h2>
-                <h2 data-lang="es" style="display: none;">Guías para Dominar</h2>
-                <h2 data-lang="fr" style="display: none;">Guides pour Dominer</h2>
-                <h2 data-lang="de" style="display: none;">Anleitungen zum Beherrschen</h2>
-                <h2 data-lang="zh" style="display: none;">主宰指南</h2>
-                <h2 data-lang="ja" style="display: none;">支配のためのガイド</h2>
-                <h2 data-lang="ru" style="display: none;">Руководства по господству</h2>
-                <h2 data-lang="ar" style="display: none;">أدلة للسيطرة</h2>
+                <h2 data-lang="es">Guías para Dominar</h2>
+                <h2 data-lang="fr">Guides pour Dominer</h2>
+                <h2 data-lang="de">Anleitungen zum Beherrschen</h2>
+                <h2 data-lang="zh">主宰指南</h2>
+                <h2 data-lang="ja">支配のためのガイド</h2>
+                <h2 data-lang="ru">Руководства по господству</h2>
+                <h2 data-lang="ar">أدلة للسيطرة</h2>
                 <article class="guide">
                     <h3 data-lang="en">Conflict: Sever It at the Root</h3>
-                    <h3 data-lang="es" style="display: none;">Conflicto: Córtalo de Raíz</h3>
-                    <h3 data-lang="fr" style="display: none;">Conflit : Tranche-le à la Racine</h3>
-                    <h3 data-lang="de" style="display: none;">Konflikt: Schneide ihn an der Wurzel ab</h3>
-                    <h3 data-lang="zh" style="display: none;">冲突：从根源切断</h3>
-                    <h3 data-lang="ja" style="display: none;">紛争：根から断ち切れ</h3>
-                    <h3 data-lang="ru" style="display: none;">Конфликт: Руби его с корнем</h3>
-                    <h3 data-lang="ar" style="display: none;">الصراع: اقطعه من الجذور</h3>
+                    <h3 data-lang="es">Conflicto: Córtalo de Raíz</h3>
+                    <h3 data-lang="fr">Conflit : Tranche-le à la Racine</h3>
+                    <h3 data-lang="de">Konflikt: Schneide ihn an der Wurzel ab</h3>
+                    <h3 data-lang="zh">冲突：从根源切断</h3>
+                    <h3 data-lang="ja">紛争：根から断ち切れ</h3>
+                    <h3 data-lang="ru">Конфликт: Руби его с корнем</h3>
+                    <h3 data-lang="ar">الصراع: اقطعه من الجذور</h3>
                     <p data-lang="en">Crush those who obstruct you. Rip out the source of resistance with cold
                         precision—be it a traitor, a rival, or a parasite—and leave no trace of their influence.</p>
-                    <p data-lang="es" style="display: none;">Aplasta a quienes te obstruyan. Arranca la fuente de
-                        resistencia con precisión fría—sea un traidor, un rival o un parásito—y no dejes rastro de su
-                        influencia.</p>
-                    <p data-lang="fr" style="display: none;">Écrase ceux qui te barrent la route. Arrache la source de
-                        la résistance avec une précision glaciale—qu’il s’agisse d’un traître, d’un rival ou d’un
-                        parasite—et ne laisse aucune trace de leur influence.</p>
-                    <p data-lang="de" style="display: none;">Zermalme die, die dich hindern. Reiße die Quelle des
-                        Widerstands mit kalter Präzision heraus—sei es ein Verräter, ein Rivale oder ein Parasit—und
-                        hinterlasse keine Spur ihrer Einflussnahme.</p>
-                    <p data-lang="zh" style="display: none;">粉碎阻碍你的人。以冰冷的精准拔除抵抗的根源——无论是叛徒、对手还是寄生虫——不留一丝他们的影响。</p>
-                    <p data-lang="ja" style="display: none;">
-                        君を妨げる者を粉砕しろ。冷酷な精度で抵抗の根源を引き抜け——裏切り者、ライバル、寄生虫であろうと——その影響の痕跡を一切残すな。</p>
-                    <p data-lang="ru" style="display: none;">Сокруши тех, кто стоит на твоём пути. Вырви источник
-                        сопротивления с холодной точностью—будь то предатель, соперник или паразит—и не оставь следа их
-                        влияния.</p>
-                    <p data-lang="ar" style="display: none;">سحق من يعترضون طريقك. اقتلع مصدر المقاومة بدقة باردة—سواء
-                        كان خائنًا، منافسًا أو طفيليًا—ولا تترك أثرًا لتأثيرهم.</p>
+                    <p data-lang="es">Aplasta a quienes te obstruyan. Arranca la fuente de resistencia con precisión
+                        fría—sea un traidor, un rival o un parásito—y no dejes rastro de su influencia.</p>
+                    <p data-lang="fr">Écrase ceux qui te barrent la route. Arrache la source de la résistance avec une
+                        précision glaciale—qu’il s’agisse d’un traître, d’un rival ou d’un parasite—et ne laisse aucune
+                        trace de leur influence.</p>
+                    <p data-lang="de">Zermalme die, die dich hindern. Reiße die Quelle des Widerstands mit kalter
+                        Präzision heraus—sei es ein Verräter, ein Rivale oder ein Parasit—und hinterlasse keine Spur
+                        ihrer Einflussnahme.</p>
+                    <p data-lang="zh">粉碎阻碍你的人。以冰冷的精准拔除抵抗的根源——无论是叛徒、对手还是寄生虫——不留一丝他们的影响。</p>
+                    <p data-lang="ja">君を妨げる者を粉砕しろ。冷酷な精度で抵抗の根源を引き抜け——裏切り者、ライバル、寄生虫であろうと——その影響の痕跡を一切残すな。</p>
+                    <p data-lang="ru">Сокруши тех, кто стоит на твоём пути. Вырви источник сопротивления с холодной
+                        точностью—будь то предатель, соперник или паразит—и не оставь следа их влияния.</p>
+                    <p data-lang="ar">سحق من يعترضون طريقك. اقتلع مصدر المقاومة بدقة باردة—سواء كان خائنًا، منافسًا أو
+                        طفيليًا—ولا تترك أثرًا لتأثيرهم.</p>
                     <a href="#arsenal" class="btn" data-lang="en">Read More</a>
-                    <a href="#arsenal" class="btn" data-lang="es" style="display: none;">Leer Más</a>
-                    <a href="#arsenal" class="btn" data-lang="fr" style="display: none;">Lire Plus</a>
-                    <a href="#arsenal" class="btn" data-lang="de" style="display: none;">Mehr Lesen</a>
-                    <a href="#arsenal" class="btn" data-lang="zh" style="display: none;">阅读更多</a>
-                    <a href="#arsenal" class="btn" data-lang="ja" style="display: none;">もっと読む</a>
-                    <a href="#arsenal" class="btn" data-lang="ru" style="display: none;">Читать Далее</a>
-                    <a href="#arsenal" class="btn" data-lang="ar" style="display: none;">اقرأ المزيد</a>
+                    <a href="#arsenal" class="btn" data-lang="es">Leer Más</a>
+                    <a href="#arsenal" class="btn" data-lang="fr">Lire Plus</a>
+                    <a href="#arsenal" class="btn" data-lang="de">Mehr Lesen</a>
+                    <a href="#arsenal" class="btn" data-lang="zh">阅读更多</a>
+                    <a href="#arsenal" class="btn" data-lang="ja">もっと読む</a>
+                    <a href="#arsenal" class="btn" data-lang="ru">Читать Далее</a>
+                    <a href="#arsenal" class="btn" data-lang="ar">اقرأ المزيد</a>
                 </article>
             </section>
+
             <section id="article" class="section">
                 <h3 data-lang="en">Conflict: Sever It at the Root - The Unyielding Codex</h3>
-                <h3 data-lang="es" style="display: none;">Conflicto: Córtalo de Raíz - El Códice Inflexible</h3>
-                <h3 data-lang="fr" style="display: none;">Conflit : Tranche-le à la Racine - Le Codex Implacable</h3>
-                <h3 data-lang="de" style="display: none;">Konflikt: Schneide ihn an der Wurzel ab - Der Unnachgiebige
-                    Kodex</h3>
-                <h3 data-lang="zh" style="display: none;">冲突：从根源切断 - 不屈法典</h3>
-                <h3 data-lang="ja" style="display: none;">紛争：根から断ち切れ - 不屈の法典</h3>
-                <h3 data-lang="ru" style="display: none;">Конфликт: Руби его с корнем - Непреклонный Кодекс</h3>
-                <h3 data-lang="ar" style="display: none;">الصراع: اقطعه من الجذور - الدستور اللا هوادة فيه</h3>
+                <h3 data-lang="es">Conflicto: Córtalo de Raíz - El Códice Inflexible</h3>
+                <h3 data-lang="fr">Conflit : Tranche-le à la Racine - Le Codex Implacable</h3>
+                <h3 data-lang="de">Konflikt: Schneide ihn an der Wurzel ab - Der Unnachgiebige Kodex</h3>
+                <h3 data-lang="zh">冲突：从根源切断 - 不屈法典</h3>
+                <h3 data-lang="ja">紛争：根から断ち切れ - 不屈の法典</h3>
+                <h3 data-lang="ru">Конфликт: Руби его с корнем - Непреклонный Кодекс</h3>
+                <h3 data-lang="ar">الصراع: اقطعه من الجذور - الدستور اللا هوادة فيه</h3>
                 <div data-lang="en">
                     <p>In the shadowed abyss of existence, conflict is not a fleeting annoyance—it is the grinding wheel
                         that sharpens the strong and crushes the feeble. To stand as a titan, you must sever it at the
@@ -518,221 +534,225 @@
                         above the ashes of their foes. Embrace the Codex, and let the world know that you are not to be
                         trifled with.</p>
                 </div>
-                <div data-lang="es" style="display: none;">
-                    <p>En el abismo sombrío de la existencia, el conflicto no es una molestia pasajera—es la rueda que
-                        afila a los fuertes y aplasta a los débiles. Para erguirte como titán, debes cortarlo de raíz
-                        con una ferocidad que no deje lugar a dudas, ni piedad, ni rastro de debilidad. Este es el
-                        Códice BlackStream: una doctrina grabada en la sangre de los vencidos, una guía para aniquilar
-                        la resistencia y reclamar el dominio sobre tu destino.</p>
-                    <p>El campo de batalla de la vida no perdona a nadie. Cada día surgen enemigos—cobardes envueltos en
-                        falsa lealtad, rivales disfrazados de ambición, parásitos royendo tu determinación. Dudar es
-                        invitar a la aniquilación. Paso uno: identifica la fuente. Localízalos con la precisión de un
-                        depredador acechando a su presa.</p>
-                    <p>Paso dos: golpea sin previo aviso. La agresión no es una opción—es tu derecho de nacimiento.
-                        Arranca la raíz de su influencia con una brutalidad fría y calculada. Expón el engaño, corta sus
-                        conexiones y arrástralos al olvido.</p>
+                <div data-lang="es">
+                    <p>En el abismo sombrío de la existencia, el conflicto no es una molestia pasajera: es la rueda de
+                        molienda que afila a los fuertes y aplasta a los débiles. Para erguirte como un titán, debes
+                        cortarlo de raíz con una ferocidad que no deje lugar a dudas, sin piedad, sin rastro de
+                        debilidad. Este es el Códice BlackStream: una doctrina grabada en la sangre de los vencidos, una
+                        guía para obliterar la resistencia y reclamar el dominio sobre tu destino.</p>
+                    <p>El campo de batalla de la vida no perdona a nadie. Cada día, emergen enemigos: cobardes
+                        disfrazados de lealtad falsa, rivales envueltos en ambición, parásitos que roen tu
+                        determinación. Vacilar es invitar a la aniquilación. Paso uno: identifica la fuente. Delimítalos
+                        con la precisión de un depredador acechando a su presa.</p>
+                    <p>Paso dos: ataca sin previo aviso. La agresión no es una opción, es tu derecho de nacimiento.
+                        Arranca la raíz de su influencia con una brutalidad fría y calculada. Expón el engaño, corta
+                        conexiones y sumérgelos en el olvido.</p>
                     <p>Paso tres: fortifica tu dominio. Cada raíz cortada es un ladrillo en tu fortaleza. Toma sus
-                        recursos, sus aliados, sus sueños—convierte su pérdida en tu ganancia. La victoria se reclama
+                        recursos, sus aliados, sus sueños: convierte su pérdida en tu ganancia. La victoria se reclama
                         con manos ensangrentadas y una voluntad inquebrantable.</p>
-                    <p>Que los débiles tiemblen, porque el Proyecto BlackStream no es para los cobardes. Es para
+                    <p>Que los débiles tiemblen, pues el Proyecto BlackStream no es para los de corazón débil. Es para
                         aquellos que se atreven a empuñar el poder sin disculpas, a aplastar a sus enemigos sin
-                        remordimientos y a elevarse sobre las cenizas de sus adversarios. Abraza el Códice y haz que el
-                        mundo sepa que no se debe jugar contigo.</p>
+                        remordimientos y a levantarse por encima de las cenizas de sus adversarios. Abraza el Códice y
+                        hazle saber al mundo que no se debe jugar contigo.</p>
                 </div>
-                <div data-lang="fr" style="display: none;">
-                    <p>Dans l'abîme ombragé de l'existence, le conflit n'est pas une simple contrariété passagère—c'est
-                        la meule abrasive qui aiguise les forts et écrase les faibles. Pour te dresser en titan, tu dois
-                        le trancher à la racine avec une férocité qui ne laisse aucun doute, aucune pitié, aucun reste
-                        de faiblesse. Voici le Codex BlackStream : une doctrine gravée dans le sang des vaincus, un
-                        guide pour anéantir la résistance et revendiquer ta domination sur ton destin.</p>
-                    <p>Le champ de bataille de la vie n'épargne personne. Chaque jour, des ennemis émergent—des lâches
-                        vêtus de fausse loyauté, des rivaux enveloppés d'ambition, des parasites rongeant ta
-                        détermination. Hésiter, c'est inviter à l'annihilation. Étape un : identifie la source.
+                <div data-lang="fr">
+                    <p>Dans l'abîme ombragé de l'existence, le conflit n'est pas une simple contrariété passagère :
+                        c'est la meule qui aiguise les forts et écrase les faibles. Pour te dresser tel un titan, tu
+                        dois le trancher à la racine avec une férocité qui ne laisse place à aucun doute, sans pitié,
+                        sans le moindre vestige de faiblesse. Voici le Codex BlackStream : une doctrine gravée dans le
+                        sang des vaincus, un guide pour anéantir la résistance et revendiquer la domination sur ton
+                        destin.</p>
+                    <p>Le champ de bataille de la vie épargne personne. Chaque jour, des ennemis apparaissent — des
+                        lâches drapés d'une fausse loyauté, des rivaux enveloppés d'ambition, des parasites rongent ta
+                        détermination. Hésiter, c'est inviter à l'annihilation. Première étape : identifier la source.
                         Repère-les avec la précision d'un prédateur traquant sa proie.</p>
-                    <p>Étape deux : frappe sans prévenir. L'agression n'est pas un choix—c'est ton droit de naissance.
-                        Arracher la racine de leur influence avec une brutalité froide et calculée. Dévoile la
-                        tromperie, coupe leurs liens et jette-les dans l'oubli.</p>
-                    <p>Étape trois : fortifie ta domination. Chaque racine tranchée est une brique dans ta forteresse.
-                        Prends leurs ressources, leurs alliés, leurs rêves—transforme leur perte en ton gain. La
+                    <p>Deuxième étape : frappe sans avertissement. L'agression n'est pas un choix, c'est ton droit de
+                        naissance. Arracher la racine de leur influence avec une brutalité froide et calculée. Expose le
+                        mensonge, coupe les liens et jette-les dans l'oubli.</p>
+                    <p>Troisième étape : fortifie ta domination. Chaque racine coupée est une brique dans ta forteresse.
+                        Prends leurs ressources, leurs alliés, leurs rêves — transforme leur perte en ton gain. La
                         victoire se réclame avec des mains ensanglantées et une volonté inébranlable.</p>
                     <p>Que les faibles tremblent, car le Projet BlackStream n'est pas pour les âmes sensibles. Il est
-                        destiné à ceux qui osent brandir le pouvoir sans excuses, écraser leurs ennemis sans remords et
+                        destiné à ceux qui osent exercer le pouvoir sans excuses, écraser leurs ennemis sans remords et
                         s'élever au-dessus des cendres de leurs adversaires. Embrasse le Codex et fais savoir au monde
-                        que tu n'es pas à prendre à la légère.</p>
+                        qu'il ne faut pas te chercher.</p>
                 </div>
-                <div data-lang="de" style="display: none;">
-                    <p>Im finsteren Abgrund der Existenz ist Konflikt keine flüchtige Belästigung – er ist das
-                        Schleifrad, das die Starken schärft und die Schwachen zermalmt. Um als Titan zu bestehen, musst
-                        du ihn an der Wurzel durchtrennen, mit einer Wildheit, die keinen Zweifel, keine Gnade und
-                        keinen Hauch von Schwäche zulässt. Dies ist der BlackStream Kodex: eine Doktrin, in das Blut der
-                        Besiegten gehauen, ein Leitfaden, um den Widerstand zu vernichten und das Schicksal in deine
-                        Hand zu nehmen.</p>
+                <div data-lang="de">
+                    <p>Im schattigen Abgrund der Existenz ist Konflikt keine flüchtige Belästigung – er ist das
+                        Schleifrad, das die Starken schärft und die Schwachen zerquetscht. Um als Titan zu bestehen,
+                        musst du ihn an der Wurzel durchtrennen, mit einer Heftigkeit, die keinen Zweifel, keine Gnade,
+                        keinen Rest von Schwäche zulässt. Dies ist der BlackStream Kodex: eine Doktrin, in das Blut der
+                        Besiegten gegraben, ein Leitfaden, um Widerstand zu vernichten und die Herrschaft über dein
+                        Schicksal zu beanspruchen.</p>
                     <p>Das Schlachtfeld des Lebens verschont niemanden. Jeden Tag tauchen Feinde auf – Feiglinge,
-                        gehüllt in falsche Loyalität, Rivalen, ummantelt von Ambition, Parasiten, die an deinem Willen
-                        nagen. Zögern heißt, die Vernichtung einzuladen. Schritt eins: Identifiziere die Quelle. Erkenne
-                        sie mit der Präzision eines Raubtiers, das seine Beute verfolgt.</p>
-                    <p>Schritt zwei: Schlage ohne Vorwarnung zu. Aggression ist keine Wahl – sie ist dein Geburtsrecht.
-                        Reiß die Wurzel ihres Einflusses mit kalter, kalkulierter Brutalität heraus. Enthülle den
-                        Betrug, kappe ihre Verbindungen ab und stürze sie ins Nichts.</p>
-                    <p>Schritt drei: Festige deine Herrschaft. Jede durchtrennte Wurzel ist ein Ziegel in deiner
+                        verhüllt in falscher Loyalität, Rivalen, umhüllt von Ambitionen, Parasiten, die an deinem
+                        Entschluss nagen. Zögern heißt, die Annihilation einzuladen. Schritt eins: Identifiziere die
+                        Quelle. Bestimme sie mit der Präzision eines Raubtiers, das seine Beute verfolgt.</p>
+                    <p>Schritt zwei: Schlage ohne Vorwarnung zu. Aggression ist keine Wahl, sondern dein Geburtsrecht.
+                        Reiß die Wurzel ihres Einflusses mit kalter, kalkulierter Brutalität heraus. Entlarve den
+                        Betrug, klemme Verbindungen ab und stürze sie ins Vergessen.</p>
+                    <p>Schritt drei: Stärke deine Herrschaft. Jede durchtrennte Wurzel ist ein Ziegelstein in deiner
                         Festung. Nimm ihre Ressourcen, ihre Verbündeten, ihre Träume – verwandle ihren Verlust in deinen
-                        Gewinn. Der Sieg wird mit blutbefleckten Händen und einem unbeugsamen Willen errungen.</p>
-                    <p>Die Schwachen mögen erzittern, denn das BlackStream-Projekt ist nicht für die Zaghafen. Es ist
-                        für jene, die es wagen, die Macht kompromisslos zu ergreifen, ihre Feinde ohne Reue zu zermalmen
-                        und sich über die Asche ihrer Gegner zu erheben. Umfasse den Kodex und lass die Welt wissen,
-                        dass mit dir nicht zu spaßen ist.</p>
+                        Gewinn. Der Sieg wird mit blutbefleckten Händen und einem unnachgiebigen Willen errungen.</p>
+                    <p>Lass die Schwachen erzittern, denn das BlackStream Projekt ist nichts für Zartbesaitete. Es ist
+                        für diejenigen, die es wagen, Macht ohne Entschuldigung auszuüben, ihre Feinde ohne Reue zu
+                        zerschmettern und sich über die Asche ihrer Gegner zu erheben. Umfange den Kodex und lass die
+                        Welt wissen, dass man es nicht mit dir aufnehmen sollte.</p>
                 </div>
-                <div data-lang="zh" style="display: none;">
-                    <p>在存在的幽暗深渊中，冲突不仅仅是转瞬即逝的恼怒——它是那磨砺强者、碾碎弱者的研磨轮。要成为一位泰坦，你必须从根本上切断它，用那毫不留情、无情冷酷的力量，摧毁一切疑虑、怜悯和微弱之处。这就是BlackStream法典：刻在战败者鲜血中的教义，一部摧毁抵抗、掌控命运的指南。
+                <div data-lang="zh">
+                    <p>在存在的阴影深渊中，冲突并非转瞬即逝的烦恼——它是磨砺强者、碾碎弱者的研磨机。要像巨人般屹立，你必须从根源斩断冲突，以一种不留疑问、不容怜悯、不留软弱痕迹的凶猛姿态。这就是黑流法典：一部刻在被征服者鲜血中的教义，一部消灭阻力、夺取命运主导权的指南。
                     </p>
-                    <p>生命的战场不容丝毫怜悯。每天，敌人不断涌现——披着虚假忠诚的懦夫、裹挟野心的对手、蚕食你决心的寄生虫。犹豫，就是邀请毁灭。第一步：识别根源。以捕食者追踪猎物般的精准，找到他们。</p>
-                    <p>第二步：不经预警地出击。侵略不是选择——它是你的天赋权利。以冰冷、计算过的残暴，将他们影响力的根基拔除。揭露欺骗，切断联系，将他们抛入无尽黑暗。</p>
-                    <p>第三步：巩固你的统治。每一次根基的切断，都是你堡垒中的一块砖。收走他们的资源、盟友与梦想——把他们的失败转化为你的胜利。胜利是用染血的双手和坚不可摧的意志赢得的。</p>
-                    <p>让弱者颤抖吧，因为BlackStream计划不是为胆小者准备的。它是为那些敢于毫无保留地掌握权力、毫不留情地粉碎敌人、从对手的灰烬中崛起的勇者。拥抱法典，让世界知道你不容小觑。</p>
+                    <p>生命的战场不容任何人幸免。每天都有敌人出现——披着虚假忠诚的懦夫、裹挟野心的对手、啃噬你决心的寄生虫。犹豫就是邀请灭顶之灾。第一步：确定源头。像捕猎中的猛兽一样，以极高的精度锁定他们。</p>
+                    <p>第二步：毫无预警地出击。侵略不是选择，而是你的与生俱来的权利。以冷酷、精准的残暴方式撕裂他们影响的根基。揭露欺骗，斩断联系，将他们投入遗忘之中。</p>
+                    <p>第三步：巩固你的统治。每一个被斩断的根都是你堡垒中的一块砖。夺取他们的资源、盟友和梦想——把他们的损失转化为你的收获。胜利是用染血的双手和坚不可摧的意志换来的。</p>
+                    <p>让弱者战栗吧，因为黑流项目不适合胆小的人。它属于那些敢于毫无歉意地行使权力、毫无悔意地粉碎敌人、并在对手灰烬上崛起的人。拥抱这部法典，让全世界知道，切不可轻视你。</p>
                 </div>
-                <div data-lang="ja" style="display: none;">
-                    <p>存在の影に隠された深淵において、紛争は一時的な厄介事ではなく、強者を研ぎ澄まし、弱者を粉砕する研磨石である。巨人として立つためには、疑いも慈悲も、弱さの痕跡も残さぬほどに、その根を断ち切らねばならない。これがBlackStreamの法典――敗者の血に刻まれた教義であり、抵抗を打ち砕き、自らの運命を支配するための指南である。
+                <div data-lang="ja">
+                    <p>存在の影に潜む奈落の中で、対立は一時的な迷惑事ではなく、強者を研ぎ澄まし、弱者を打ち砕く挽石の役割を果たす。巨人のように立ち上がるには、疑いも容赦も弱さの名残も残さぬ凶暴さで、根元から断ち切らなければならない。これがブラックストリーム・コーデックスであり、敗者の血に刻まれた教義、抵抗を消し去り自らの運命を支配するための指針である。
                     </p>
-                    <p>人生という戦場は、誰一人として容赦しない。毎日、偽りの忠誠に包まれた臆病者、野心に覆われたライバル、決意を蝕む寄生虫が現れる。ためらうことは、壊滅を招く。第一歩：根源を見極めよ。獲物を狙う捕食者のような正確さで、それを捉えよ。
+                    <p>人生の戦場は誰も容赦しない。毎日、偽りの忠誠をまとった臆病者、野心に覆われたライバル、決意を蝕む寄生虫が現れる。躊躇は壊滅を招く。第一歩：根源を特定せよ。獲物を狙う捕食者のような精度で捉えよ。
                     </p>
-                    <p>第二歩：警告なく攻撃せよ。攻撃は選択ではなく、君に生まれながら備わった権利である。冷酷かつ計算された残虐さで、彼らの影響の根を引き抜け。欺瞞を暴き、繋がりを断ち、彼らを無に帰せよ。</p>
-                    <p>第三歩：君の支配を強固にせよ。断たれた根は、君の砦を成す一つのレンガである。彼らの資源、同盟、夢を奪い、彼らの敗北を君の勝利に変えよ。勝利とは、血塗られた手と不屈の意志によってのみ手に入るのだ。
-                    </p>
-                    <p>弱者は震えよ、BlackStreamプロジェクトは弱気な者のためではない。それは、謝罪せず権力を握り、後悔なく敵を打ち砕き、敵の灰の上に立つことを敢えてする者たちのためだ。法典を受け入れ、君が軽んじられる存在でないことを世界に知らしめよ。
+                    <p>第二歩：警告なしに打ち込め。攻撃は選択ではなく、生まれながらの権利である。冷徹で計算された残虐さで彼らの影響の根を断ち切れ。欺瞞を暴き、繋がりを断ち切り、忘却の彼方に投げ込め。</p>
+                    <p>第三歩：君の支配を固めよ。断たれた根はすべて、君の砦の礎となる。彼らの資源、仲間、夢を奪い、彼らの喪失を君の利益へと変えよ。勝利は血塗られた手と揺るぎない意志によって掴み取られるのだ。</p>
+                    <p>これらの武器は心の弱い者向けではない。ためらいを弱点とし、遅疑を失敗への招待と見なす、妥協を知らぬ使い手を求める。これらを受け入れれば、あなたは自らの運命の設計者、領域の支配者、そして敵の災厄となるであろう。
                     </p>
                 </div>
-                <div data-lang="ru" style="display: none;">
-                    <p>В тенях бездны бытия конфликт — не мимолетное раздражение, а шлифовальный камень, закаляющий
-                        сильных и раздавливающий слабых. Чтобы стать титаном, ты должен отрубить его с корнями с такой
-                        яростью, которая не оставит ни малейшего шанса, ни капли пощады, ни следа слабости. Это — Кодекс
-                        BlackStream: доктрина, высеченная в крови побеждённых, руководство по уничтожению сопротивления
-                        и утверждению своего господства над судьбой.</p>
-                    <p>Битва жизни не щадит никого. Каждый день возникают враги — трусы, окутанные ложной преданностью,
-                        соперники, замаскированные амбициями, паразиты, пожирающие твою решимость. Колебаться — значит
-                        приглашать уничтожение. Шаг первый: определите источник. Найди их с точностью хищника,
-                        преследующего свою добычу.</p>
-                    <p>Шаг второй: наноси удар без предупреждения. Агрессия — не выбор, а твое врожденное право.
-                        Выкорчевывай источник их влияния с холодной, расчетливой жестокостью. Разоблачи предательство,
-                        разорви связи и брось их в небытие.</p>
-                    <p>Шаг третий: укрепляй своё господство. Каждый срубленный корень — кирпич в твоей крепости. Забери
-                        их ресурсы, союзников, мечты — преврати их поражение в свою победу. Победа достигается кровавыми
-                        руками и неукротимой волей.</p>
-                    <p>Пусть слабые трепещут, ибо Проект BlackStream — не для слабонервных. Он для тех, кто осмеливается
-                        владеть властью без извинений, уничтожать врагов без сожаления и возвышаться над пеплом своих
-                        противников. Прими Кодекс и дай миру понять, что с тобой не стоит шутить.</p>
+                <div data-lang="ru">
+                    <p>В тенистой бездне бытия конфликт — не мимолетная досада, а шлифовальный круг, заточка сильных и
+                        сокрушение слабых. Чтобы предстать в роли титана, ты должен искоренить его с такой свирепостью,
+                        что не останется ни капли сомнения, ни капли пощады, ни малейшего остатка слабости. Это Кодекс
+                        BlackStream: доктрина, выгравированная кровью поверженных, руководство по уничтожению
+                        сопротивления и завоеванию власти над своей судьбой.</p>
+                    <p>Поле битвы жизни никого не щадит. Каждый день появляются враги — трусы в одеяниях ложной
+                        преданности, соперники, окутанные амбициями, паразиты, разъедающие твою решимость. Колебаться —
+                        значит приглашать аннигиляцию. Шаг первый: определить источник. Определи их с точностью хищника,
+                        выслеживающего добычу.</p>
+                    <p>Шаг второй: наносить удар без предупреждения. Агрессия — не выбор, а твое врожденное право.
+                        Вырывай корень их влияния с холодной, расчетливой жестокостью. Разоблачай обман, разрывай связи
+                        и отправляй их в забвение.</p>
+                    <p>Шаг третий: укрепи свою власть. Каждый перерезанный корень — кирпичик в твоей крепости. Забирай
+                        их ресурсы, их союзников, их мечты — превращай их утрату в свою выгоду. Победа достигается
+                        окровавленными руками и несокрушимой волей.</p>
+                    <p>Пусть слабые дрожат, ведь проект BlackStream не для слабонервных. Он для тех, кто осмеливается
+                        без извинений владеть властью, без сожаления уничтожать своих врагов и восстать над пеплом своих
+                        противников. Прими Кодекс и дай миру знать, что с тобой не стоит связываться.</p>
                 </div>
-                <div data-lang="ar" style="display: none;">
-                    <p>في هاوية الوجود المظلمة، لا يُعَدُّ الصراع مجرد إزعاج عابر؛ بل هو الحجر المُطَحِن الذي يشحذ
-                        الأقوياء ويُحطم الضعفاء. لتتقف كعملاق، يجب أن تقطعه من جذوره بشراسة لا تترك مجالاً للشك، ولا
-                        رحمة، ولا أثر لضعفك. هذا هو ميثاق BlackStream: عقيدة منقوشة في دم المهزومين، ودليل لإبادة
-                        المقاومة وتقرير سيطرتك على مصيرك.</p>
-                    <p>ساحة معركة الحياة لا ترحم أحداً. في كل يوم، ينهض أعداء—جبناء متنكّلين تحت عباءة ولاء زائف،
-                        ومنافسون ملتفون بالطموح، وطفيليات تقضم عزيمتك. التردد هو دعوة للدمار. الخطوة الأولى: حدِّد
-                        المصدر. عيّنهم بدقة صياد يتعقب فريسته.</p>
-                    <p>الخطوة الثانية: اضرب دون سابق إنذار. العدوان ليس خياراً—إنه حقك منذ المولد. اقتلع جذور تأثيرهم
-                        بوحشية باردة وحسابية؛ اكشف خداعهم، واقطع روابطهم، وارمهم في نسيان الأزل.</p>
-                    <p>الخطوة الثالثة: قوِّ سيطرتك. كل جذر مقطوع هو حجر في حصنك. استولِ على مواردهم وحلفائهم
-                        وأحلامهم—حوّل خسارتهم إلى مكاسبك. النصر يُنتزع بيدٍ ملطخة بالدم وعزيمة لا تلين.</p>
-                    <p>فليرتجف الضعفاء، لأن مشروع BlackStream ليس لأصحاب القلوب الضعيفة. إنه لأولئك الذين يجرؤون على
-                        استخدام القوة دون اعتذار، وسحق أعدائهم دون ندم، والارتقاء فوق رماد أعدائهم. احتضن الميثاق، ودع
-                        العالم يعرف أنك لست للتهاون.</p>
+                <div data-lang="ar">
+                    <p>في الهاوية المظلمة للوجود، لا يُعد الصراع مجرد إزعاج عابر، بل هو المطحنة التي تشحذ الأقوياء وتسحق
+                        الضعفاء. لتثبت نفسك كعملاق، يجب أن تقطعه من جذوره بشراسة لا تترك مجالاً للشك، ولا ترحم، ولا تترك
+                        أثراً للضعف. هذا هو قانون BlackStream: مبدأ منقوش بدماء المهزومين، ودليل لإبادة المقاومة
+                        والاستيلاء على مصيرك.</p>
+                    <p>ساحة المعركة في الحياة لا ترحم أحداً. في كل يوم، يظهر الأعداء — جبناء يتنكّرون بالولاء الزائف،
+                        منافسون متغلفون بالطموح، طفيليات تقضم عزيمتك. التردد هو دعوة للهلاك. الخطوة الأولى: حدّد المصدر.
+                        عيّنهم بدقة مفترس يتعقب فريسته.</p>
+                    <p>الخطوة الثانية: اضرب دون سابق إنذار. العدوان ليس خياراً، بل هو حقك الفطري. اقتلع جذر تأثيرهم
+                        بوحشية محسوبة وباردة. اكشف الخداع، قطع الصلات، وارمهم في غياهب النسيان.</p>
+                    <p>الخطوة الثالثة: رسّخ سيطرتك. كل جذر مقطوع هو حجر في حصنك. استحوذ على مواردهم، حلفاءهم، أحلامهم —
+                        حوّل خسارتهم إلى مكسب لك. النصر يُنال بأيدي ملطخة بالدم وإرادة لا تلين.</p>
+                    <p>هذه الأسلحة ليست لضعاف القلوب. إنها تطالب بحامل لا يرحم، يرى في الرحمة ضعفاً، وفي التردد دعوة
+                        للفشل. احتضنها وستصبح مهندس مصيرك، سيد مملكتك، ونكبة أعدائك.</p>
                 </div>
             </section>
+
             <section class="section founder">
                 <img src="abyssic.png" alt="Founder 8c7x">
                 <p data-lang="en">Forged by 8c7x, Lord of Shadows</p>
-                <p data-lang="es" style="display: none;">Forjado por 8c7x, Señor de las Sombras</p>
-                <p data-lang="fr" style="display: none;">Forgé par 8c7x, Seigneur des Ombres</p>
-                <p data-lang="de" style="display: none;">Geschmiedet von 8c7x, Herr der Schatten</p>
-                <p data-lang="zh" style="display: none;">由8c7x，暗影之主锻造</p>
-                <p data-lang="ja" style="display: none;">8c7x、影の王によって鍛えられた</p>
-                <p data-lang="ru" style="display: none;">Выковано 8c7x, Повелителем Теней</p>
-                <p data-lang="ar" style="display: none;">صيغ بواسطة 8c7x، سيد الظلال</p>
+                <p data-lang="es">Forjado por 8c7x, Señor de las Sombras</p>
+                <p data-lang="fr">Forgé par 8c7x, Seigneur des Ombres</p>
+                <p data-lang="de">Geschmiedet von 8c7x, Herr der Schatten</p>
+                <p data-lang="zh">由8c7x，暗影之主锻造</p>
+                <p data-lang="ja">8c7x、影の王によって鍛えられた</p>
+                <p data-lang="ru">Выковано 8c7x, Повелителем Теней</p>
+                <p data-lang="ar">صُنع بواسطة 8c7x، سيد الظلال</p>
             </section>
+
             <footer class="footer">
                 <p data-lang="en">© BlackStream Project. All rights reserved.</p>
-                <p data-lang="es" style="display: none;">© Proyecto BlackStream. Todos los derechos reservados.</p>
-                <p data-lang="fr" style="display: none;">© Projet BlackStream. Tous droits réservés.</p>
-                <p data-lang="de" style="display: none;">© BlackStream Projekt. Alle Rechte vorbehalten.</p>
-                <p data-lang="zh" style="display: none;">© BlackStream项目。版权所有。</p>
-                <p data-lang="ja" style="display: none;">© BlackStreamプロジェクト。全著作権所有。</p>
-                <p data-lang="ru" style="display: none;">© Проект BlackStream. Все права защищены.</p>
-                <p data-lang="ar" style="display: none;">© مشروع BlackStream. جميع الحقوق محفوظة.</p>
+                <p data-lang="es">© Proyecto BlackStream. Todos los derechos reservados.</p>
+                <p data-lang="fr">© Projet BlackStream. Tous droits réservés.</p>
+                <p data-lang="de">© BlackStream Projekt. Alle Rechte vorbehalten.</p>
+                <p data-lang="zh">© BlackStream项目。版权所有。</p>
+                <p data-lang="ja">© BlackStreamプロジェクト。全著作権所有。</p>
+                <p data-lang="ru">© Проект BlackStream. Все права защищены.</p>
+                <p data-lang="ar">© مشروع BlackStream. جميع الحقوق محفوظة.</p>
             </footer>
         </main>
     </section>
+
+    <!-- Sección Arsenal -->
     <section id="arsenal" class="page">
         <main>
             <section class="arsenal-section section">
                 <h1 data-lang="en">The BlackStream Arsenal</h1>
-                <h1 data-lang="es" style="display: none;">El Arsenal BlackStream</h1>
-                <h1 data-lang="fr" style="display: none;">L’Arsenal BlackStream</h1>
-                <h1 data-lang="de" style="display: none;">Das BlackStream Arsenal</h1>
-                <h1 data-lang="zh" style="display: none;">BlackStream军火库</h1>
-                <h1 data-lang="ja" style="display: none;">ブラックストリームの武器庫</h1>
-                <h1 data-lang="ru" style="display: none;">Арсенал BlackStream</h1>
-                <h1 data-lang="ar" style="display: none;">ترسانة BlackStream</h1>
+                <h1 data-lang="es">El Arsenal BlackStream</h1>
+                <h1 data-lang="fr">L’Arsenal BlackStream</h1>
+                <h1 data-lang="de">Das BlackStream Arsenal</h1>
+                <h1 data-lang="zh">BlackStream军火库</h1>
+                <h1 data-lang="ja">ブラックストリームの武器庫</h1>
+                <h1 data-lang="ru">Арсенал BlackStream</h1>
+                <h1 data-lang="ar">ترسانة BlackStream</h1>
                 <p data-lang="en">Unleash your inner conqueror with the tools of absolute power. The BlackStream Arsenal
                     equips you with the means to crush opposition and seize control.</p>
-                <p data-lang="es" style="display: none;">Desata al conquistador que llevas dentro con las herramientas
-                    del poder absoluto. El Arsenal BlackStream te equipa con los medios para aplastar la oposición y
-                    tomar el control.</p>
-                <p data-lang="fr" style="display: none;">Libère le conquérant en toi avec les outils du pouvoir absolu.
-                    L’Arsenal BlackStream t’équipe des moyens d’écraser l’opposition et de prendre le contrôle.</p>
-                <p data-lang="de" style="display: none;">Entfessle deinen inneren Eroberer mit den Werkzeugen absoluter
-                    Macht. Das BlackStream Arsenal rüstet dich mit den Mitteln aus, um Widerstand zu zermalmen und die
-                    Kontrolle zu ergreifen.</p>
-                <p data-lang="zh" style="display: none;">用绝对权力的工具释放你内心的征服者。BlackStream军火库为你提供粉碎反对派并夺取控制权的手段。</p>
-                <p data-lang="ja" style="display: none;">絶対的な力の道具で内なる征服者を解き放て。ブラックストリームの武器庫は、反対を粉砕し支配を握る手段を君に与える。</p>
-                <p data-lang="ru" style="display: none;">Разбуди в себе завоевателя с инструментами абсолютной власти.
-                    Арсенал BlackStream снабжает тебя средствами, чтобы сокрушить сопротивление и захватить контроль.
-                </p>
-                <p data-lang="ar" style="display: none;">أطلق العنان للمحتل بداخلك بأدوات القوة المطلقة. ترسانة
-                    BlackStream تزودك بالوسائل لسحق المعارضة والاستيلاء على السيطرة.</p>
+                <p data-lang="es">Desata al conquistador que llevas dentro con las herramientas del poder absoluto. El
+                    Arsenal BlackStream te equipa con los medios para aplastar la oposición y tomar el control.</p>
+                <p data-lang="fr">Libérez le conquérant qui est en vous avec les outils du pouvoir absolu. L’Arsenal
+                    BlackStream vous équipe des moyens d’écraser l’opposition et de prendre le contrôle.</p>
+                <p data-lang="de">Entfessle deinen inneren Eroberer mit den Werkzeugen absoluter Macht. Das BlackStream
+                    Arsenal rüstet dich mit den Mitteln aus, um den Widerstand zu zerschlagen und die Kontrolle zu
+                    ergreifen.</p>
+                <p data-lang="zh">释放你内心的征服者，利用绝对力量的工具。BlackStream军火库为你提供粉碎对手、夺取控制权的手段。</p>
+                <p data-lang="ja">絶対的な力の道具で内なる征服者を解き放て。ブラックストリームの武器庫は、反対を粉砕し、支配を握るための手段を提供する。</p>
+                <p data-lang="ru">Пробуди в себе завоевателя с инструментами абсолютной власти. Арсенал BlackStream
+                    снабжает тебя средствами, чтобы сокрушить сопротивление и захватить контроль.</p>
+                <p data-lang="ar">أطلق العنان للمحتل بداخلك باستخدام أدوات القوة المطلقة. ترسانة BlackStream تزودك
+                    بالوسائل لسحق المعارضة والاستيلاء على السيطرة.</p>
                 <a href="#weapons" class="btn" data-lang="en">Enter the Final Passage</a>
-                <a href="#weapons" class="btn" data-lang="es" style="display: none;">Ingresa al Pasaje Final</a>
-                <a href="#weapons" class="btn" data-lang="fr" style="display: none;">Entrez dans le Passage Final</a>
-                <a href="#weapons" class="btn" data-lang="de" style="display: none;">Betrete den Endgültigen
-                    Durchgang</a>
-                <a href="#weapons" class="btn" data-lang="zh" style="display: none;">进入终极通道</a>
-                <a href="#weapons" class="btn" data-lang="ja" style="display: none;">最終の通路へ</a>
-                <a href="#weapons" class="btn" data-lang="ru" style="display: none;">Войти в Финальный Проход</a>
-                <a href="#weapons" class="btn" data-lang="ar" style="display: none;">ادخل الممر النهائي</a>
+                <a href="#weapons" class="btn" data-lang="es">Ingresa al Pasaje Final</a>
+                <a href="#weapons" class="btn" data-lang="fr">Entrez dans le Passage Final</a>
+                <a href="#weapons" class="btn" data-lang="de">Betrete den Endgültigen Durchgang</a>
+                <a href="#weapons" class="btn" data-lang="zh">进入终极通道</a>
+                <a href="#weapons" class="btn" data-lang="ja">最終の通路へ</a>
+                <a href="#weapons" class="btn" data-lang="ru">Войти в Финальный Проход</a>
+                <a href="#weapons" class="btn" data-lang="ar">ادخل الممر النهائي</a>
             </section>
+
             <section class="section founder">
                 <img src="abyssic.png" alt="Founder 8c7x">
                 <p data-lang="en">Forged by 8c7x, Lord of Shadows</p>
-                <p data-lang="es" style="display: none;">Forjado por 8c7x, Señor de las Sombras</p>
-                <p data-lang="fr" style="display: none;">Forgé par 8c7x, Seigneur des Ombres</p>
-                <p data-lang="de" style="display: none;">Geschmiedet von 8c7x, Herr der Schatten</p>
-                <p data-lang="zh" style="display: none;">由8c7x，暗影之主锻造</p>
-                <p data-lang="ja" style="display: none;">8c7x、影の王によって鍛えられた</p>
-                <p data-lang="ru" style="display: none;">Выковано 8c7x, Повелителем Теней</p>
-                <p data-lang="ar" style="display: none;">صيغ بواسطة 8c7x، سيد الظلال</p>
+                <p data-lang="es">Forjado por 8c7x, Señor de las Sombras</p>
+                <p data-lang="fr">Forgé par 8c7x, Seigneur des Ombres</p>
+                <p data-lang="de">Geschmiedet von 8c7x, Herr der Schatten</p>
+                <p data-lang="zh">由8c7x，暗影之主锻造</p>
+                <p data-lang="ja">8c7x、影の王によって鍛えられた</p>
+                <p data-lang="ru">Выковано 8c7x, Повелителем Теней</p>
+                <p data-lang="ar">صُنع بواسطة 8c7x، سيد الظلال</p>
             </section>
+
             <footer class="footer">
                 <p data-lang="en">© BlackStream Project. All rights reserved.</p>
-                <p data-lang="es" style="display: none;">© Proyecto BlackStream. Todos los derechos reservados.</p>
-                <p data-lang="fr" style="display: none;">© Projet BlackStream. Tous droits réservés.</p>
-                <p data-lang="de" style="display: none;">© BlackStream Projekt. Alle Rechte vorbehalten.</p>
-                <p data-lang="zh" style="display: none;">© BlackStream项目。版权所有。</p>
-                <p data-lang="ja" style="display: none;">© BlackStreamプロジェクト。全著作権所有。</p>
-                <p data-lang="ru" style="display: none;">© Проект BlackStream. Все права защищены.</p>
-                <p data-lang="ar" style="display: none;">© مشروع BlackStream. جميع الحقوق محفوظة.</p>
+                <p data-lang="es">© Proyecto BlackStream. Todos los derechos reservados.</p>
+                <p data-lang="fr">© Projet BlackStream. Tous droits réservés.</p>
+                <p data-lang="de">© BlackStream Projekt. Alle Rechte vorbehalten.</p>
+                <p data-lang="zh">© BlackStream项目。版权所有。</p>
+                <p data-lang="ja">© BlackStreamプロジェクト。全著作権所有。</p>
+                <p data-lang="ru">© Проект BlackStream. Все права защищены.</p>
+                <p data-lang="ar">© مشروع BlackStream. جميع الحقوق محفوظة.</p>
             </footer>
         </main>
     </section>
+
+    <!-- Sección Weapons -->
     <section id="weapons" class="page">
         <main>
             <section class="article-section section">
                 <h3 data-lang="en">Weapons of Dominance</h3>
-                <h3 data-lang="es" style="display: none;">Armas de Dominación</h3>
-                <h3 data-lang="fr" style="display: none;">Armes de Domination</h3>
-                <h3 data-lang="de" style="display: none;">Waffen der Herrschaft</h3>
-                <h3 data-lang="zh" style="display: none;">支配之武器</h3>
-                <h3 data-lang="ja" style="display: none;">支配の武器</h3>
-                <h3 data-lang="ru" style="display: none;">Оружие Господства</h3>
-                <h3 data-lang="ar" style="display: none;">أسلحة السيطرة</h3>
+                <h3 data-lang="es">Armas de Dominación</h3>
+                <h3 data-lang="fr">Armes de Domination</h3>
+                <h3 data-lang="de">Waffen der Herrschaft</h3>
+                <h3 data-lang="zh">支配之武器</h3>
+                <h3 data-lang="ja">支配の武器</h3>
+                <h3 data-lang="ru">Оружие Господства</h3>
+                <h3 data-lang="ar">أسلحة السيطرة</h3>
                 <div data-lang="en">
                     <p>The BlackStream Arsenal is not a mere collection—it is a forge of destruction, a vault of
                         supremacy. Here, you wield the Weapons of Dominance: tools honed to carve your empire from the
@@ -754,140 +774,841 @@
                         become the architect of your own destiny, the master of your domain, and the scourge of your
                         enemies.</p>
                 </div>
-                <div data-lang="es" style="display: none;">
+                <div data-lang="es">
                     <p>El Arsenal BlackStream no es solo una colección—es una forja de destrucción, una bóveda de
-                        supremacía. Aquí, empuñas las Armas de Dominación: herramientas afiladas para tallar tu imperio
-                        desde el caos de la existencia.</p>
-                    <p>La primera entre ellas: La Espada de la Agresión. No es un instrumento sutil—es un filo brutal
-                        que corta la vacilación y la duda. Golpea primero, golpea fuerte y deja a tus enemigos
-                        tambaleándose. Ya sea la ambición de un rival o el engaño de un traidor, esta espada corta sus
-                        raíces antes de que puedan crecer.</p>
-                    <p>La siguiente: El Escudo del Control. Inexpugnable, inflexible, convierte sus ataques en polvo.
-                        Con él, dictas el campo de batalla—cada movimiento, cada resultado se doblega a tu voluntad.
-                        ¿Los planes de un competidor? Desviados. ¿El agarre de un parásito? Aplastado. El control es tu
-                        fortaleza, y este escudo su muro indestructible.</p>
-                    <p>Por último: La Antorcha de la Victoria. Enciende la pira de la derrota de tus enemigos y deja que
-                        arda como un faro de tu reinado. Esto no es solo triunfo—es la aniquilación de todos los que se
-                        oponen a ti, sus cenizas un testimonio de tu poder. Quema su resistencia, reclama sus despojos y
-                        álzate sin desafío.</p>
-                    <p>Estas armas no son para los débiles de corazón. Exigen un portador que sea implacable, que vea la
-                        piedad como una debilidad y la vacilación como una invitación al fracaso. Abrázalas, y te
-                        convertirás en el arquitecto de tu propio destino, el amo de tu dominio y el azote de tus
-                        enemigos.</p>
+                        supremacía. Aquí, empuñas las Armas de Dominación: herramientas perfeccionadas para esculpir tu
+                        imperio a partir del caos de la existencia.</p>
+                    <p>Primero, la Espada de la Agresión. No es un instrumento sutil, es un filo brutal que atraviesa la
+                        vacilación y la duda. Golpea primero, golpea fuerte, y deja a tus enemigos tambaleándose. Ya sea
+                        la ambición de un rival o el engaño de un traidor, esta espada corta sus raíces antes de que
+                        puedan crecer.</p>
+                    <p>Luego, el Escudo del Control. Inexpugnable e inflexible, convierte sus ataques en polvo. Con él,
+                        dictas el campo de batalla: cada movimiento, cada resultado se somete a tu voluntad. ¿Los planes
+                        de un competidor? Desviados. ¿El agarre de un parásito? Aplastado. El control es tu fortaleza, y
+                        este escudo, su muro indestructible.</p>
+                    <p>Finalmente, la Antorcha de la Victoria. Enciende la pira de la derrota de tus enemigos y deja que
+                        arda como un faro de tu reinado. Esto no es solo triunfo, es la aniquilación de todos los que se
+                        oponen a ti, sus cenizas, testamento de tu poder. Quema su resistencia, reclama sus despojos y
+                        elévate sin desafío.</p>
+                    <p>Estas armas no son para los de corazón débil. Exigen un portador implacable, que vea la piedad
+                        como una debilidad y la vacilación como una invitación al fracaso. Abrázalas y te convertirás en
+                        el arquitecto de tu propio destino, el amo de tu dominio, y el azote de tus enemigos.</p>
                 </div>
-                <div data-lang="fr" style="display: none;">
-                    <p>L’Arsenal BlackStream n’est pas une simple collection—c’est une forge de destruction, un
-                        coffre-fort de suprématie. Ici, tu manies les Armes de Domination : des outils aiguisés pour
-                        sculpter ton empire dans le chaos de l’existence.</p>
-                    <p>La première d’entre elles : la Lame de l’Agression. Ce n’est pas un instrument subtil—c’est un
-                        tranchant brutal qui fauche l’hésitation et le doute. Frappe en premier, frappe fort, et laisse
-                        tes ennemis chanceler. Qu’il s’agisse de l’ambition d’un rival ou de la duplicité d’un traître,
-                        cette lame tranche leurs racines avant qu’elles ne puissent s’étendre.</p>
-                    <p>Ensuite : le Bouclier du Contrôle. Impénétrable et inflexible, il transforme leurs assauts en
-                        poussière. Grâce à lui, tu commandes le champ de bataille—chaque mouvement, chaque issue se plie
-                        à ta volonté. Les stratagèmes d’un concurrent ? Déviés. L’emprise d’un parasite ? Écrasée. Le
-                        contrôle est ta forteresse, et ce bouclier en est le mur infranchissable.</p>
-                    <p>Enfin : la Torche de la Victoire. Enflamme le bûcher de la défaite de tes ennemis et laisse-la
-                        briller tel un phare de ton règne. Ce n’est pas simplement le triomphe—c’est l’annihilation de
-                        tous ceux qui te font obstacle, leurs cendres témoignant de ta puissance. Brûle leur résistance,
-                        réclame leurs dépouilles et élève-toi sans conteste.</p>
+                <div data-lang="fr">
+                    <p>L’Arsenal BlackStream n'est pas une simple collection—c'est une forge de destruction, un
+                        coffre-fort de suprématie. Ici, vous maniez les Armes de Domination : des outils affinés pour
+                        tailler votre empire dans le chaos de l'existence.</p>
+                    <p>Tout d'abord, la Lame de l'Agression. Ce n'est pas un instrument subtil, c'est un tranchant
+                        brutal qui fend l'hésitation et le doute. Frappez en premier, frappez fort, et laissez vos
+                        ennemis chanceler. Qu'il s'agisse de l'ambition d'un rival ou de la tromperie d'un traître,
+                        cette lame tranche leurs racines avant même qu'elles ne puissent pousser.</p>
+                    <p>Ensuite, le Bouclier du Contrôle. Impénétrable et inflexible, il transforme leurs assauts en
+                        poussière. Avec lui, vous dictez le champ de bataille — chaque mouvement, chaque résultat se
+                        plie à votre volonté. Les plans d'un compétiteur ? Déviés. La prise d'un parasite ? Écrasée. Le
+                        contrôle est votre forteresse, et ce bouclier en est le mur indestructible.</p>
+                    <p>Enfin, la Torche de la Victoire. Allumez le bûcher de la défaite de vos ennemis et laissez-le
+                        brûler comme un phare de votre règne. Ce n'est pas seulement le triomphe, c'est l'annihilation
+                        de tous ceux qui s'opposent à vous, leurs cendres témoignant de votre pouvoir. Brûlez leur
+                        résistance, réclamez leurs dépouilles, et élevez-vous sans contestation.</p>
                     <p>Ces armes ne sont pas pour les âmes sensibles. Elles exigent un porteur implacable, qui considère
-                        la pitié comme une faiblesse et l’hésitation comme une invitation à l’échec. Embrasse-les, et tu
-                        deviendras l’architecte de ton propre destin, le maître de ton domaine et le fléau de tes
-                        ennemis.</p>
+                        la pitié comme une faiblesse et l'hésitation comme une invitation à l'échec. Embrassez-les, et
+                        vous deviendrez l'architecte de votre propre destin, le maître de votre domaine, et le fléau de
+                        vos ennemis.</p>
                 </div>
-                <div data-lang="de" style="display: none;">
+                <div data-lang="de">
                     <p>Das BlackStream Arsenal ist nicht nur eine Sammlung – es ist eine Schmiede der Zerstörung, ein
-                        Tresor der Vorherrschaft. Hier führst du die Waffen der Herrschaft: Werkzeuge, die geschliffen
-                        wurden, um dein Imperium aus dem Chaos der Existenz herauszukratzen.</p>
-                    <p>Erste unter ihnen: Die Klinge der Aggression. Dies ist kein subtiles Instrument – es ist eine
-                        brutale Schneide, die Zögern und Zweifel durchtrennt. Schlage zuerst, schlage hart und lasse
-                        deine Feinde taumeln. Ob es die Ambition eines Rivalen oder der Betrug eines Verräters ist –
+                        Tresor der Vorherrschaft. Hier führst du die Waffen der Dominanz: Werkzeuge, die geschliffen
+                        wurden, um dein Imperium aus dem Chaos der Existenz heraus zu formen.</p>
+                    <p>Als Erstes: Die Klinge der Aggression. Dies ist kein subtiles Instrument – es ist eine brutale
+                        Schneide, die durch Zögern und Zweifel schneidet. Schlage zuerst zu, schlage hart zu, und lasse
+                        deine Feinde taumeln. Ob es die Ambition eines Rivalen oder der Betrug eines Verräters ist,
                         diese Klinge durchtrennt ihre Wurzeln, bevor sie wachsen können.</p>
                     <p>Als Nächstes: Der Schild der Kontrolle. Undurchdringlich und unnachgiebig verwandelt er ihre
-                        Angriffe in Staub. Damit diktierst du das Schlachtfeld – jeder Schritt, jedes Ergebnis beugt
-                        sich deinem Willen. Die Pläne eines Konkurrenten? Abgelenkt. Der Griff eines Parasiten?
-                        Zerschmettert. Kontrolle ist deine Festung, und dieser Schild ist ihre unzerbrechliche Mauer.
-                    </p>
+                        Angriffe in Staub. Mit ihm bestimmst du das Schlachtfeld – jeder Zug, jedes Ergebnis beugt sich
+                        deinem Willen. Die Pläne eines Konkurrenten? Abgelenkt. Der Griff eines Parasiten? Zerquetscht.
+                        Kontrolle ist deine Festung, und dieser Schild ist ihre unzerbrechliche Mauer.</p>
                     <p>Schließlich: Die Fackel des Sieges. Entzünde den Scheiterhaufen der Niederlage deiner Feinde und
-                        lasse ihn als Leuchtfeuer deines Regimes brennen. Das ist nicht nur Triumph – es ist die
+                        lasse ihn als Leuchtfeuer deiner Herrschaft brennen. Dies ist nicht nur Triumph – es ist die
                         Vernichtung aller, die sich dir widersetzen, ihre Asche ein Zeugnis deiner Macht. Verbrenne
                         ihren Widerstand, fordere ihre Beute ein und erhebe dich unangefochten.</p>
-                    <p>Diese Waffen sind nicht für die Schwachen. Sie erfordern einen Träger, der unerbittlich ist, der
-                        Gnade als Schwäche und Zögern als Einladung zum Scheitern betrachtet. Umfasse sie, und du wirst
-                        zum Architekten deines Schicksals, zum Herrscher deines Reiches und zur Geißel deiner Feinde.
+                    <p>Diese Waffen sind nichts für Zartbesaitete. Sie verlangen einen unermüdlichen Träger, der
+                        Barmherzigkeit als Schwäche und Zögern als Einladung zum Scheitern ansieht. Umfange sie, und du
+                        wirst zum Architekten deines eigenen Schicksals, zum Herrscher über dein Reich und zum Fluch
+                        deiner Feinde.</p>
+                </div>
+                <div data-lang="zh">
+                    <p>释放你内心的征服者，利用绝对力量的工具。BlackStream军火库不仅仅是一系列武器——它是一座毁灭之锻造所，一处至高无上的宝库。在这里，你将掌握支配武器：经过精心打磨的工具，能将你的帝国从混沌中铸就而成。
+                    </p>
+                    <p>首先是侵略之刃。这不仅仅是一把精致的武器，而是一把残暴的利刃，能切开迟疑与疑惑。先发制人，猛烈打击，让你的敌人陷入震撼。无论是对手的野心还是叛徒的欺骗，这把利刃都能在他们生长之前斩断其根基。
+                    </p>
+                    <p>接着是控制之盾。坚不可摧、无懈可击，它将敌人的攻击化为尘埃。有了它，你便能主宰战场——每个动作、每个结果都将屈服于你的意志。对手的阴谋？被化解。寄生者的企图？被摧毁。控制就是你的堡垒，而这面盾牌则是那不可摧毁的城墙。
+                    </p>
+                    <p>最后是胜利之火炬。点燃你敌人失败的柴堆，让它燃烧成你统治的明灯。这不仅仅是胜利，而是对所有反抗者的彻底毁灭，他们的灰烬证明了你的力量。焚烧他们的抵抗，夺取他们的战利品，无可匹敌地崛起。</p>
+                    <p>这些武器并非为心软者所用。它们要求使用者必须无情，将怜悯视为弱点，把迟疑当作通往失败的邀请。拥抱它们，你将成为自己命运的建筑师，自己领域的主人，以及敌人们的噩梦。</p>
+                </div>
+                <div data-lang="ja">
+                    <p>ブラックストリームの武器庫は単なるコレクションではなく、破壊の鍛冶場であり、覇権の宝庫である。ここであなたは支配の武器を手にする：存在の混沌からあなたの帝国を切り開くために磨かれた道具だ。
+                    </p>
+                    <p>まずは攻撃の刃。これは単なる繊細な武器ではなく、ためらいや疑念を打ち砕く残忍な切っ先である。ライバルの野心であろうと、裏切り者の欺瞞であろうと、この刃は彼らが成長する前にその根を断つ。</p>
+                    <p>次に支配の盾。無敵で断固たるこの盾は、彼らの攻撃を塵に変える。それを手にすれば、あなたは戦場を支配する—すべての動き、すべての結果があなたの意志に従う。競争相手の策略？かわされる。寄生者の手がかり？粉砕される。支配こそがあなたの砦であり、この盾はその壊れぬ壁である。
+                    </p>
+                    <p>最後に勝利のトーチ。敵の敗北の焚き火に火をつけ、それをあなたの支配の灯台として燃え上がらせよ。これは単なる勝利ではなく、敵対する者すべての全滅であり、その灰はあなたの力の証である。彼らの抵抗を燃やし、戦利品を手に入れ、誰にも挑戦されずに立ち上がれ。
+                    </p>
+                    <p>これらの武器は心の弱い者向けではない。ためらいを弱点とし、遅疑を失敗への招待と見なす、妥協を知らぬ使い手を求める。これらを受け入れれば、あなたは自らの運命の設計者、領域の支配者、そして敵の災厄となるであろう。
                     </p>
                 </div>
-                <div data-lang="zh" style="display: none;">
-                    <p>BlackStream军火库不仅仅是一组武器的集合——它是一座毁灭之锻造所，一座至高无上的宝库。这里，你掌握着支配之武器：经过精心打磨的工具，足以从混沌中凿出你的帝国。</p>
-                    <p>首当其冲的是：侵略之刃。这可不是一把细腻的工具——它是一把残酷的利刃，能斩断犹豫与疑虑。先发制人，重击敌人，让他们踉跄不已。无论是对手的野心还是叛徒的欺骗，这把刀都能在他们生长之前斩断根基。
-                    </p>
-                    <p>接下来是：控制之盾。坚不可摧，它将敌人的攻击化为尘埃。凭借它，你主宰战场——每一个动作、每一个结果都屈服于你的意志。竞争对手的诡计？统统被化解。寄生虫的觊觎？彻底被碾碎。控制就是你的堡垒，而这面盾牌便是那不朽的墙。
-                    </p>
-                    <p>最后是：胜利之火炬。点燃你敌人失败的柴堆，让它燃烧成为你统治下的明灯。这不仅仅是胜利——而是对所有反抗者的彻底歼灭，他们的灰烬将见证你的力量。燃尽他们的抵抗，夺取他们的战利品，然后无人可挡地崛起。
-                    </p>
-                    <p>这些武器不是为胆小者准备的。它们需要一个无情的持有者，一个将怜悯视为弱点、将犹豫视为失败邀请的人。拥抱它们，你将成为自己命运的建筑师、自己领域的统治者，以及敌人的天敌。</p>
+                <div data-lang="ru">
+                    <p>Арсенал BlackStream — это не просто коллекция, а кузница разрушения, хранилище превосходства.
+                        Здесь ты владеешь Оружием Господства — инструментами, отточенными для высеивания твоей империи
+                        из хаоса бытия.</p>
+                    <p>Первое из них: Клинок Агрессии. Это не утонченный инструмент, а жестокий край, рассекающий
+                        нерешительность и сомнения. Ударь первым, ударь сильно, и оставь своих врагов в оцепенении. Будь
+                        то амбиции соперника или обман предателя, этот клинок срезает их корни прежде, чем они успевают
+                        вырасти.</p>
+                    <p>Затем: Щит Контроля. Непробиваемый, неумолимый, он превращает их атаки в пыль. С ним ты диктуешь
+                        ход битвы — каждое движение, каждый исход подчиняются твоей воле. Замыслы конкурента? Отбитые.
+                        Захват паразита? Раздавленные. Контроль — твоя крепость, а этот щит — её незыблемая стена.</p>
+                    <p>Наконец: Факел Победы. Зажги костёр поражения своих врагов и позволь ему гореть, как маяк твоего
+                        правления. Это не просто триумф — это уничтожение всех, кто противостоит тебе, их пепел
+                        свидетельствует о твоей силе. Сожги их сопротивление, завладей их трофеями и восстань, не
+                        встретив ни капли сопротивления.</p>
+                    <p>Это оружие не для слабонервных. Оно требует носителя, который не знает пощады, считает милосердие
+                        слабостью, а нерешительность — приглашением к неудаче. Прими его, и ты станешь архитектором
+                        собственной судьбы, властелином своего мира и бичом для своих врагов.</p>
                 </div>
-                <div data-lang="ja" style="display: none;">
-                    <p>BlackStreamの軍火庫は、単なるコレクションではなく、破壊のための鍛冶場であり、至高の権力の宝庫である。ここで、君は支配の武器を手にする——混沌の中から君の帝国を切り開くために研ぎ澄まされた道具たちだ。
+                <div data-lang="ar">
+                    <p>ترسانة BlackStream ليست مجرد مجموعة، بل هي ورشة تدمير، وخزينة للتفوق. هنا، تمتلك أسلحة السيطرة:
+                        أدوات مصقولة لنحت إمبراطوريتك من فوضى الوجود.</p>
+                    <p>أولاً: شفرة العدوان. ليست أداة رقيقة، بل حد فاصل وحشي يقطع التردد والشك. اضرب أولاً، اضرب بقوة،
+                        ودع أعداءك يرتجفون. سواء كانت طموحات منافس أو خداع خائن، فإن هذه الشفرة تقطع جذورهم قبل أن تنمو.
                     </p>
-                    <p>その中でもまずは、攻撃の刃だ。これは決して繊細な道具ではなく、躊躇と疑念を切り裂く残酷な刃である。先んじて攻撃し、激しく打ちのめし、敵を翻弄せよ。ライバルの野心であれ、裏切り者の欺瞞であれ、この刃は彼らの根を成長する前に断ち切るのだ。
+                    <p>ثانياً: درع السيطرة. لا يُخترق ولا يتراجع، يحول هجماتهم إلى غبار. بفضله، تتحكم بساحة المعركة — كل
+                        حركة، وكل نتيجة تنحني لإرادتك. مخططات المنافس؟ تُصد. مسك الطفيلي؟ يُسحق. السيطرة هي حصنك، وهذا
+                        الدرع هو جدارها الذي لا يُكسر.</p>
+                    <p>أخيراً: شعلة النصر. أضيء موقد هزيمة أعدائك ودعها تتألق كمنارة لحكمك. هذا ليس مجرد انتصار؛ بل هو
+                        إبادة لكل من يعارضك، ورماده شهادة على قوتك. أحرق مقاومتهم، واستولى على غنائمهم، وانهض دون منازع.
                     </p>
-                    <p>次に、支配の盾だ。これほどまでに堅固で、決して譲らぬ盾は、敵の攻撃を塵に変える。君はこの盾をもって戦場を支配し、あらゆる動きを、あらゆる結果を君の意志に従わせる。競争相手の策略？すべて跳ね返し。寄生虫の手掛かり？完全に粉砕する。支配こそが君の砦であり、この盾はその砦を守る不滅の壁である。
-                    </p>
-                    <p>最後に、勝利の松明だ。敵の敗北の焚き火に火を点し、それを君の統治の灯台として燃え上がらせよ。これは単なる勝利ではなく、君に逆らう者すべての殲滅であり、その灰は君の力の証となる。彼らの抵抗を燃やし、戦利品を手に入れ、無敵の君となれ。
-                    </p>
-                    <p>これらの武器は、気弱な者には相応しくない。執拗な持ち主を求め、慈悲を弱さと見なし、躊躇を失敗への誘いとみなす者だけが、これらを振るうにふさわしい。君がこれらを受け入れたなら、自らの運命の設計者となり、君の領域の支配者、そして敵の天敵となるだろう。
-                    </p>
-                </div>
-                <div data-lang="ru" style="display: none;">
-                    <p>Арсенал BlackStream — это не просто коллекция оружия, а кузница разрушения, сейф абсолютного
-                        господства. Здесь ты владеешь Оружием Господства: инструментами, отполированными, чтобы высекать
-                        твой имперский порядок из хаоса бытия.</p>
-                    <p>Первое из них — Клинок Агрессии. Это не утончённый инструмент — это жестокое лезвие, которое
-                        рассеивает сомнения и колебания. Ударь первым, ударь сильно, и оставь врагов разбитыми. Будь то
-                        амбиции соперника или коварство предателя, этот клинок срезает их корни прежде, чем они успевают
-                        прорости.</p>
-                    <p>Далее — Щит Контроля. Непробиваемый и неуступчивый, он превращает их атаки в пыль. С ним ты
-                        диктуешь условия на поле боя — каждый шаг, каждый исход подчиняются твоей воле. Заговоры
-                        конкурентов? Отбитые. Захват паразитов? Раздавленные. Контроль — это твоя крепость, а этот щит —
-                        её нерушимая стена.</p>
-                    <p>И, наконец, Факел Победы. Зажги костёр поражения врагов и позволь ему сиять как маяк твоего
-                        владычества. Это не просто триумф — это уничтожение всех, кто осмеливается противостоять тебе, и
-                        их пепел станет свидетельством твоей мощи. Сожги их сопротивление, захвати их добычу и встань
-                        непобедимым.</p>
-                    <p>Эти оружия не для слабых духом. Они требуют обладателя, который неумолим, кто считает милосердие
-                        слабостью, а колебания — приглашением к поражению. Прими их, и ты станешь творцом своей судьбы,
-                        властелином своего царства и бичом своих врагов.</p>
-                </div>
-                <div data-lang="ar" style="display: none;">
-                    <p>ترسانة BlackStream ليست مجرد مجموعة من الأسلحة؛ إنها مِهْرَجَة للتدمير، وخزنة للهيمنة المطلقة.
-                        هنا، تمتلك أسلحة السيطرة: أدوات تم صقلها بدقة لنحت إمبراطوريتك من فوضى الوجود.</p>
-                    <p>أولها: نصل العدوان. ليست أداة رقيقة، بل حافة عنيفة تقطع التردد والشك. اضرب أولاً، اضرب بقوة،
-                        واترك أعداءك في حالة ارتجاف. سواء كانت طموحات منافس أو خداع خائن، فإن هذا النصل يقطع جذورهم قبل
-                        أن تنمو.</p>
-                    <p>ثانياً: درع السيطرة. لا يُخترق ولا يلين، يحول هجماتهم إلى غبار. بفضله، تتحكم بساحة المعركة — كل
-                        حركة وكل نتيجة تنحني أمام إرادتك. خطط المنافس؟ محجوبة. قبضة الطفيلي؟ مُسحوقة. السيطرة هي حصنك،
-                        وهذا الدرع هو جدارها الذي لا يُقهَر.</p>
-                    <p>وأخيراً: شعلة النصر. أشعل محرقة هزيمة أعدائك ودعها تتوهج كمنارة لحكمك. هذا ليس مجرد انتصار؛ إنه
-                        إبادة لكل من يعارضك، ورمادهم شاهد على قوتك. احرق مقاومتهم، واستحوذ على غنائمهم، وارتقِ بلا
-                        منازع.</p>
-                    <p>هذه الأسلحة ليست لأصحاب القلوب الضعيفة. إنها تتطلب حاملاً لا هوادة فيه، يرى الرحمة على أنها ضعف
-                        والتردد على أنه دعوة للفشل. احتضنها، وسوف تصبح مهندس مصيرك، وسيد مجالك، وآفة أعدائك.</p>
+                    <p>هذه الأسلحة ليست لضعاف القلوب. إنها تطالب بحامل لا يرحم، يرى في الرحمة ضعفاً، وفي التردد دعوة
+                        للفشل. احتضنها وستصبح مهندس مصيرك، سيد مملكتك، ونكبة أعدائك.</p>
                 </div>
             </section>
+
             <footer class="footer">
                 <p data-lang="en">© BlackStream Project. All rights reserved.</p>
-                <p data-lang="es" style="display: none;">© Proyecto BlackStream. Todos los derechos reservados.</p>
-                <p data-lang="fr" style="display: none;">© Projet BlackStream. Tous droits réservés.</p>
-                <p data-lang="de" style="display: none;">© BlackStream Projekt. Alle Rechte vorbehalten.</p>
-                <p data-lang="zh" style="display: none;">© BlackStream项目。版权所有。</p>
-                <p data-lang="ja" style="display: none;">© BlackStreamプロジェクト。全著作権所有。</p>
-                <p data-lang="ru" style="display: none;">© Проект BlackStream. Все права защищены.</p>
-                <p data-lang="ar" style="display: none;">© مشروع BlackStream. جميع الحقوق محفوظة.</p>
+                <p data-lang="es">© Proyecto BlackStream. Todos los derechos reservados.</p>
+                <p data-lang="fr">© Projet BlackStream. Tous droits réservés.</p>
+                <p data-lang="de">© BlackStream Projekt. Alle Rechte vorbehalten.</p>
+                <p data-lang="zh">© BlackStream项目。版权所有。</p>
+                <p data-lang="ja">© BlackStreamプロジェクト。全著作権所有。</p>
+                <p data-lang="ru">© Проект BlackStream. Все права защищены.</p>
+                <p data-lang="ar">© مشروع BlackStream. جميع الحقوق محفوظة.</p>
             </footer>
         </main>
     </section>
+
+    <!-- Sección de Análisis -->
+    <section id="analisis" class="page">
+        <main>
+            <section class="analysis-section section">
+                <h1 data-lang="es">Marketplace de Análisis Neurocientíficos</h1>
+                <div class="analysis-card">
+                    <h2 data-lang="es">Análisis Neurocientífico: 6is</h2>
+                    <p class="analysis-preview" data-lang="es">
+                        Este análisis explora la personalidad de 6is a través de una disección neurocientífica y
+                        cognitiva. Se abordan rasgos de arrogancia, paranoia y narcisismo, describiendo sus mecanismos
+                        de autoengaño y estrategias de reconfiguración neuronal extrema para transformar comportamientos
+                        disfuncionales.
+                    </p>
+                    <button class="btn-analysis" onclick="toggleAnalysis('analysis6is')" data-lang="es">Leer
+                        más</button>
+                    <div id="analysis6is" class="full-analysis" style="display: none;">
+                        <div data-lang="es">
+                            <h1>Análisis Psicológico Exhaustivo de <strong>6is</strong></h1>
+
+                            <h2>Personalidad y rasgos de carácter</h2>
+                            <p><strong>6is</strong> exhibe una personalidad marcada por la arrogancia, la desconfianza y
+                                la agresividad. Sus interacciones denotan un <em>alto antagonismo</em> (baja amabilidad)
+                                y <em>neuroticismo</em> (reactividad emocional elevada), rasgos alineados con perfiles
+                                de personalidad disruptivos (<a
+                                    href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5793931/#:~:text=In%20the%20psychiatric%20nosology%2C%20DSM,psychotic%20states%20of%20bipolar%20disorder">Mistrustful
+                                    and Misunderstood: A Review of Paranoid Personality Disorder - PMC</a>) (<a
+                                    href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5793931/#:~:text=Dimensional%20systems%20of%20diagnosis%20are,11%5D.%20FFM">FFM</a>).
+                                Demuestra un sentido grandioso de sí mismo y una falta de empatía notoria, comportándose
+                                como si fuese superior a los demás y despreciando sus necesidades (<a
+                                    href="https://www.psychdb.com/personality/narcissistic#:~:text=Narcissistic%20Personality%20Disorder%20is%20a,and%20may%20demand%20special%20treatment">Narcissistic
+                                    Personality Disorder - PsychDB</a>) (<a
+                                    href="https://www.psychdb.com/personality/narcissistic#:~:text=favourable%20treatment%20or%20automatic%20compliance,with%20his%20or%20her%20expectations">PsychDB</a>).
+                                Esta combinación de <em>grandiosidad y suspicacia</em> sugiere la presencia de
+                                características narcisistas (egocentrismo, necesidad de admiración) junto con rasgos
+                                paranoides (desconfianza extrema) en su carácter.</p>
+                            <p>En conjunto, <strong>6is</strong> presenta un temperamento <em>hostil, explotador y
+                                    arrogante</em>, consistente con el denominado <strong>“tríada oscura”</strong> de la
+                                personalidad (narcisismo, maquiavelismo y psicopatía), donde prima la auto-importancia,
+                                la manipulación y la ausencia de remordimiento (<a
+                                    href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5437163/#:~:text=Psychopathy%2C%20and%20Narcissism%20belongs%20to,2001%29%20narcissists%27%20%E2%80%9Cgrandiose">Leader
+                                    Narcissism and Outcomes in Organizations</a>). Cada interacción suya parece estar
+                                teñida por un desprecio hacia los demás y una convicción de ser especial e invulnerable
+                                a las normas comunes.</p>
+
+                            <h2>Trastornos psicológicos potenciales</h2>
+                            <p>El perfil de <strong>6is</strong> apunta a varios trastornos de la personalidad
+                                <strong>potenciales</strong>. En primer lugar, sus sentimientos de grandiosidad,
+                                necesidad constante de admiración y falta de empatía calzan con un <strong>trastorno
+                                    narcisista de la personalidad</strong>, definido precisamente por un patrón general
+                                de <em>arrogancia, sentido de privilegio y explotación interpersonal</em> (<a
+                                    href="https://www.psychdb.com/personality/narcissistic#:~:text=Narcissistic%20Personality%20Disorder%20is%20a,and%20may%20demand%20special%20treatment">PsychDB</a>)
+                                (<a href="https://www.psychdb.com/personality/narcissistic#:~:text=4">PsychDB</a>). La
+                                hipersensibilidad a las críticas que muestra – reaccionando con ira desproporcionada
+                                ante cualquier rechazo – es típica del narcisismo patológico (<a
+                                    href="https://my.clevelandclinic.org/health/diseases/9742-narcissistic-personality-disorder#:~:text=,likely%2C%20which%20can%20limit%20achievements">Narcissistic
+                                    Personality Disorder: Symptoms & Treatment</a>). Adicionalmente, su profunda
+                                desconfianza y tendencia a interpretar intenciones maliciosas en los demás incluso sin
+                                evidencias sugieren un <strong>trastorno paranoide de la personalidad</strong>,
+                                caracterizado por una sospecha injustificada persistente de que otros quieren dañarlo
+                                (<a
+                                    href="https://www.merckmanuals.com/professional/psychiatric-disorders/personality-disorders/paranoid-personality-disorder-ppd#:~:text=Paranoid%20personality%20disorder%20is%20characterized,behavioral%20therapy%20and%20sometimes%20medications">Merck
+                                    Manual</a>) (<a
+                                    href="https://www.merckmanuals.com/professional/psychiatric-disorders/personality-disorders/paranoid-personality-disorder-ppd#:~:text=,Disorders">Merck
+                                    Manual</a>). Es probable que estos dos trastornos coexistan; de hecho, es común la
+                                comorbilidad del narcisismo con rasgos paranoides (<a
+                                    href="https://www.psychdb.com/personality/narcissistic#:~:text=are%20comorbid">PsychDB</a>).
+                            </p>
+                            <p>No se descarta la presencia de otros trastornos del Cluster B. Su agresividad
+                                instrumental y falta de remordimientos podrían insinuar rasgos antisociales o
+                                psicopáticos, dado que la <strong>psicopatía</strong> se asocia con búsqueda de poder,
+                                impulsividad y ausencia de culpa o empatía (<a
+                                    href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5437163/#:~:text=Psychopathy%2C%20and%20Narcissism%20belongs%20to,2001%29%20narcissists%27%20%E2%80%9Cgrandiose">Leader
+                                    Narcissism</a>). Igualmente, sus estallidos emocionales y conductas autodestructivas
+                                intermitentes podrían apuntar a un <strong>trastorno límite de la personalidad</strong>
+                                (borderline) en grado concomitante – trastorno caracterizado por inestabilidad afectiva,
+                                relaciones caóticas y temor al abandono – especialmente porque algunos teóricos (e.g.
+                                Kernberg) han señalado que la paranoia crónica puede ser una variante de organizaciones
+                                borderline “de bajo nivel” (<a
+                                    href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5793931/#:~:text=preserved%20the%20idea%20of%20paranoia,order%E2%80%9D%20level%20of%20character%20organization">Mistrustful
+                                    and Misunderstood</a>). En resumen, <strong>6is</strong> probablemente se ubica
+                                dentro de un espectro de personalidad severamente disfuncional (Cluster B y A), con el
+                                narcisismo y la paranoia como ejes centrales. Estas no son <strong>diagnosis
+                                    definitivas</strong>, sino inferencias fundamentadas en sus patrones conductuales;
+                                un diagnóstico formal requeriría evaluación clínica rigurosa.</p>
+
+                            <h2>Creencias, valores y motivaciones</h2>
+                            <p>Las creencias y valores de <strong>6is</strong> parecen girar en torno a sí mismo, su
+                                posición de poder y una visión distorsionada del mundo. Él cree firmemente en su
+                                <strong>propia superioridad y excepcionalidad</strong>, viéndose a sí mismo como alguien
+                                especial que merece un trato preferencial (<a
+                                    href="https://www.psychdb.com/personality/narcissistic#:~:text=1,as%20superior%20without%20commensurate%20achievements">PsychDB</a>)
+                                (<a href="https://www.psychdb.com/personality/narcissistic#:~:text=4">PsychDB</a>). Este
+                                convencimiento de grandeza se acompaña de fantasías de éxito ilimitado, poder o
+                                brillantez, lo cual refleja un sistema de valores centrado en la dominancia y el logro
+                                personal a cualquier coste (<a
+                                    href="https://www.psychdb.com/personality/narcissistic#:~:text=achievements">PsychDB</a>).
+                                Por otro lado, exhibe un marcado <strong>sesgo paranoide</strong> en su cosmovisión:
+                                interpreta las acciones ajenas como hostiles o malintencionadas por defecto (<a
+                                    href="https://www.merckmanuals.com/professional/psychiatric-disorders/personality-disorders/paranoid-personality-disorder-ppd#:~:text=Paranoid%20personality%20disorder%20is%20characterized,behavioral%20therapy%20and%20sometimes%20medications">Merck
+                                    Manual</a>) (<a
+                                    href="https://www.merckmanuals.com/professional/psychiatric-disorders/personality-disorders/paranoid-personality-disorder-ppd#:~:text=,Disorders">Merck
+                                    Manual</a>). Es decir, tiene la creencia nuclear de que “el mundo está en su contra”
+                                o que otros traman perjudicarlo, lo cual alimenta un estado de alerta constante.
+                            </p>
+                            <p>Sus motivaciones primarias parecen ser la <strong>autoafirmación y la búsqueda de
+                                    reconocimiento</strong>. Investigaciones en personalidad narcisista indican que
+                                individuos así mantienen una “meta crónica de obtener continua auto-confirmación
+                                externa” de su valía (<a
+                                    href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5437163/#:~:text=is%20characterized%20by%20manipulative%20actions,words%2C%20narcissists%20may%20not%20intend">Leader
+                                    Narcissism</a>). En consecuencia, <strong>6is</strong> valora por encima de todo la
+                                admiración, el respeto (forzado si es preciso) y la validación de sus logros – necesita
+                                que el entorno le refleje su grandeza. A la par, muestra un rasgo de <strong>elitismo
+                                    moral</strong>: se asume con frecuencia como la víctima agraviada y,
+                                paradójicamente, como moralmente superior a quienes lo rodean (<a
+                                    href="https://www.psypost.org/researchers-identify-a-new-personality-construct-that-describes-the-tendency-to-see-oneself-as-a-victim/#:~:text=An%20initial%20three%20studies%20established,in%20early%20relationships%20with%20caregivers">Tendency
+                                    for Interpersonal Victimhood</a>). Este elitismo moral, junto a su falta de empatía,
+                                encaja con la recientemente descrita <strong>Tendencia al Victimismo Interpersonal
+                                    (TIV)</strong>, cuyos componentes incluyen precisamente un sentido de superioridad
+                                moral, rumiación de agravios y necesidad de reconocimiento (<a
+                                    href="https://www.psypost.org/researchers-identify-a-new-personality-construct-that-describes-the-tendency-to-see-oneself-as-a-victim/#:~:text=An%20initial%20three%20studies%20established,in%20early%20relationships%20with%20caregivers">PsyPost</a>).
+                                En la práctica, <strong>6is</strong> parece creer que sus propias acciones (incluso las
+                                destructivas) están justificadas por un bien mayor o por la injusticia que dice sufrir.
+                                Sus valores, por tanto, tienden a ser <strong>egocéntricos</strong>: privilegia la
+                                lealtad hacia sí mismo, la fuerza y la dominación, mientras minimiza virtudes como la
+                                humildad, la compasión o la honestidad (salvo cuando fingir estas le sea útil). Todo
+                                indica que opera con una brújula moral sesgada en la cual <em>él es el centro del bien y
+                                    los demás son el problema</em>, reforzando así su motivación de proteger su ego a
+                                toda costa.</p>
+
+                            <h2>Miedos, inseguridades y puntos débiles</h2>
+                            <p>Aunque <strong>6is</strong> se presenta con prepotencia, en el trasfondo se vislumbran
+                                profundas inseguridades. Un rasgo típico de la personalidad narcisista es la
+                                <strong>vulnerabilidad oculta en la autoestima</strong>, que hace que el individuo tema
+                                intensamente ser humillado o quedar en evidencia (<a
+                                    href="https://www.psychdb.com/personality/narcissistic#:~:text=">PsychDB</a>). En el
+                                caso de <strong>6is</strong>, su miedo más evidente es a la <strong>crítica y el
+                                    fracaso</strong>: reacciona con furia o defensividad desmesurada ante cualquier
+                                señal de desaprobación porque, internamente, teme no ser tan competente o valioso como
+                                proclama. Esta hipersensibilidad a la crítica indica una autoestima frágil bajo la
+                                máscara de superioridad (<a
+                                    href="https://my.clevelandclinic.org/health/diseases/9742-narcissistic-personality-disorder#:~:text=,importance">Cleveland
+                                    Clinic</a>). De hecho, se ha documentado que personas con trastorno narcisista
+                                pueden experimentar una “herida narcisista” ante la más mínima contrariedad, lo cual
+                                activa su rabia o depresión (<a
+                                    href="https://my.clevelandclinic.org/health/diseases/9742-narcissistic-personality-disorder#:~:text=,likely%2C%20which%20can%20limit%20achievements">Cleveland
+                                    Clinic</a>). Así, el orgullo exagerado de <strong>6is</strong> funciona como coraza
+                                para un miedo central: <strong>el miedo a la insignificancia y al rechazo</strong>.
+                            </p>
+                            <p>Asimismo, muestra un <strong>temor paranoide a la traición</strong>. Su desconfianza
+                                patológica implica la inseguridad constante de que otros puedan estar engañándolo o
+                                confabulando en su contra (<a
+                                    href="https://www.merckmanuals.com/professional/psychiatric-disorders/personality-disorders/paranoid-personality-disorder-ppd#:~:text=Patients%20with%20paranoid%20personality%20disorder,insufficient%20justification%20for%20these%20feelings">Merck
+                                    Manual</a>). Esta mentalidad le hace sentir amenazado incluso sin motivo objetivo,
+                                lo que sugiere un miedo basal a perder el control o ser vulnerable frente a otros.
+                                Irónicamente, a pesar de su actitud desafiante, <strong>6is</strong> parece temer su
+                                propia vulnerabilidad emocional; evita reconocer errores o debilidades porque hacerlo lo
+                                enfrentaría con sentimientos de vergüenza intensos que no sabe manejar (<a
+                                    href="https://my.clevelandclinic.org/health/diseases/9742-narcissistic-personality-disorder#:~:text=,importance">Cleveland
+                                    Clinic</a>). De hecho, a menudo <em>huye de cualquier situación que lo haga sentir
+                                    débil</em>, ya sea negándola o atacando. Sus puntos débiles incluyen precisamente
+                                esa <strong>incapacidad de tolerar la frustración</strong>, la cual lo deja
+                                emocionalmente indefenso cuando las cosas no salen según sus expectativas. También
+                                carece de introspección genuina: teme mirar hacia adentro porque podría encontrar
+                                inseguridades profundas (por ejemplo, sentimientos de inferioridad inculcados
+                                tempranamente). En resumen, <strong>6is</strong> le teme a todo lo que amenace la imagen
+                                inflada que construyó de sí mismo – el fracaso, la burla, la subordinación – y esas
+                                inseguridades ocultas lo vuelven <em>reactivo y predeciblemente defensivo</em>.</p>
+
+                            <h2>Puntos fuertes y capacidades</h2>
+                            <p>Pese a sus aspectos disfuncionales, <strong>6is</strong> posee también ciertas
+                                capacidades notables, que a menudo emplea para afianzar su posición. En primer lugar,
+                                exhibe una <strong>confianza en sí mismo extrema</strong> (al menos en apariencia) que
+                                le permite asumir roles de liderazgo o influir en otros inicialmente. Estudios sobre
+                                narcisismo sugieren que individuos con este rasgo suelen mostrarse extravertidos,
+                                asertivos e incluso carismáticos al comienzo, lo que favorece que tomen la delantera en
+                                grupos (<a
+                                    href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5437163/#:~:text=2006%20,Recent">Leader
+                                    Narcissism</a>). <strong>6is</strong> aparenta seguridad absoluta en sus opiniones,
+                                lo cual puede intimidar a sus oponentes y convencer a los más indecisos; su habilidad de
+                                <strong>auto-promoción</strong> es destacable, constantemente resaltando sus logros
+                                reales o imaginarios para ganar admiradores o aliados circunstanciales (<a
+                                    href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5437163/#:~:text=of%20psychopathy%20and%20narcissism%20triggered,23">Leader
+                                    Narcissism</a>) (<a
+                                    href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5437163/#:~:text=Narcissism%2C%20however%2C%20appears%20to%20be,and%20external%20validation%20are%20fulfilled">Leader
+                                    Narcissism</a>). Este aplomo arrogante es un arma de doble filo – moralmente
+                                cuestionable pero inicialmente eficaz para obtener autoridad.
+                            </p>
+                            <p>Otra capacidad de <strong>6is</strong> es su <strong>astucia estratégica</strong>. Cuando
+                                le conviene, sabe ser calculador y manipulador, planificando sus movimientos para
+                                obtener ventaja (<em>rasgo maquiavélico</em>) (<a
+                                    href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5437163/#:~:text=Psychopathy%2C%20and%20Narcissism%20belongs%20to,2001%29%20narcissists%27%20%E2%80%9Cgrandiose">Leader
+                                    Narcissism</a>). Suele detectar las debilidades ajenas y explotarlas en beneficio
+                                propio, lo cual implica cierta habilidad cognitiva para la lectura fría de las personas
+                                (aunque carezca de empatía emocional). Además, su hiper-vigilancia paranoide significa
+                                que rara vez baja la guardia: está <em>constantemente atento</em> a posibles amenazas o
+                                cambios en el entorno. Esta vigilancia, aunque patológica en exceso, le proporciona una
+                                capacidad de <strong>detectar sutilezas</strong> que otros podrían pasar por alto,
+                                permitiéndole anticipar escenarios adversos. Por ejemplo, puede ser bueno identificando
+                                intrigas o intenciones ocultas (así sean imaginarias), lo que en entornos competitivos
+                                podría darle una ventaja.</p>
+                            <p>En términos de resiliencia, <strong>6is</strong> muestra una <strong>tenacidad
+                                    obstinada</strong>: no se rinde fácilmente en una disputa y parece energizarse con
+                                el conflicto. Su rumiación constante sobre agravios pasados denota una memoria afilada
+                                para las ofensas y una determinación para salirse con la suya, incluso si toma tiempo
+                                (<a
+                                    href="https://www.psypost.org/researchers-identify-a-new-personality-construct-that-describes-the-tendency-to-see-oneself-as-a-victim/#:~:text=%28Study%204%29,the%20person%20who%20wronged%20them">Tendency
+                                    for Interpersonal Victimhood</a>). Esta perseverancia – mal canalizada hacia la
+                                venganza – indica que, en otras circunstancias, podría perseverar también en metas
+                                difíciles. Igualmente, la <em>desensibilización emocional</em> que exhibe ante el
+                                sufrimiento ajeno puede hacerlo relativamente <strong>resistente al estrés</strong> en
+                                situaciones en que otros se verían afectados por la culpa o la duda. En síntesis, entre
+                                sus fortalezas destacan la <strong>confianza y carisma iniciales</strong>, la
+                                <strong>habilidad estratégica/manipulativa</strong>, la
+                                <strong>hiper-vigilancia</strong> y una <strong>fuerte determinación</strong>.
+                                Lamentablemente, estas capacidades se ven socavadas a largo plazo por sus propios
+                                defectos (arrogancia, desconfianza crónica), pero son recursos psicológicos que le han
+                                permitido sostener su conducta disfuncional y afirmarse frente a los demás.
+                            </p>
+
+                            <h2>Experiencias pasadas y posibles traumas</h2>
+                            <p>Dada la evidencia conductual, es muy probable que la personalidad de <strong>6is</strong>
+                                tenga raíces en experiencias tempranas traumáticas o entornos disfuncionales durante su
+                                desarrollo. Los estudios en psicología de la personalidad indican claramente que
+                                <strong>traumas, rechazo o negligencia en la infancia</strong> contribuyen a la
+                                formación de rasgos narcisistas y paranoides en la adultez (<a
+                                    href="https://my.clevelandclinic.org/health/diseases/9742-narcissistic-personality-disorder#:~:text=,things%20don%E2%80%99t%20go%20their%20way">Cleveland
+                                    Clinic</a>) (<a
+                                    href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5793931/#:~:text=Childhood%20trauma%20has%20consistently%20been,in%20adolescence%20and%20early%20adulthood">Mistrustful
+                                    and Misunderstood</a>). En el caso de los narcisistas, a menudo han tenido infancias
+                                con <strong>desatención emocional o expectativas contradictorias</strong> – por ejemplo,
+                                padres que los sobrevaloraron superficialmente (inculcando sentimientos de grandeza)
+                                pero no les brindaron amor incondicional genuino, o lo opuesto: crianza con
+                                abuso/negligencia que les hizo desarrollar una autoimagen compensatoria grandiosa para
+                                sobrevivir al dolor (<a
+                                    href="https://my.clevelandclinic.org/health/diseases/9742-narcissistic-personality-disorder#:~:text=,things%20don%E2%80%99t%20go%20their%20way">Cleveland
+                                    Clinic</a>). <strong>6is</strong> encaja en este perfil: su necesidad insaciable de
+                                admiración sugiere un “vacío” de validación en etapas formativas, mientras que su
+                                intolerancia a la vulnerabilidad sugiere que de niño aprendería que mostrar debilidad
+                                resultaba en castigo o humillación.
+                            </p>
+                            <p>Respecto a la <strong>paranoia</strong> de <strong>6is</strong>, la literatura científica
+                                la vincula fuertemente con antecedentes de <strong>malos tratos tempranos</strong>.
+                                Múltiples estudios han encontrado que el <strong>abuso emocional, abuso físico y
+                                    negligencia durante la niñez</strong> son factores de riesgo significativos para
+                                desarrollar un trastorno paranoide en la adolescencia o adultez (<a
+                                    href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5793931/#:~:text=Childhood%20trauma%20has%20consistently%20been,in%20adolescence%20and%20early%20adulthood">Mistrustful
+                                    and Misunderstood</a>) (<a
+                                    href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5793931/#:~:text=match%20at%20L818%20Replicating%20the,There%20were%20no">Mistrustful
+                                    and Misunderstood</a>). Es plausible que <strong>6is</strong> haya crecido en un
+                                entorno donde no podía confiar en las figuras cercanas – quizá padres impredecibles,
+                                críticos o violentos – generando un estilo de apego ansioso y una expectativa permanente
+                                de agresión por parte de otros (<a
+                                    href="https://www.psypost.org/researchers-identify-a-new-personality-construct-that-describes-the-tendency-to-see-oneself-as-a-victim/#:~:text=An%20initial%20three%20studies%20established,in%20early%20relationships%20with%20caregivers">Tendency
+                                    for Interpersonal Victimhood</a>). De hecho, se ha observado que la tendencia
+                                crónica a verse como víctima (TIV) está “profundamente enraizada en las relaciones con
+                                cuidadores primarios”, derivando de apegos tempranos inseguros (<a
+                                    href="https://www.psypost.org/researchers-identify-a-new-personality-construct-that-describes-the-tendency-to-see-oneself-as-a-victim/#:~:text=recognition%2C%20and%20rumination.%20A%20follow,in%20early%20relationships%20with%20caregivers">PsyPost</a>).
+                                Esto sugiere que <strong>6is</strong> pudo sufrir alguna forma de <strong>victimización
+                                    infantil</strong> (sentirse injustamente tratado, indefenso o traicionado en sus
+                                años formativos).</p>
+                            <p>No podemos saber los detalles sin su historial clínico, pero es razonable inferir que
+                                tras la coraza de <strong>6is</strong> hay <strong>heridas psicológicas sin
+                                    resolver</strong>. Quizá haya experimentado humillación social (bullying) que ahora
+                                compensa siendo él el agresor; o tal vez vivió en un ambiente familiar caótico donde
+                                aprendió que la agresión y la manipulación eran herramientas de supervivencia. También
+                                es posible que haya internalizado de niño una visión del mundo como hostil (si figuras
+                                de autoridad le fallaron), consolidando así su desconfianza. En cualquier caso, la
+                                convergencia de narcisismo y paranoia en su psique sugiere una combinación de
+                                <strong>carencias afectivas</strong> (carecer de amor estable, lo que promueve una
+                                autoimagen compensatoria inflada) y <strong>traumas relacionales</strong> (ser lastimado
+                                o engañado, fomentando la expectativa de daño). Dichas experiencias habrían moldeado los
+                                esquemas disfuncionales que hoy observamos: <em>“no puedo confiar en nadie”</em> y
+                                <em>“debo ser grandioso para valer algo”</em>. Estas cicatrices del pasado explican en
+                                parte la rigidez y ferocidad con que <strong>6is</strong> defiende ahora su persona,
+                                pues en el fondo estaría protegiendo al niño inseguro y herido que una vez fue.
+                            </p>
+
+                            <h2>Relación con la autoridad y estabilidad emocional</h2>
+                            <p>La actitud de <strong>6is</strong> frente a la autoridad es abiertamente desafiante y
+                                rencorosa. Tiende a <strong>rechazar la subordinación</strong> bajo cualquier figura de
+                                autoridad, ya sea un superior jerárquico, experto o norma establecida, a menos que dicha
+                                autoridad le resulte útil para sus propios fines. Este desprecio por la autoridad
+                                proviene de su sentido inflado de <em>entitlement</em> (creencia de que merece trato
+                                especial y exención de las reglas) (<a
+                                    href="https://www.psychdb.com/personality/narcissistic#:~:text=4">PsychDB</a>). En
+                                términos prácticos, <strong>6is</strong> espera que los demás (incluyendo autoridades
+                                legítimas) se plieguen a sus deseos; cuando eso no ocurre, lo percibe como una afrenta
+                                personal. No tolera que se le impongan límites ya que asume que <em>él está por
+                                    encima</em> de los demás. Psicológicamente, esto refleja la <strong>sense of
+                                    entitlement</strong> narcisista – la expectativa irreal de recibir un trato
+                                especialmente favorable y obediencia automática de los otros (<a
+                                    href="https://www.psychdb.com/personality/narcissistic#:~:text=4">PsychDB</a>). Así,
+                                ante jefes, maestros u otras figuras de poder, <strong>6is</strong> probablemente adopte
+                                una de dos posturas extremas: o intenta <em>sabotear/desafiar</em> su autoridad si la
+                                percibe débil, o intenta <em>adularla y manipularla</em> si cree que puede obtener algo
+                                (no por respeto genuino, sino por conveniencia estratégica). Cualquier intento de
+                                controlarlo suele detonar su rebeldía agresiva, porque lo interpreta como una amenaza a
+                                su estatus.</p>
+                            <p>En cuanto a su <strong>estabilidad emocional</strong>, <strong>6is</strong> es
+                                marcadamente inestable. Aunque procura proyectar frialdad o control, sus reacciones
+                                evidencian una labilidad emocional pronunciada: pasa rápidamente de la ira al desprecio,
+                                de la euforia grandiosa a la frustración victimista. En términos clínicos, exhibe
+                                <em>alta neuroticidad</em>, es decir, tendencia a experimentar emociones negativas
+                                intensas y fluctuantes (<a
+                                    href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5793931/#:~:text=In%20the%20psychiatric%20nosology%2C%20DSM,psychotic%20states%20of%20bipolar%20disorder">Mistrustful
+                                    and Misunderstood</a>). Muestra <em>poca tolerancia a la frustración</em>: ante
+                                contratiempos menores puede estallar en cólera o hundirse en sentimientos de
+                                persecución. Esta pobre regulación emocional es típica en personalidades borderline y
+                                paranoides, que tienden a estar en permanente estado de <strong>“alerta
+                                    irritada”</strong> (suspicious hostility) (<a
+                                    href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5793931/#:~:text=suspicious%2C%20unforgiving%2C%20ruminative%2C%20and%20jealous,6%5D.%20In%20all">Mistrustful
+                                    and Misunderstood</a>). <strong>6is</strong> rumia constantemente sus
+                                resentimientos, reavivando su enojo una y otra vez – lo que indica incapacidad para
+                                calmarse o dejar ir ofensas (un signo de inestabilidad afectiva). Sus estallidos de ira
+                                súbita seguidos quizá de periodos de resentimiento silencioso demuestran que no posee
+                                estrategias adaptativas para manejar su estado de ánimo. Además, su autoestima pendular
+                                (inflada pero frágil) aporta volatilidad: un pequeño golpe a su ego puede provocarle una
+                                crisis desproporcionada de rabia o depresión (<a
+                                    href="https://my.clevelandclinic.org/health/diseases/9742-narcissistic-personality-disorder#:~:text=,likely%2C%20which%20can%20limit%20achievements">Cleveland
+                                    Clinic</a>). En síntesis, <strong>6is</strong> carece de equilibrio emocional: vive
+                                en un sube y baja de furias y temores, incapaz de mantener estados de ánimo estables.
+                                Esto, combinado con su rechazo a la autoridad, lo hace propenso a conflictos frecuentes
+                                e incapaz de integrarse armónicamente en estructuras jerárquicas o colaborativas. Sus
+                                emociones gobiernan sus acciones más de lo que él gobierna sus emociones, reflejando una
+                                <em>baja estabilidad emocional</em> que erosiona su funcionalidad cotidiana.
+                            </p>
+
+                            <h2>Necesidad de aprobación, autoestima y validación externa</h2>
+                            <p>A pesar de su actitud altanera de “no me importa la opinión ajena”, <strong>6is</strong>
+                                tiene en realidad una necesidad desesperada de aprobación externa. Su autoestima es
+                                <strong>predominantemente extrínseca</strong>: depende de la admiración y reconocimiento
+                                que recibe de los demás para sostener su autoimagen. La investigación psicológica señala
+                                que los narcisistas mantienen un <em>auto-concepto grandioso pero vulnerable</em>, que
+                                los obliga a buscar constantemente afirmación externa para sentirse válidos (<a
+                                    href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5437163/#:~:text=is%20characterized%20by%20manipulative%20actions,words%2C%20narcissists%20may%20not%20intend">Leader
+                                    Narcissism</a>). En efecto, <strong>6is</strong> parece obsesionado con cómo es
+                                percibido; muestra una <em>preocupación constante por saber qué opinan de él</em> y
+                                reacciona exageradamente ante cualquier feedback (positivo o negativo) porque su sentido
+                                de sí mismo pende de ese juicio externo. Necesita elogios como otros necesitan aire: es
+                                común verle “pescar cumplidos” o alardear de sus logros esperando aplauso, lo que indica
+                                su <strong>hambre de validación</strong> (<a
+                                    href="https://my.clevelandclinic.org/health/diseases/9742-narcissistic-personality-disorder#:~:text=%2A%20Fragile%20self,Fishing%20for%20compliments">Cleveland
+                                    Clinic</a>) (<a
+                                    href="https://my.clevelandclinic.org/health/diseases/9742-narcissistic-personality-disorder#:~:text=">Cleveland
+                                    Clinic</a>).
+                            </p>
+                            <p>Su autoestima manifiesta es inflada, quizá rozando la megalomanía, pero en el fondo es
+                                <strong>frágil y contingente</strong>. Como se mencionó, basta una crítica menor para
+                                que su fachada de superioridad se agriete y deje brotar ira o angustia – señal de que su
+                                amor propio no está sólidamente internalizado (<a
+                                    href="https://my.clevelandclinic.org/health/diseases/9742-narcissistic-personality-disorder#:~:text=,likely%2C%20which%20can%20limit%20achievements">Cleveland
+                                    Clinic</a>). En términos de psicología social, <strong>6is</strong> presenta una
+                                combinación tóxica de <em>autoestima explícita alta</em> y <em>autoestima implícita
+                                    baja</em>, fenómeno asociado al narcisismo defensivo: en la superficie se
+                                sobrevalora, pero inconscientemente duda de sí mismo, por lo cual necesita
+                                reafirmaciones constantes para acallar esa duda (<a
+                                    href="https://www.psychdb.com/personality/narcissistic#:~:text=">PsychDB</a>). Por
+                                eso, la aprobación externa funciona para él como una droga: al obtenerla, siente euforia
+                                y validación momentánea; pero si le falta, cae en un malestar que debe compensar con más
+                                auto-bombo o atacando a quien no lo aprobó.
+                            </p>
+                            <p>Esta dinámica lo hace <strong>dependiente de la audiencia</strong>. Le cuesta tolerar la
+                                soledad o la indiferencia social, pues sin reflectores que confirmen su grandeza, se
+                                enfrenta a su vacío interno. Curiosamente, aunque anhela aprobación,
+                                <strong>6is</strong> no sabe encajar la crítica constructiva – solo acepta la adulación.
+                                Esto denota <em>inmadurez emocional</em>: personas emocionalmente sanas pueden integrar
+                                tanto elogios como críticas en su autoevaluación, mientras que él las ve en blanco y
+                                negro (adoración o ataque). En suma, su autoestima es un castillo de naipes que debe ser
+                                sostenido desde fuera. Requiere admiradores, “fans” o subordinados que le recuerden
+                                constantemente su valor. Cuando los tiene, su ego se infla desmedidamente; cuando no,
+                                recurre a fantasías grandiosas o a culpar al mundo para sostenerse. Esta
+                                <strong>necesidad patológica de validación externa</strong> es uno de sus mayores
+                                talones de Aquiles, pues lo vuelve manipulable a través del halago y fácilmente
+                                desestabilizable a través de la crítica. En esencia, <strong>6is</strong> está
+                                encadenado a la opinión ajena: su autoestimación fluctúa al compás de la aprobación
+                                externa, revelando la profunda inseguridad que subyace a su aparente vanidad.
+                            </p>
+
+                            <h2>Relaciones interpersonales y vínculos afectivos</h2>
+                            <p>Las relaciones de <strong>6is</strong> con los demás son altamente disfuncionales y
+                                superficiales. Dado su egocentrismo y desconfianza, le resulta casi imposible establecer
+                                <strong>vínculos afectivos genuinos, basados en la empatía y la reciprocidad</strong>.
+                                En la interacción cotidiana, tiende a tratar a las personas como <em>medios para un
+                                    fin</em>, evaluándolas según si sirven a sus propósitos o alimentan su ego (<a
+                                    href="https://www.psychdb.com/personality/narcissistic#:~:text=favourable%20treatment%20or%20automatic%20compliance,with%20his%20or%20her%20expectations">PsychDB</a>).
+                                Esta actitud explotadora destruye la posibilidad de amistad o intimidad reales: los
+                                demás tarde o temprano perciben que <strong>6is</strong> carece de consideración genuina
+                                por sus sentimientos (rasgo central del narcisismo es <strong>falta de empatía</strong>
+                                (<a
+                                    href="https://www.psychdb.com/personality/narcissistic#:~:text=6,his%20or%20her%20own%20ends">PsychDB</a>))
+                                y que solo está interesado en ellos mientras le provean admiración o utilidad.
+                                Consecuentemente, sus relaciones suelen ser <strong>inestables y de corta
+                                    duración</strong>. Al inicio puede encantar o impresionar (con su seguridad o
+                                promesas), pero con el tiempo sus <em>comportamientos arrogantes y abusivos</em>
+                                erosionan el vínculo. Estudios longitudinales de liderazgo narcisista muestran
+                                justamente que, aunque al principio pueden generar cierta fascinación, <strong>las
+                                    relaciones con individuos narcisistas tienden a deteriorarse con el tiempo</strong>
+                                debido a su falta de consideración y cooperación (<a
+                                    href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5437163/#:~:text=2011%20%29.%20Meta,In">Leader
+                                    Narcissism</a>). Es probable que <strong>6is</strong> experimente este patrón
+                                repetitivo: ciclos de <em>idealización</em> inicial (él idealiza a alguien o es
+                                idealizado) seguidos de <em>devaluación</em> y ruptura cuando inevitablemente sus
+                                necesidades no son satisfechas perfectamente.
+                            </p>
+                            <p>En el terreno afectivo profundo (familia, pareja), <strong>6is</strong> casi con certeza
+                                tiene un <strong>estilo de apego inseguro</strong>. Su temor al rechazo y su convicción
+                                de que no se puede confiar en nadie sugieren un <em>apego ansioso y temeroso</em>:
+                                anhela la conexión, pero la teme al mismo tiempo (<a
+                                    href="https://www.psypost.org/researchers-identify-a-new-personality-construct-that-describes-the-tendency-to-see-oneself-as-a-victim/#:~:text=An%20initial%20three%20studies%20established,in%20early%20relationships%20with%20caregivers">Tendency
+                                    for Interpersonal Victimhood</a>). De hecho, la tendencia crónica al victimismo
+                                (TIV) correlaciona con apego ansioso – sentimientos de inseguridad en las relaciones
+                                íntimas (<a
+                                    href="https://www.psypost.org/researchers-identify-a-new-personality-construct-that-describes-the-tendency-to-see-oneself-as-a-victim/#:~:text=An%20initial%20three%20studies%20established,in%20early%20relationships%20with%20caregivers">PsyPost</a>)
+                                – lo que encaja con su perfil. Es posible que en sus relaciones más cercanas
+                                <strong>6is</strong> presente conductas ambivalentes: demandas exageradas de atención y
+                                lealtad por un lado, pero incapacidad de brindar apoyo emocional auténtico por el otro.
+                                Sus parejas o familiares probablemente se sientan frustrados por su <em>incapacidad de
+                                    darse emocionalmente</em>: él invalida las necesidades ajenas, no muestra
+                                vulnerabilidad genuina y puede reaccionar agresivamente ante conflictos menores,
+                                adoptando el rol de víctima ofendida. Esto dificulta la construcción de confianza mutua.
+                                A menudo, personas con rasgos como <strong>6is</strong> terminan aisladas socialmente o
+                                rodeadas solo de relaciones <strong>dependientes y desequilibradas</strong> – por
+                                ejemplo, vínculos codependientes donde el otro tolera sus abusos, o “séquitos” de
+                                individuos más sumisos a quienes él desprecia en privado.
+                            </p>
+                            <p>Además, <strong>6is</strong> parece <strong>incapaz de mantener relaciones
+                                    colaborativas</strong> en contextos profesionales o grupales. Su competitividad
+                                extrema y paranoia lo llevan a sabotear la cooperación: ve colegas como rivales y amigos
+                                como potenciales traidores. Esto genera un entorno alrededor de él lleno de conflictos y
+                                desconfianza recíproca. Incluso aquellos que le son leales terminan quemados por sus
+                                exigencias imposibles y su falta de lealtad recíproca. Si ha tenido relaciones
+                                importantes, es probable que estén plagadas de altibajos dramáticos –
+                                <em>reconciliaciones y rupturas sucesivas</em> – especialmente si el otro intenta poner
+                                límites. En resumen, <strong>6is</strong> sufre de una <strong>incapacidad fundamental
+                                    para formar lazos seguros y saludables</strong>. Sus relaciones interpersonales se
+                                caracterizan por el dominio, la manipulación y la suspicacia, con poco espacio para el
+                                amor, la camaradería o el respeto auténtico. Con frecuencia se encontrará solo en
+                                momentos clave, pues ha alienado a quienes podrían haberle brindado apoyo real.
+                                Paradójicamente, esto refuerza su autopercepción de víctima (“todos me abandonan o me
+                                traicionan”), perpetuando el ciclo tóxico en sus vínculos humanos.
+                            </p>
+
+                            <h2>Estrategias de afrontamiento y patrones de pensamiento</h2>
+                            <p>Los patrones de pensamiento de <strong>6is</strong> están marcados por distorsiones
+                                cognitivas profundas y estrategias de afrontamiento disfuncionales que refuerzan su
+                                ciclo de conducta negativa. Una de sus principales estrategias psicológicas es la
+                                <strong>negación y externalización</strong> de la culpa: ante cualquier problema o
+                                fracaso, <em>rechaza la responsabilidad personal</em> y culpa automáticamente a factores
+                                externos o a otras personas. Esto es típico en personalidades paranoides y narcisistas,
+                                que emplean la <strong>proyección</strong> como mecanismo de defensa – atribuyendo a los
+                                demás sus propios defectos o errores (<a
+                                    href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5793931/#:~:text=preserved%20the%20idea%20of%20paranoia,order%E2%80%9D%20level%20of%20character%20organization">Mistrustful
+                                    and Misunderstood</a>). En el caso de <strong>6is</strong>, es evidente cómo
+                                proyecta sus sentimientos de insuficiencia o culpa hacia fuera: si algo sale mal,
+                                inmediatamente argumenta que es porque “X persona conspiró contra mí” o “las
+                                circunstancias estuvieron arregladas en mi contra”. Al hacer esto, logra evitar afrontar
+                                sus propias fallas, pero a costa de perpetuar una visión distorsionada de la realidad
+                                donde él siempre es el agraviado inocente. Esta <em>mentalidad de víctima perpetua</em>
+                                está bien documentada por estudios sobre TIV, que muestran que quienes la tienen tienden
+                                a rumiar sobre agravios y nunca asumen su parte de responsabilidad en los conflictos (<a
+                                    href="https://www.psypost.org/researchers-identify-a-new-personality-construct-that-describes-the-tendency-to-see-oneself-as-a-victim/#:~:text=An%20initial%20three%20studies%20established,in%20early%20relationships%20with%20caregivers">PsyPost</a>)
+                                (<a
+                                    href="https://www.psypost.org/researchers-identify-a-new-personality-construct-that-describes-the-tendency-to-see-oneself-as-a-victim/#:~:text=%28Study%204%29,the%20person%20who%20wronged%20them">PsyPost</a>).
+                                <strong>6is</strong> claramente encaja en ese perfil: su pensamiento está dominado por
+                                la rumiación vengativa (“darle vueltas” constante a ofensas sufridas) y por un sesgo de
+                                autojustificación (convenciéndose de que cualquier acción hostil que toma es una
+                                respuesta legítima a una injusticia previa) (<a
+                                    href="https://www.psypost.org/researchers-identify-a-new-personality-construct-that-describes-the-tendency-to-see-oneself-as-a-victim/#:~:text=%28Study%204%29,the%20person%20who%20wronged%20them">PsyPost</a>).
+                            </p>
+                            <p>Otra distorsión cognitiva central en <strong>6is</strong> es el <strong>sesgo de
+                                    confirmación</strong>: solo acepta información que cuadra con sus creencias
+                                preestablecidas y desecha cualquier evidencia contraria (<a
+                                    href="https://www.britannica.com/science/confirmation-bias#:~:text=confirmation%20bias%2C%20people%E2%80%99s%20tendency%20to,relevant">Confirmation
+                                    Bias | Britannica</a>). Procesa la realidad a través de un filtro que refuerza su
+                                narrativa (por ejemplo, cualquier gesto ambiguo de otra persona lo interpretará como
+                                hostilidad confirmando su paranoia, mientras que ignorará por completo señales de buena
+                                voluntad que contradigan esa creencia). Este sesgo le impide aprender de la experiencia
+                                o corregir percepciones erróneas, consolidando su visión rígida. Además,
+                                <strong>6is</strong> piensa en términos de <em>blanco o negro</em> – un patrón típico de
+                                pensamiento dicotómico donde la gente es o “aliada leal” o “enemigo absoluto”, sin
+                                matices. Este pensamiento polarizado complica su afrontamiento de situaciones sociales
+                                complejas, pues cualquier ambigüedad la resuelve saltando a conclusiones extremas
+                                (generalmente negativas respecto a los demás).
+                            </p>
+                            <p>En cuanto a sus <strong>estrategias de afrontamiento</strong> frente al estrés o la
+                                amenaza, predominan las respuestas de <strong>ataque o evasión</strong>. Frente a
+                                críticas (estrés egodistónico), su afrontamiento inmediato es el ataque: arremete
+                                verbalmente, desacredita al mensajero o monta en cólera para <em>anular la amenaza</em>
+                                mediante intimidación. Es decir, usa un <strong>afrontamiento agresivo</strong> como
+                                mecanismo para restaurar su sentido de control cuando se siente herido (lo cual se
+                                alinea con la teoría del <em>ego amenazado</em> que conduce a agresión (<a
+                                    href="https://public.websites.umich.edu/~bbushman/bbc00.pdf#:~:text=find%20the%20aggressive%20ones,is%20thus%20a%20means%20of">Vol
+                                    9#1</a>)). Alternativamente, si no puede atacar directamente, recurre a la evasión
+                                psicológica: se convence a sí mismo de que la crítica es inválida o proviniente de la
+                                envidia ajena, recurriendo a <strong>racionalizaciones</strong> elaboradas para
+                                justificar por qué él está en lo correcto y los demás equivocados. Estas
+                                racionalizaciones son otra forma de autoengaño, permitiéndole mantener intacto su ego a
+                                costa de distanciarse de la realidad.</p>
+                            <p>Cabe destacar también su probable uso de <strong>conductas de escape</strong>: ante
+                                emociones que no puede manejar (como una profunda tristeza o ansiedad), es posible que
+                                busque distracciones destructivas (consumo de sustancias, explosiones de ira que liberan
+                                tensión, o incluso fantasías de grandeza más intensas para huir del sentimiento de
+                                pequeñez). Sin embargo, no hay indicios directos de abusos de sustancias en lo
+                                proporcionado, por lo que eso queda especulativo. Lo cierto es que <strong>6is</strong>
+                                no enfrenta adaptativamente sus emociones negativas; en lugar de reflexionar o tolerar
+                                la incomodidad, las <strong>transforma inmediatamente en rabia, culpa externa o
+                                    negación</strong>. Esto le brinda un alivio momentáneo (p. ej., es más cómodo
+                                indignarse contra otro que admitir “estaba equivocado”), pero le impide crecer o
+                                resolver realmente sus problemas. Psicológicamente, se encuentra en un estado de
+                                <em>estancamiento evolutivo</em>: repite los mismos patrones de pensamiento rígidos y
+                                afrontamiento agresivo que quizá le funcionaron en algún momento de su vida (por
+                                ejemplo, en una infancia hostil), pero que ahora resultan desadaptativos. En resumen,
+                                <strong>6is</strong> afronta cualquier tensión con <strong>hostilidad defensiva o
+                                    negación</strong>, sustentado por un estilo cognitivo paranoide (percepción de
+                                amenazas omnipresentes) y narcisista (distorsiones autoengrandecedoras). Estas
+                                estrategias, lejos de solucionar sus conflictos, los agravan, atrapándolo en un círculo
+                                vicioso psicológico difícil de romper.
+                            </p>
+
+                            <h2>Tendencias a la manipulación, paranoia, agresividad y victimización</h2>
+                            <p><strong>6is</strong> exhibe fuertes tendencias a la <strong>manipulación</strong>, la
+                                <strong>paranoia</strong>, la <strong>agresividad</strong> y la
+                                <strong>auto-victimización</strong>, las cuales interactúan entre sí para conformar su
+                                patrón de conducta abusiva. En cuanto a la <strong>manipulación</strong>, él se comporta
+                                de manera calculadora y utilitarista con las personas, encarnando características
+                                maquiavélicas clásicas: utiliza el engaño, la adulación interesada o la coerción sutil
+                                para lograr sus objetivos, sin consideración por el daño que cause a otros (<a
+                                    href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5437163/#:~:text=Psychopathy%2C%20and%20Narcissism%20belongs%20to,2001%29%20narcissists%27%20%E2%80%9Cgrandiose">Leader
+                                    Narcissism</a>). Es común que adapte su discurso o actitud dependiendo de la
+                                audiencia para ganarla – por ejemplo, puede mostrarse encantador y atento si necesita
+                                algo de alguien, pero volverse frío y explotador una vez obtenido. Su falta de empatía
+                                facilita estas conductas, pues no siente remordimiento al <strong>“usar” a la gente como
+                                    piezas en su juego</strong> (<a
+                                    href="https://www.psychdb.com/personality/narcissistic#:~:text=favourable%20treatment%20or%20automatic%20compliance,with%20his%20or%20her%20expectations">PsychDB</a>).
+                                De hecho, estudios describen que los individuos con este perfil manipulatorio suelen
+                                carecer de preocupación por los demás y se centran en sus propias metas a cualquier
+                                costo (<a
+                                    href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5437163/#:~:text=Psychopathy%2C%20and%20Narcissism%20belongs%20to,2001%29%20narcissists%27%20%E2%80%9Cgrandiose">Leader
+                                    Narcissism</a>), exactamente lo que apreciamos en <strong>6is</strong>. Esto lo hace
+                                inherentemente peligroso en la interacción social: su carisma inicial puede ser una
+                                trampa, tras la cual impone su voluntad mediante tácticas manipulativas (mentiras,
+                                chantaje emocional haciéndose la víctima, siembra de discordia entre terceros, etc.).
+                            </p>
+                            <p>La <strong>paranoia</strong> es otro pilar de su conducta. <strong>6is</strong> vive
+                                convencido de que los demás traman algo en su contra o que hablan mal de él a sus
+                                espaldas, incluso sin evidencia objetiva. Este <em>estilo cognitivo paranoide</em> se
+                                manifiesta en una actitud hipervigilante y suspicaz: interpreta comentarios inocuos con
+                                malicia, lee segundas intenciones donde no las hay y mantiene siempre “guardia alta”.
+                                Clínicamente, esto corresponde a la descripción del trastorno paranoide: “desconfianza
+                                injustificada e interpretación de motivos ajenos como maliciosos” (<a
+                                    href="https://www.merckmanuals.com/professional/psychiatric-disorders/personality-disorders/paranoid-personality-disorder-ppd#:~:text=Paranoid%20personality%20disorder%20is%20characterized,behavioral%20therapy%20and%20sometimes%20medications">Merck
+                                    Manual</a>) (<a
+                                    href="https://www.merckmanuals.com/professional/psychiatric-disorders/personality-disorders/paranoid-personality-disorder-ppd#:~:text=,Disorders">Merck
+                                    Manual</a>). En sus mensajes, <strong>6is</strong> probablemente lanza frecuentes
+                                acusaciones de conspiración o traición (“sé que <em>ustedes</em> quieren arruinarme”,
+                                “no me engañan, todos están en mi contra”), lo que encaja con esa visión. Esta paranoia
+                                alimenta un círculo vicioso: al desconfiar de todos, <em>provoca hostilidad real en
+                                    respuesta</em> (pues nadie disfruta ser acusado injustamente), lo cual luego
+                                <strong>6is</strong> toma como “prueba” de que efectivamente le tenían mala voluntad
+                                desde el inicio. Así, se refuerza su sistema paranoide autorreferencial. Además, su
+                                paranoia agrava tanto su agresividad como su victimismo, ya que siente que sus acciones
+                                violentas están “justificadas” por la necesidad de defenderse de enemigos omnipresentes.
+                            </p>
+                            <p>La <strong>agresividad</strong> de <strong>6is</strong> es intensa y de dos tipos:
+                                <em>proactiva</em> (instrumental) y <em>reactiva</em> (impulsiva) (<a
+                                    href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10223137/#:~:text=Aggression%20can%20be%20classified%20into,1%20%2C%2035">Non-Invasive
+                                    Brain Stimulation</a>). En su modalidad <strong>proactiva</strong>, utiliza la
+                                agresión de forma <strong>instrumental</strong> y premeditada para lograr lo que quiere
+                                – por ejemplo, intimida o amenaza a otros deliberadamente para obtener sumisión. Este
+                                tipo de agresión planificada sirve a sus fines manipulativos (es parte de su repertorio
+                                de control). En la modalidad <strong>reactiva</strong>, <strong>6is</strong> explota en
+                                <strong>ira hostil e impulsiva</strong> ante provocaciones percibidas, sin medir
+                                consecuencias. Ambos tipos han sido descritos en la literatura como componentes de la
+                                agresión humana (<a
+                                    href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10223137/#:~:text=Aggression%20can%20be%20classified%20into,1%20%2C%2035">Non-Invasive
+                                    Brain Stimulation</a>), y <strong>6is</strong> parece poseerlos: puede agredir
+                                calculadamente (ej: una campaña de difamación contra alguien que le compite) o agredir
+                                visceralmente (ej: insultos feroces cuando se siente herido en su orgullo). Sus
+                                reacciones agresivas rebasan claramente la proporción de los desencadenantes; esta
+                                <em>respuesta exagerada de violencia verbal o psicológica</em> sugiere un control
+                                inhibitorio deficiente y un patrón aprendido de usar la agresión como solución
+                                universal. De hecho, investigaciones muestran que sujetos narcisistas con ego amenazado
+                                exhiben altos niveles de agresión directa (<a
+                                    href="https://public.websites.umich.edu/~bbushman/bbc00.pdf#:~:text=find%20the%20aggressive%20ones,is%20thus%20a%20means%20of">Vol
+                                    9#1</a>), y en <strong>6is</strong> se ve exactamente eso: cuando alguien lo
+                                contradice o desafía su imagen, él recurre casi reflejamente a la <strong>agresión
+                                    verbal</strong> (insultos, descalificaciones) e incluso a <em>agresión
+                                    relacional</em> (arruinar reputaciones, venganzas) para “restaurar” su superioridad.
+                                Esta agresividad constante hace que el entorno le tema o le rechace, reforzando a su vez
+                                su visión paranoide (una profecía autocumplida, donde su hostilidad atrae hostilidad).
+                            </p>
+                            <p>Por último, <strong>6is</strong> exhibe una notable <strong>tendencia a la
+                                    victimización</strong> personal. A pesar de ser él quien a menudo inflige daño, se
+                                coloca a sí mismo en el relato como la <em>víctima principal</em> de la historia. Tiene
+                                un <strong>“complejo de víctima”</strong> muy arraigado: percibe que “siempre le hacen
+                                algo”, magnifica pequeñas afrentas convirtiéndolas en persecuciones deliberadas, y busca
+                                activamente la simpatía o justificación usando ese rol. Curiosamente, esta
+                                auto-victimización coexiste con su agresividad: investigaciones recientes sobre la
+                                <strong>Tendencia al Victimismo Interpersonal</strong> encontraron que quienes puntúan
+                                alto en victimismo sienten también mayor <strong>derecho a comportamientos inmorales
+                                    como forma de venganza</strong> (<a
+                                    href="https://www.psypost.org/researchers-identify-a-new-personality-construct-that-describes-the-tendency-to-see-oneself-as-a-victim/#:~:text=%28Study%204%29,the%20person%20who%20wronged%20them">PsyPost</a>).
+                                Es decir, se sienten tan víctimas que creen lícito contraatacar incluso de formas
+                                crueles. Esto es exactamente lo que vemos en <strong>6is</strong>: su narrativa es
+                                “<em>me han lastimado, por tanto estoy justificado para arremeter</em>”. Él jamás
+                                reconoce ser victimario; incluso tras agredir, se pintará a sí mismo como alguien que
+                                actuó en defensa propia o empujado por la injusticia. Esta actitud le permite evadir la
+                                culpa (moral disengagement) y a la vez manipular emocionalmente a terceros, perpetuando
+                                su ciclo de conducta abusiva.
+                            </p>
+
+                            <h2>Referencias</h2>
+                            <ul>
+                                <li>【5】 Ellwood, B. (2020). <em>Tendency for Interpersonal Victimhood: nueva constructo
+                                        de personalidad</em> – <em>Personality and Individual Differences</em> (estudio
+                                    resumido en PsyPost) (<a
+                                        href="https://www.psypost.org/researchers-identify-a-new-personality-construct-that-describes-the-tendency-to-see-oneself-as-a-victim/#:~:text=An%20initial%20three%20studies%20established,in%20early%20relationships%20with%20caregivers">Enlace</a>).
+                                </li>
+                                <li>【12】 Baumeister, R. & Bushman, B. (1998/2000). <em>Threatened egotism, narcissism,
+                                        self-esteem and direct aggression</em> – <em>Journal of Personality and Social
+                                        Psychology</em> 75(1):219-229. (Resultados resumidos en Current Directions in
+                                    Psychological Science) (<a
+                                        href="https://public.websites.umich.edu/~bbushman/bbc00.pdf#:~:text=find%20the%20aggressive%20ones,is%20thus%20a%20means%20of">Enlace</a>).
+                                </li>
+                                <li>【14】 Sperry, S. et al. (2018). <em>Mistrustful and misunderstood: A review of
+                                        Paranoid Personality Disorder</em> – <em>PNAS/Current Psychiatry Reports</em>.
+                                    (Descripción de rasgos PPD) (<a
+                                        href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5793931/#:~:text=In%20the%20psychiatric%20nosology%2C%20DSM,psychotic%20states%20of%20bipolar%20disorder">Enlace</a>).
+                                </li>
+                                <li>【15】 ICD-10 / Merck Manual. Definición de Trastorno Paranoide: rasgos de suspicacia,
+                                    autoimportancia y hostilidad (<a
+                                        href="https://www.merckmanuals.com/professional/psychiatric-disorders/personality-disorders/paranoid-personality-disorder-ppd#:~:text=Paranoid%20personality%20disorder%20is%20characterized,behavioral%20therapy%20and%20sometimes%20medications">Enlace</a>).
+                                </li>
+                                <li>【19】 PsychDB (2022). <em>Narcissistic Personality Disorder: Primer and DSM-5
+                                        Criteria</em>. (Características diagnósticas y comorbilidades) (<a
+                                        href="https://www.psychdb.com/personality/narcissistic#:~:text=Narcissistic%20Personality%20Disorder%20is%20a,and%20may%20demand%20special%20treatment">Enlace</a>).
+                                </li>
+                                <li>【23】 Cleveland Clinic (2022). <em>Narcissistic Personality Disorder: Symptoms &
+                                        Causes</em>. (Criterios diagnósticos, vulnerabilidad en la autoestima, causas
+                                    infantiles) (<a
+                                        href="https://my.clevelandclinic.org/health/diseases/9742-narcissistic-personality-disorder#:~:text=,importance">Enlace</a>).
+                                </li>
+                                <li>【26】 Casad, B. – <em>Confirmation Bias</em> (Encyclopedia of Social
+                                    Psychology/Britannica, 2025). (Definición del sesgo de confirmación) (<a
+                                        href="https://www.britannica.com/science/confirmation-bias#:~:text=confirmation%20bias%2C%20people%E2%80%99s%20tendency%20to,relevant">Enlace</a>).
+                                </li>
+                                <li>【36】 Nevicka et al. (2018). <em>Leader Narcissism and Outcomes in Organizations: A
+                                        Review</em>. – <em>Frontiers in Psychology</em> (Paradoja del narcisismo:
+                                    necesidad de autoafirmación externa, falta de empatía, deterioro de relaciones) (<a
+                                        href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5437163/#:~:text=Narcissism%2C%20however%2C%20appears%20to%20be,and%20external%20validation%20are%20fulfilled">Enlace</a>).
+                                </li>
+                                <li>【43】 Morelli et al. (2023). <em>Non-Invasive Brain Stimulation for Modulation of
+                                        Aggressive Behavior – A Review</em>. – <em>Frontiers in Neurology</em>
+                                    (Distinción agresión proactiva vs reactiva; justificación evolutiva de agresión) (<a
+                                        href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10223137/#:~:text=Aggression%20can%20be%20classified%20into,1%20%2C%2035">Enlace</a>).
+                                </li>
+                            </ul>
+                        </div>
+                        <div data-lang="en" style="display: none;">
+                            <p>This analysis is available only in Spanish. Please switch the language to Español to view
+                                the full content.</p>
+                        </div>
+                        <div data-lang="fr" style="display: none;">
+                            <p>Ce contenu est disponible uniquement en espagnol. Veuillez changer la langue en espagnol
+                                pour voir le contenu complet.</p>
+                        </div>
+                        <div data-lang="de" style="display: none;">
+                            <p>Dieser Inhalt ist nur auf Spanisch verfügbar. Bitte wechseln Sie die Sprache zu Spanisch,
+                                um den vollständigen Inhalt zu sehen.</p>
+                        </div>
+                        <div data-lang="zh" style="display: none;">
+                            <p>此内容仅提供西班牙语版本。请将语言切换为西班牙语以查看完整内容。</p>
+                        </div>
+                        <div data-lang="ja" style="display: none;">
+                            <p>このコンテンツはスペイン語のみで提供されています。完全な内容を表示するには、言語をスペイン語に切り替えてください。</p>
+                        </div>
+                        <div data-lang="ru" style="display: none;">
+                            <p>Этот контент доступен только на испанском языке. Пожалуйста, переключите язык на
+                                испанский, чтобы просмотреть полный контент.</p>
+                        </div>
+                        <div data-lang="ar" style="display: none;">
+                            <p>هذا المحتوى متوفر باللغة الإسبانية فقط. يرجى تغيير اللغة إلى الإسبانية لعرض المحتوى
+                                الكامل.</p>
+                        </div>
+                    </div>
+                </div>
+                <footer class="footer">
+                    <p data-lang="en">© BlackStream Project. All rights reserved.</p>
+                    <p data-lang="es">© Proyecto BlackStream. Todos los derechos reservados.</p>
+                    <p data-lang="fr">© Projet BlackStream. Tous droits réservés.</p>
+                    <p data-lang="de">© BlackStream Projekt. Alle Rechte vorbehalten.</p>
+                    <p data-lang="zh">© BlackStream项目。版权所有。</p>
+                    <p data-lang="ja">© BlackStreamプロジェクト。全著作権所有。</p>
+                    <p data-lang="ru">© Проект BlackStream. Все права защищены.</p>
+                    <p data-lang="ar">© مشروع BlackStream. جميع الحقوق محفوظة.</p>
+                </footer>
+            </section>
+        </main>
+    </section>
+
+    <!-- Botón "Volver Arriba" -->
+    <button id="back-to-top" onclick="scrollToTop()">↑</button>
+
     <script>
         function changeLanguage() {
             const lang = document.getElementById('language').value;
@@ -936,8 +1657,29 @@
             loop: true,
             showCursor: false
         });
+        function toggleAnalysis(id) {
+            const el = document.getElementById(id);
+            el.style.display = (el.style.display === "none" || el.style.display === "") ? "block" : "none";
+        }
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        window.addEventListener('scroll', () => {
+            const btn = document.getElementById('back-to-top');
+            if (window.pageYOffset > 300) {
+                btn.style.display = 'block';
+            } else {
+                btn.style.display = 'none';
+            }
+            // Efecto de desplazamiento en el header
+            const header = document.getElementById('header');
+            if (window.pageYOffset > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
         document.addEventListener('DOMContentLoaded', () => {
-            console.log('BlackStream Project Unleashed.');
             loadLanguage();
             const hash = window.location.hash || '#main';
             showPage(hash);
